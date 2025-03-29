@@ -8,7 +8,7 @@ static void testButton() {
 	btn.setPosition({ 200,100 });
 
 	sf::Font font;
-	if (!font.loadFromFile("./Loveon_400.ttf")) {
+	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}
