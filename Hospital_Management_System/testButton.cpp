@@ -5,7 +5,6 @@ static void testButton() {
 	sf::RenderWindow window(sf::VideoMode(900, 900), "SFML works!");
 
 	Button btn("Click", 30, { 200,50 }, sf::Color::Green, sf::Color::White);
-	btn.setPosition({ 200,100 });
 
 	sf::Font font;
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
@@ -14,6 +13,7 @@ static void testButton() {
 	}
 
 	btn.setFont(font);
+	btn.setPosition({ 200,100 });
 
 	while (window.isOpen())
 	{

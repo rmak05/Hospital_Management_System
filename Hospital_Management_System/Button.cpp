@@ -38,8 +38,8 @@ void Button::setBgColor(sf::Color bgColor) {
 void Button::setPosition(sf::Vector2f pos) {
 	button.setPosition(pos);
 
-	float xPos = (pos.x + button.getLocalBounds().width / 4) - (text.getLocalBounds().width / 4);
-	float yPos = (pos.y + button.getLocalBounds().height / 4) - (text.getLocalBounds().height / 4);
+	float xPos = (pos.x + button.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2 + text.getLocalBounds().left);
+	float yPos = (pos.y + button.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top);
 
 	text.setPosition(xPos, yPos);
 }
@@ -65,4 +65,3 @@ void Button::drawTo(sf::RenderWindow& window) {
 	window.draw(button);
 	window.draw(text);
 }
-

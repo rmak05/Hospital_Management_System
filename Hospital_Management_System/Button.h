@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -6,6 +7,7 @@ class Button {
 
 private:
 	sf::RectangleShape button;
+	sf::Font font;
 	sf::Text text;
 
 public:
