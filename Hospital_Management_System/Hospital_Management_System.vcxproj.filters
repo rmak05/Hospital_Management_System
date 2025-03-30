@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Drawables">
+      <UniqueIdentifier>{b037b145-cf9a-4c2d-895c-b28a5d1be154}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,10 +34,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Drawables</Filter>
     </ClCompile>
-    <ClCompile Include="testButton.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="TextInput.cpp">
+      <Filter>Source Files\Drawables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +48,10 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="TextInput.h">
+      <Filter>Source Files\Drawables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
