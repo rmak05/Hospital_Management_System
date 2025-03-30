@@ -42,6 +42,9 @@
     <ClCompile Include="TextInput.cpp">
       <Filter>Source Files\Drawables</Filter>
     </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -51,6 +54,9 @@
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
     <ClInclude Include="TextInput.h">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
   </ItemGroup>

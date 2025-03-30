@@ -31,7 +31,7 @@ public:
 	void setBoxSize(sf::Vector2f);
 	void setBackgroundColor(sf::Color);
 	void setOutlineColor(sf::Color);
-	void setFont(sf::Font&);
+	void setFont(std::string);
 	void setPosition(sf::Vector2f);
 	void setLimit(bool);
 	void setLimit(bool, int);

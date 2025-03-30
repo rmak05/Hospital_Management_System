@@ -2,13 +2,19 @@
 
 Button::Button() {}
 
-Button::Button(std::string textVal = "Button", int charSize = 30, sf::Vector2f buttonSize = { 10,10 }, sf::Color bgColor = sf::Color::Green, sf::Color textColor = sf::Color::Black) {
+Button::Button(std::string textVal, int charSize, sf::Vector2f buttonSize, sf::Color bgColor, sf::Color textColor) {
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
+
+	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
+	text.setFont(font);
 }
 
 void Button::setTextVal(sf::String textVal) {
@@ -23,7 +29,11 @@ void Button::setTextSize(int charSize) {
 	text.setCharacterSize(charSize);
 }
 
-void Button::setFont(sf::Font& font) {
+void Button::setFont(std::string file) {
+	if (!font.loadFromFile(file)) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
 	text.setFont(font);
 }
 
@@ -31,7 +41,7 @@ void Button::setButtonSize(sf::Vector2f buttonSize) {
 	button.setSize(buttonSize);
 }
 
-void Button::setBgColor(sf::Color bgColor) {
+void Button::setBackgroundColor(sf::Color bgColor) {
 	button.setFillColor(bgColor);
 }
 

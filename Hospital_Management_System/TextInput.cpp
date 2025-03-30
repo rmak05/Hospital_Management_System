@@ -10,6 +10,12 @@ TextInput::TextInput(int size, sf::Vector2f boxSize, sf::Color textColor, sf::Co
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(2);
 	box.setOutlineColor(outlineColor);
+
+	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
+	textbox.setFont(font);
 }
 
 void TextInput::deleteLastChar() {
@@ -56,7 +62,11 @@ void TextInput::setOutlineColor(sf::Color color) {
 	box.setOutlineColor(color);
 }
 
-void TextInput::setFont(sf::Font& font) {
+void TextInput::setFont(std::string file) {
+	if (!font.loadFromFile(file)) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
 	textbox.setFont(font);
 }
 

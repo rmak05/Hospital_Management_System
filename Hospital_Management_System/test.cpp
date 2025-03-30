@@ -1,5 +1,6 @@
 #include "Button.h"
 #include "TextInput.h"
+#include "TextBox.h"
 
 static void testButton() {
 
@@ -8,13 +9,7 @@ static void testButton() {
 
 	Button btn("Click", 30, { 200,50 }, sf::Color::Green, sf::Color::White);
 
-	sf::Font font;
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
-		std::cout << "Error loading the font file\n";
-		return;
-	}
-
-	btn.setFont(font);
+	btn.setFont("Resources/NotoSans.ttf");
 	btn.setPosition({ 200,100 });
 
 	while (window.isOpen())
@@ -30,10 +25,10 @@ static void testButton() {
 
 			case sf::Event::MouseMoved:
 				if (btn.isMouseHover(window)) {
-					btn.setBgColor(sf::Color::White);
+					btn.setBackgroundColor(sf::Color::White);
 				}
 				else {
-					btn.setBgColor(sf::Color::Green);
+					btn.setBackgroundColor(sf::Color::Green);
 				}
 				break;
 
@@ -44,7 +39,7 @@ static void testButton() {
 					}
 				}
 				if (event.mouseButton.button == sf::Mouse::Right) {
-					btn.setBgColor(sf::Color::Red);
+					btn.setBackgroundColor(sf::Color::Red);
 				}
 				break;
 			}
@@ -65,18 +60,12 @@ static void testTextInput() {
 	TextInput ti(30, { 500,50 }, sf::Color::White, sf::Color::Green, sf::Color::White);
 	TextInput ti2(30, { 500,50 }, sf::Color::White, sf::Color::Green, sf::Color::White);
 
-	sf::Font font;
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
-		std::cout << "Error loading the font file\n";
-		return;
-	}
-
-	ti.setFont(font);
+	ti.setFont("Resources/NotoSans.ttf");
 	ti.setPosition({ 200,100 });
 	ti.setBackgroundColor(sf::Color::Magenta);
 	ti.setLimit(true, 20);
 
-	ti2.setFont(font);
+	ti2.setFont("Resources/NotoSans.ttf");
 	ti2.setPosition({ 200,300 });
 	ti2.setLimit(true, 20);
 
@@ -120,7 +109,36 @@ static void testTextInput() {
 	}
 }
 
+static void testTextBox() {
+
+	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+	sf::RenderWindow window(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
+
+	TextBox tb("Click", 30, { 500,50 }, sf::Color::White, sf::Color::Green, sf::Color::White);
+
+	tb.setFont("Resources/NotoSans.ttf");
+	tb.setPosition({ 200,100 });
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			switch (event.type) {
+
+			case sf::Event::Closed:
+				window.close();
+				break;
+			}
+		}
+
+		window.clear();
+		tb.drawTo(window);
+		window.display();
+	}
+}
+
 int main() {
-	testTextInput();
+	testTextBox();
 	return 0;
 }
