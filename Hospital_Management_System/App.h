@@ -1,6 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <map>
+#include <memory>
 #include "Scene.h"
 
 #define TOP_MARGIN 20		//in pixels
