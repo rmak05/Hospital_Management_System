@@ -2,9 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Entity.h"
 
-class TextBox {
+class TextBox;
 
+class TextBox : public Entity {
 private:
 	sf::RectangleShape box;
 	sf::Font font;
@@ -12,15 +14,16 @@ private:
 
 public:
 	TextBox();
-	TextBox(std::string, int, sf::Vector2f, sf::Color, sf::Color, sf::Color);
+	TextBox(std::string textVal, unsigned charSize, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
 
-	void setTextVal(sf::String);
-	void setTextColor(sf::Color);
-	void setTextSize(int);
-	void setFont(std::string);
-	void setBoxSize(sf::Vector2f);
-	void setBackgroundColor(sf::Color);
-	void setOutlineColor(sf::Color);
-	void setPosition(sf::Vector2f);
-	void drawTo(sf::RenderWindow&);
+	void setTextVal(sf::String textVal);
+	void setTextColor(sf::Color textColor);
+	void setTextSize(int charSize);
+	void setFont(std::string file);
+	void setBoxSize(sf::Vector2f size);
+	void setBackgroundColor(sf::Color bgColor);
+	void setOutlineColor(sf::Color color);
+	void setPosition(sf::Vector2f pos);
+	void setTextPosition(sf::Vector2f pos);
+	void drawTo(sf::RenderWindow& window);
 };

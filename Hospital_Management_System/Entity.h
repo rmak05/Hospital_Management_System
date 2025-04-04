@@ -1,5 +1,6 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
 #include <memory>
 
 class Entity;
@@ -7,19 +8,20 @@ enum class EntityType;
 typedef std::shared_ptr<Entity> entity_ptr;
 
 enum class EntityType {
-
+	_default	= (-1),
+	text_box	= 0
 };
 
 class Entity {
-private:
-	bool isActive;
+public:
+	bool is_active;
 	//size_t id;
 	EntityType type;
 
 	Entity();
-	Entity(const size_t _id, const EntityType _type);
+	Entity(EntityType _type);
 
-public:
+	virtual void drawTo(sf::RenderWindow& window) = 0;
 
 	//bool check_is_active() const;
 	//const EntityType get_type() const;

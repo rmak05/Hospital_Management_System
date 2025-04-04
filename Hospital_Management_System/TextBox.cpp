@@ -2,21 +2,24 @@
 
 TextBox::TextBox() {}
 
-TextBox::TextBox(std::string textVal, int charSize, sf::Vector2f boxSize, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) {
-	text.setString(textVal);
-	text.setFillColor(textColor);
-	text.setCharacterSize(charSize);
-
+// by default the text will be aligned at the centre if the box
+TextBox::TextBox(std::string textVal, unsigned charSize, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_box) {
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(2);
 	box.setOutlineColor(outlineColor);
+	box.setPosition(boxPos);
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}
+
 	text.setFont(font);
+	text.setString(textVal);
+	text.setFillColor(textColor);
+	text.setCharacterSize(charSize);
+	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
 void TextBox::setTextVal(sf::String textVal) {
@@ -57,6 +60,14 @@ void TextBox::setPosition(sf::Vector2f pos) {
 
 	float xPos = (pos.x + box.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2 + text.getLocalBounds().left);
 	float yPos = (pos.y + box.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top);
+
+	text.setPosition(xPos, yPos);
+}
+
+// this position is relative the center of the textbox
+void TextBox::setTextPosition(sf::Vector2f pos) {
+	float xPos = (pos.x + box.getPosition().x + box.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2 + text.getLocalBounds().left);
+	float yPos = (pos.y + box.getPosition().y + box.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top);
 
 	text.setPosition(xPos, yPos);
 }

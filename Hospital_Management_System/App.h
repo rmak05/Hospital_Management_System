@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <map>
+//#include <map>
 #include <memory>
 #include "Scene.h"
 
@@ -26,11 +26,12 @@ private:
 	sf::RenderWindow app_window;
 	int window_width;
 	int window_height;
+	unsigned fps;
 	int curr_frame;
 
 	std::vector<scene_ptr> all_scenes;
 	SceneId curr_scene_id;
-	std::map<SceneId, scene_ptr> scenes_map;
+	//std::map<SceneId, scene_ptr> scenes_map;
 
 	void set_curr_scene(SceneId _scene_id);
 	void change_scene();
