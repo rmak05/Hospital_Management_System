@@ -27,4 +27,8 @@ public:
 	//const EntityType get_type() const;
 	//const size_t get_id() const;
 	// void destroy();
+
+protected:
+	// assume a box in a div
+	float get_center_coord(float div_x, float div_size, float box_size);
 };

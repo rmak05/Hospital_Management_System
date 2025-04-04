@@ -14,7 +14,7 @@ private:
 
 public:
 	TextBox();
-	TextBox(std::string textVal, unsigned charSize, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
+	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);

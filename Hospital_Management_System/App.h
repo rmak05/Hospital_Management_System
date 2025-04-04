@@ -5,14 +5,10 @@
 //#include <map>
 #include <memory>
 #include "Scene.h"
+#include "Theme.h"
 
-#define TOP_MARGIN 20		//in pixels
-#define LEFT_MARGIN	20		//in pixels
-#define RIGHT_MARGIN 20		//in pixels
-#define BOTTOM_MARGIN 20	//in pixels
-
-struct config;
 class App;
+struct config;
 
 // can load some app specific configurations if necessary
 struct config {
@@ -34,7 +30,8 @@ private:
 	//std::map<SceneId, scene_ptr> scenes_map;
 
 	void set_curr_scene(SceneId _scene_id);
-	void change_scene();
+	void initialise_scenes();
+	//void change_scene();
 
 public:
 	App();

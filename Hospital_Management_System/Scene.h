@@ -21,10 +21,12 @@ public:
 	std::vector<entity_ptr> all_entities;
 	SceneId id;
 
-	Scene();
-	Scene(SceneId _id);
+	int window_width;
+	int window_height;
 
-	void add_entity(entity_ptr _entity);
+	Scene();
+	Scene(SceneId _id, int w_width, int w_height);
+
 	void draw_entities(sf::RenderWindow& window);
 
 	//virtual void initialise() = 0;
@@ -32,13 +34,17 @@ public:
 	// key pressed to action name
 	//std::map<int, ActionName> action_map;
 	//void registerAction(const int _key, const ActionName _action_name);
+
+protected:
+	float get_center_coord(float div_x, float div_size, float box_size);
+	void add_entity(entity_ptr _entity);
 };
 
 class Login_Screen : public Scene {
 public:
 	//void initialise();
 
-	Login_Screen();
+	Login_Screen(int w_width, int w_height);
 
 	// Systems
 };

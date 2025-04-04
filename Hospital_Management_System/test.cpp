@@ -114,7 +114,7 @@ static void testTextBox() {
 	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 	sf::RenderWindow window(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
 
-	TextBox tb("Click", 30, { 500,50 }, {50, 50}, sf::Color::White, sf::Color::Green, sf::Color::White);
+	TextBox tb("Click", 30, 0.0f, { 500,50 }, {50, 50}, sf::Color::White, sf::Color::Green, sf::Color::White);
 
 	//tb.setFont("Resources/NotoSans.ttf");
 	//tb.setPosition({ 200,100 });

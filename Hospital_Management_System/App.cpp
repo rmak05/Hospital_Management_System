@@ -4,14 +4,16 @@ App::App() {
 	window_width = window_height = 0;
 	curr_frame = 0;
 	fps = 60u;
-
-	all_scenes.push_back(std::make_shared<Login_Screen>());
-
-	set_curr_scene(SceneId::login_screen);
 }
 
 void App::set_curr_scene(SceneId _scene_id) {
 	curr_scene_id = _scene_id;
+}
+
+void App::initialise_scenes() {
+	all_scenes.push_back(std::make_shared<Login_Screen>(window_width, window_height));
+
+	set_curr_scene(SceneId::login_screen);
 }
 
 void App::run() {
@@ -21,7 +23,9 @@ void App::run() {
 
 	app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
 	app_window.setFramerateLimit(fps);
-	
+
+	initialise_scenes();
+
 	while (app_window.isOpen()) {
 	    sf::Event event;
 
