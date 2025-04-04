@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-//#include <map>
 #include <memory>
 #include "Scene.h"
 #include "Theme.h"

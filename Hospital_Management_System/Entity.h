@@ -9,7 +9,8 @@ typedef std::shared_ptr<Entity> entity_ptr;
 
 enum class EntityType {
 	_default	= (-1),
-	text_box	= 0
+	text_box	= 0,
+	button		= 1
 };
 
 class Entity {

@@ -1,8 +1,8 @@
 #include "TextBox.h"
 
-TextBox::TextBox() {}
+TextBox::TextBox() : Entity(EntityType::text_box){}
 
-// by default the text will be aligned at the centre if the box
+// by default the text will be aligned at the centre of the box
 TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_box) {
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
@@ -58,18 +58,10 @@ void TextBox::setOutlineColor(sf::Color color) {
 void TextBox::setPosition(sf::Vector2f pos) {
 	box.setPosition(pos);
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
-
-	/*float xPos = (pos.x + box.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2 + text.getLocalBounds().left);
-	float yPos = (pos.y + box.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top);*/
-
-	//text.setPosition(xPos, yPos);
 }
 
 // this position is relative the center of the textbox
 void TextBox::setTextPosition(sf::Vector2f pos) {
-	/*float xPos = (pos.x + box.getPosition().x + box.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2 + text.getLocalBounds().left);
-	float yPos = (pos.y + box.getPosition().y + box.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top);*/
-
 	float xPos = get_center_coord(pos.x + box.getPosition().x, box.getLocalBounds().width - 2 * box.getOutlineThickness(), text.getLocalBounds().width + 2 * text.getLocalBounds().left);
 	float yPos = get_center_coord(pos.y + box.getPosition().y, box.getLocalBounds().height - 2 * box.getOutlineThickness(), text.getLocalBounds().height + 2 * text.getLocalBounds().top);
 

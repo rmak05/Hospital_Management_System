@@ -7,7 +7,7 @@ static void testButton() {
 	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 	sf::RenderWindow window(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
 
-	Button btn("Click", 30, { 200,50 }, sf::Color::Green, sf::Color::White);
+	 Button btn("Click", 30, 0.0f, { 500,50 }, {50, 50}, sf::Color::White, sf::Color::Green, sf::Color::White);
 
 	btn.setFont("Resources/NotoSans.ttf");
 	btn.setPosition({ 200,100 });
@@ -141,7 +141,7 @@ static void testTextBox() {
 	}
 }
 
-//int main() {
-//	testTextBox();
-//	return 0;
-//}
+int main() {
+	testButton();
+	return 0;
+}
