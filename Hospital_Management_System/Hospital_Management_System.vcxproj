@@ -139,6 +139,7 @@
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextInput.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="TextBox.h" />
     <ClInclude Include="TextInput.h" />

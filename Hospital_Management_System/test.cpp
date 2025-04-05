@@ -1,6 +1,7 @@
 #include "Button.h"
 #include "TextInput.h"
 #include "TextBox.h"
+#include "ImageBox.h"
 
 static void testButton() {
 
@@ -141,7 +142,39 @@ static void testTextBox() {
 	}
 }
 
-int main() {
-	testButton();
-	return 0;
+static void testImageBox() {
+
+	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+	sf::RenderWindow window(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
+
+	ImageBox ib("./Images/frontDesk.png",{0.0f,0.0f},{0.0f,0.0f});
+	ib.setPosition({ 500,500 });
+	ib.scaleImage({ 1.5f,2.0f });
+	ib.movePosition({ 200,0 });
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			switch (event.type) {
+
+			case sf::Event::Closed:
+				window.close();
+				break;
+			}
+
+			if (event.type == sf::Event::Closed) window.close();
+			if (event.type == sf::Event::KeyPressed) window.close();
+		}
+
+		window.clear();
+		ib.drawTo(window);
+		window.display();
+	}
 }
+
+//int main() {
+//	testImageBox();
+//	return 0;
+//}

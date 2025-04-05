@@ -51,6 +51,9 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImageBox.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="Theme.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageBox.h">
+      <Filter>Source Files\Drawables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

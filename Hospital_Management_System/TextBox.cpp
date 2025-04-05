@@ -19,6 +19,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
+	text.setStyle(sf::Text::Bold);
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
