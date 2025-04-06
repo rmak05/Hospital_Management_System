@@ -32,18 +32,28 @@ void App::run() {
 	    sf::Event event;
 
 	    while (app_window.pollEvent(event)) {
-	        if(event.type == sf::Event::Closed) app_window.close();
-			if(event.type == sf::Event::KeyPressed) app_window.close();
-
-			if (event.type == sf::Event::MouseButtonPressed) {
+	        if(event.type == sf::Event::Closed){
+				app_window.close();
+			}
+			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) {
+				app_window.close();
+			}
+			else if (event.type == sf::Event::TextEntered) {
+				all_scenes[static_cast<int>(curr_scene_id)]->check_typed_text(event.text.unicode);
+			}
+			else if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left) {
 				    sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
 
 					SceneId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_scene(mouse_pos);
 					if(next_scene != SceneId::_default) set_curr_scene(next_scene);
+
+					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
 				}
 			}
 	    }
+
+		all_scenes[static_cast<int>(curr_scene_id)]->check_mouse_hover(app_window);
 	
 		app_window.clear(sf::Color::White);
 		all_scenes[static_cast<int>(curr_scene_id)]->draw_entities(app_window);

@@ -25,8 +25,13 @@ public:
 	Entity(EntityType _type);
 
 	virtual void drawTo(sf::RenderWindow& window) = 0;
-	virtual bool isMouseHover(sf::Vector2f mouse_pos) const = 0;
-	virtual SceneId get_next_scene() = 0;
+	virtual bool isMouseHover(sf::RenderWindow& window);
+	virtual bool isMouseHover(sf::Vector2f mouse_pos);
+	virtual void perform_not_hover_action();
+	virtual void perform_hover_action();
+	virtual SceneId get_next_scene();
+	virtual void setSelected(sf::Vector2f mouse_pos);
+	virtual void typedOn(sf::Uint32 input);
 
 	//bool check_is_active() const;
 	//const EntityType get_type() const;
@@ -36,4 +41,5 @@ public:
 protected:
 	// assume a box in a div
 	float get_center_coord(float div_x, float div_size, float box_size);
+	sf::Color get_comp_color(sf::Color _color);	// returns complementary color (dark - light)
 };

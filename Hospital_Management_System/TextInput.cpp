@@ -1,27 +1,54 @@
 #include "TextInput.h"
 
-TextInput::TextInput() {}
+TextInput::TextInput() : Entity(EntityType::text_input) {
+	isSelected = false;
+	hasLimit = false;
+	limit = 0;
+}
 
-TextInput::TextInput(int size, sf::Vector2f boxSize, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) {
-	textbox.setCharacterSize(size);
-	textbox.setFillColor(textColor);
+TextInput::TextInput(unsigned charSize, float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_input) {
+	isSelected = false;
+	hasLimit = true;
+	limit = 20;
 
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
-	box.setOutlineThickness(2);
+	box.setOutlineThickness(outline_thickness);
 	box.setOutlineColor(outlineColor);
+	box.setPosition(boxPos);
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}
+
 	textbox.setFont(font);
+	textbox.setFillColor(textColor);
+	textbox.setCharacterSize(charSize);
+	textbox.setStyle(sf::Text::Bold);
+	textbox.setPosition(boxPos);
+	// below is just dummy text to intitalize textbox,
+	// otherwise, while centering the text vertically inside the box, text.size is giving zero
+	// hence, text is not being center aligned vertically
+	// giving an inital text gives it some size and centering is being done properly
+	// this doesn't seem to alter any other logic which is great !!!
+	// but do check this once if necessary
+	textbox.setString("A");
+	setTextPosition();
+}
+
+void TextInput::setTextPosition() {
+	float xPos = box.getPosition().x + 10.0f;
+	float yPos = get_center_coord(box.getPosition().y, box.getLocalBounds().height - 2 * box.getOutlineThickness(), textbox.getLocalBounds().height + 2 * textbox.getLocalBounds().top);
+
+	textbox.setPosition(xPos, yPos);
 }
 
 void TextInput::deleteLastChar() {
 	std::string t = text.str();
 	std::string newT = "";
-	for (int i = 0; i < t.size() - 1; i++) {
+	int t_size = (int)t.size();
+	for (int i = 0; i < t_size - 1; i++) {
 		newT += t[i];
 	}
 	text.str("");
@@ -90,7 +117,8 @@ void TextInput::setSelected(sf::RenderWindow &window) {
 		if (text.str().length() > 0) {
 			std::string t = text.str();
 			std::string newT = "";
-			for (int i = 0; i < t.size() - 1; i++) {
+			int t_size = (int)t.size();
+			for (int i = 0; i < t_size - 1; i++) {
 				newT += t[i];
 			}
 			textbox.setString(text.str());
@@ -98,11 +126,34 @@ void TextInput::setSelected(sf::RenderWindow &window) {
 		else {
 			textbox.setString("");
 		}
-		box.setOutlineThickness(2);
+		//box.setOutlineThickness(2);
 	}
 	else {
 		textbox.setString(text.str() + "_");
-		box.setOutlineThickness(4);
+		//box.setOutlineThickness(4);
+	}
+}
+
+void TextInput::setSelected(sf::Vector2f mouse_pos) {
+	isSelected = isMouseHover(mouse_pos);
+	if (!isSelected) {
+		if (text.str().length() > 0) {
+			std::string t = text.str();
+			std::string newT = "";
+			int t_size = (int)t.size();
+			for (int i = 0; i < t_size - 1; i++) {
+				newT += t[i];
+			}
+			textbox.setString(text.str());
+		}
+		else {
+			textbox.setString("");
+		}
+		//box.setOutlineThickness(2);
+	}
+	else {
+		textbox.setString(text.str() + "_");
+		//box.setOutlineThickness(4);
 	}
 }
 
@@ -134,6 +185,25 @@ void TextInput::typedOn(sf::Event input) {
 	}
 }
 
+void TextInput::typedOn(sf::Uint32 input) {
+	if (isSelected) {
+		int charTyped = (int)input;
+		if (charTyped < 128) {
+			if (hasLimit) {
+				if (text.str().length() <= limit) {
+					inputLogic(charTyped);
+				}
+				else if (text.str().length() > limit && charTyped == DELETE_KEY) {
+					deleteLastChar();
+				}
+			}
+			else {
+				inputLogic(charTyped);
+			}
+		}
+	}
+}
+
 bool TextInput::isMouseHover(sf::RenderWindow& window) {
 	int mouseX = sf::Mouse::getPosition(window).x;
 	int mouseY = sf::Mouse::getPosition(window).y;
@@ -145,10 +215,19 @@ bool TextInput::isMouseHover(sf::RenderWindow& window) {
 	float btnYPosHeight = btnPosY + box.getLocalBounds().height;
 
 	if (mouseX < btnXPosWidth && mouseX > btnPosX && mouseY < btnYPosHeight && mouseY > btnPosY) {
-		box.setOutlineThickness(4);
+		//box.setOutlineThickness(4);
 		return true;
 	}
 	if(!isSelected)
-		box.setOutlineThickness(2);
+		//box.setOutlineThickness(2);
 	return false;
+}
+
+bool TextInput::isMouseHover(sf::Vector2f mouse_pos){
+	if ((box.getPosition().x <= mouse_pos.x) && (mouse_pos.x <= box.getPosition().x + box.getLocalBounds().width) && (box.getPosition().y <= mouse_pos.y) && (mouse_pos.y <= box.getPosition().y + box.getLocalBounds().height)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }

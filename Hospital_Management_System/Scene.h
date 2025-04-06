@@ -32,6 +32,9 @@ public:
 
 	void draw_entities(sf::RenderWindow& window);
 	SceneId get_next_scene(sf::Vector2f mouse_pos);
+	void check_mouse_hover(sf::RenderWindow& window);
+	void select_text_input(sf::Vector2f mouse_pos);
+	void check_typed_text(sf::Uint32 input);
 
 	//virtual void initialise() = 0;
 

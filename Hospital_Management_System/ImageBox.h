@@ -19,6 +19,6 @@ public:
 	void movePosition(sf::Vector2f offset);
 	void scaleImage(sf::Vector2f factor);
 	void drawTo(sf::RenderWindow& window);
-	bool isMouseHover(sf::Vector2f mouse_pos) const;
-	SceneId get_next_scene();
+	//bool isMouseHover(sf::Vector2f mouse_pos) const;
+	//SceneId get_next_scene();
 };

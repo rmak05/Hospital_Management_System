@@ -29,6 +29,6 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setTextPosition(sf::Vector2f pos);
 	void drawTo(sf::RenderWindow& window);
-	bool isMouseHover(sf::Vector2f mouse_pos) const;
-	SceneId get_next_scene();
+	bool isMouseHover(sf::Vector2f mouse_pos);
+	//SceneId get_next_scene();
 };

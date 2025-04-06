@@ -11,4 +11,4 @@
 #define RIGHT_MARGIN 20.0f		//in pixels
 #define BOTTOM_MARGIN 20.0f		//in pixels
 
-#define buttonOutlThick 4.0f
+#define OutlineThickness 4.0f

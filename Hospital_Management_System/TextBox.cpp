@@ -26,7 +26,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 }
 
 // by default the text will be aligned at the centre of the box
-TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) {
+TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_box) {
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(outline_thickness);
@@ -99,7 +99,7 @@ void TextBox::drawTo(sf::RenderWindow& window) {
 	window.draw(text);
 }
 
-bool TextBox::isMouseHover(sf::Vector2f mouse_pos) const{
+bool TextBox::isMouseHover(sf::Vector2f mouse_pos){
 	if ((bounding_box_pos.x <= mouse_pos.x) && (mouse_pos.x <= bounding_box_pos.x + bounding_box_size.x) && (bounding_box_pos.y <= mouse_pos.y) && (mouse_pos.y <= bounding_box_pos.y + bounding_box_size.y)) {
 		return true;
 	}
@@ -108,6 +108,6 @@ bool TextBox::isMouseHover(sf::Vector2f mouse_pos) const{
 	}
 }
 
-SceneId TextBox::get_next_scene() {
-	return SceneId::_default;
-}
+//SceneId TextBox::get_next_scene() {
+//	return SceneId::_default;
+//}

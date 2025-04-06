@@ -2,6 +2,7 @@
 #include "TextBox.h"
 #include "Button.h"
 #include "ImageBox.h"
+#include "TextInput.h"
 #include "Theme.h"
 
 Scene::Scene() {
@@ -25,6 +26,33 @@ SceneId Scene::get_next_scene(sf::Vector2f mouse_pos) {
 	return SceneId::_default;
 }
 
+void Scene::check_mouse_hover(sf::RenderWindow& window) {
+	for (entity_ptr& _entity : all_entities) {
+		if (_entity->isMouseHover(window)) {
+			_entity->perform_hover_action();
+		}
+		else {
+			_entity->perform_not_hover_action();
+		}
+	}
+}
+
+void Scene::select_text_input(sf::Vector2f mouse_pos) {
+	for (entity_ptr& _entity : all_entities) {
+		if ((_entity->type == EntityType::text_input)) {
+			_entity->setSelected(mouse_pos);
+		}
+	}
+}
+
+void Scene::check_typed_text(sf::Uint32 input) {
+	for (entity_ptr& _entity : all_entities) {
+		if ((_entity->type == EntityType::text_input)) {
+			_entity->typedOn(input);
+		}
+	}
+}
+
 float Scene::get_center_coord(float div_x, float div_size, float box_size) {
 	float box_x = (div_x + (div_size / 2.0f)) - (box_size / 2.0f);
 
@@ -44,15 +72,15 @@ void Scene::add_entity(entity_ptr _entity) {
 Login_Screen::Login_Screen(int w_width, int w_height) : Scene(SceneId::login, w_width, w_height) {
 	add_entity(std::make_shared<TextBox>(std::string("HOSPITAL  MANAGEMENT  SYSTEM"), 50u, 0.0f, sf::Vector2f(1500.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
-	add_entity(std::make_shared<Button>(std::string(""), 50u, 0.0f, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::frontdesk_login));
-	add_entity(std::make_shared<Button>(std::string(""), 50u, 0.0f, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::frontdesk_login));
-	add_entity(std::make_shared<Button>(std::string(""), 50u, 0.0f, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 800.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::frontdesk_login));
-	add_entity(std::make_shared<Button>(std::string(""), 50u, 0.0f, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1200.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::frontdesk_login));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::frontdesk_login));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::_default));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 800.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::_default));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1200.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::White, SceneId::_default));
 
-	add_entity(std::make_shared<TextBox>(std::string("Front Desk"), 30u, buttonOutlThick, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 50.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Data Entry"), 30u, buttonOutlThick, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 450.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Doctor"),     30u, buttonOutlThick, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 850.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Admin"),      30u, buttonOutlThick, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1250.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Front Desk"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 50.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Data Entry"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 450.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Doctor"),     30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 850.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Admin"),      30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1250.0f, 770.0f), sf::Color::Black, darkYellow, sf::Color::Black));
 
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/frontDesk.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 50.0f, 500.0f), sf::Vector2f(1.0f,1.0f)));
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/dataEntry.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 480.0f, 500.0f), sf::Vector2f(0.3f, 0.3f)));
@@ -62,4 +90,10 @@ Login_Screen::Login_Screen(int w_width, int w_height) : Scene(SceneId::login, w_
 
 Front_Desk_Login_Screen::Front_Desk_Login_Screen(int w_width, int w_height) : Scene(SceneId::frontdesk_login, w_width, w_height) {
 	add_entity(std::make_shared<TextBox>(std::string("Front Desk : Login"), 50u, 0.0f, sf::Vector2f(1500.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
+
+	add_entity(std::make_shared<TextBox>(std::string("Enter Offical ID"), 30u, OutlineThickness, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 450.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+
+	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 570.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+
+	add_entity(std::make_shared<Button>(std::string("Login"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 700.0f, 200.0f), 700.0f), sf::Color::Black, lightYellow, sf::Color::White, SceneId::_default));
 }

@@ -15,6 +15,10 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	button.setPosition(buttonPos);
 	bounding_box_size = buttonSize;
 	bounding_box_pos = buttonPos;
+	not_hover_color = bgColor;
+	hover_color = get_comp_color(bgColor);
+	not_hover_outline_color = outlineColor;
+	hover_outline_color = get_comp_color(outlineColor);
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
@@ -30,7 +34,7 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 }
 
 // by default the text will be aligned at the centre of the box
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) : Entity(EntityType::button) {
 	next_scene = _next_scene;
 
 	button.setSize(buttonSize);
@@ -112,7 +116,7 @@ bool Button::isMouseHover(sf::RenderWindow& window) {
 	return false;
 }
 
-bool Button::isMouseHover(sf::Vector2f mouse_pos) const{
+bool Button::isMouseHover(sf::Vector2f mouse_pos){
 	if ((bounding_box_pos.x <= mouse_pos.x) && (mouse_pos.x <= bounding_box_pos.x + bounding_box_size.x) && (bounding_box_pos.y <= mouse_pos.y) && (mouse_pos.y <= bounding_box_pos.y + bounding_box_size.y)) {
 		return true;
 	}
@@ -128,4 +132,14 @@ void Button::drawTo(sf::RenderWindow& window) {
 
 SceneId Button::get_next_scene() {
 	return next_scene;
+}
+
+void Button::perform_not_hover_action() {
+	button.setFillColor(not_hover_color);
+	button.setOutlineColor(not_hover_outline_color);
+}
+
+void Button::perform_hover_action() {
+	button.setFillColor(hover_color);
+	button.setOutlineColor(hover_outline_color);
 }

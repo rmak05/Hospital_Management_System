@@ -15,6 +15,10 @@ private:
 	sf::Vector2f bounding_box_pos;
 	sf::Vector2f bounding_box_size;
 	SceneId next_scene;
+	sf::Color not_hover_color;
+	sf::Color hover_color;
+	sf::Color not_hover_outline_color;
+	sf::Color hover_outline_color;
 
 public:
 	Button();
@@ -30,7 +34,9 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setTextPosition(sf::Vector2f pos);
 	bool isMouseHover(sf::RenderWindow& window);
-	bool isMouseHover(sf::Vector2f mouse_pos) const;
+	bool isMouseHover(sf::Vector2f mouse_pos);
 	void drawTo(sf::RenderWindow& window);
 	SceneId get_next_scene();
+	void perform_not_hover_action();
+	void perform_hover_action();
 };
