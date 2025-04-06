@@ -3,18 +3,21 @@
 #include <memory>
 #include <vector>
 #include "Entity.h"
+#include "Entity_Scene_Types.h"
 //#include "Action.h"
 
 class Scene;
 class Login_Screen;
-enum class SceneId;
+class Front_Desk_Login_Screen;
+//enum class SceneId;
 typedef std::shared_ptr<Scene> scene_ptr;
 
 // one enum value for each screen
-enum class SceneId {
-	_default		= (-1),
-	login_screen	= 0
-};
+//enum class SceneId {
+//	_default			= (-1),
+//	login				= 0,
+//	frontdesk_login		= 1
+//};
 
 class Scene {
 public:
@@ -28,6 +31,7 @@ public:
 	Scene(SceneId _id, int w_width, int w_height);
 
 	void draw_entities(sf::RenderWindow& window);
+	SceneId get_next_scene(sf::Vector2f mouse_pos);
 
 	//virtual void initialise() = 0;
 
@@ -45,6 +49,15 @@ public:
 	//void initialise();
 
 	Login_Screen(int w_width, int w_height);
+
+	// Systems
+};
+
+class Front_Desk_Login_Screen : public Scene {
+public:
+	//void initialise();
+
+	Front_Desk_Login_Screen(int w_width, int w_height);
 
 	// Systems
 };

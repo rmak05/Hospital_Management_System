@@ -2,17 +2,18 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "Entity_Scene_Types.h"
 
 class Entity;
-enum class EntityType;
+//enum class EntityType;
 typedef std::shared_ptr<Entity> entity_ptr;
 
-enum class EntityType {
-	_default	= (-1),
-	text_box	= 0,
-	button		= 1,
-	image_box   = 2
-};
+//enum class EntityType {
+//	_default	= (-1),
+//	text_box	= 0,
+//	button		= 1,
+//	image_box   = 2
+//};
 
 class Entity {
 public:
@@ -24,6 +25,8 @@ public:
 	Entity(EntityType _type);
 
 	virtual void drawTo(sf::RenderWindow& window) = 0;
+	virtual bool isMouseHover(sf::Vector2f mouse_pos) const = 0;
+	virtual SceneId get_next_scene() = 0;
 
 	//bool check_is_active() const;
 	//const EntityType get_type() const;

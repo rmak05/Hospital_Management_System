@@ -1,14 +1,45 @@
 #include "Button.h"
 
-Button::Button() : Entity(EntityType::button) {}
+Button::Button() : Entity(EntityType::button) {
+	next_scene = SceneId::_default;
+}
 
 // by default the text will be aligned at the centre of the box
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::button) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) : Entity(EntityType::button) {
+	next_scene = _next_scene;
+
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
 	button.setOutlineThickness(outline_thickness);
 	button.setOutlineColor(outlineColor);
 	button.setPosition(buttonPos);
+	bounding_box_size = buttonSize;
+	bounding_box_pos = buttonPos;
+
+	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
+
+	text.setFont(font);
+	text.setString(textVal);
+	text.setFillColor(textColor);
+	text.setCharacterSize(charSize);
+	text.setStyle(sf::Text::Bold);
+	setTextPosition(sf::Vector2f(0.0f, 0.0f));
+}
+
+// by default the text will be aligned at the centre of the box
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) {
+	next_scene = _next_scene;
+
+	button.setSize(buttonSize);
+	button.setFillColor(bgColor);
+	button.setOutlineThickness(outline_thickness);
+	button.setOutlineColor(outlineColor);
+	button.setPosition(buttonPos);
+	bounding_box_size = boundSize;
+	bounding_box_pos = boundPos;
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
@@ -81,7 +112,20 @@ bool Button::isMouseHover(sf::RenderWindow& window) {
 	return false;
 }
 
+bool Button::isMouseHover(sf::Vector2f mouse_pos) const{
+	if ((bounding_box_pos.x <= mouse_pos.x) && (mouse_pos.x <= bounding_box_pos.x + bounding_box_size.x) && (bounding_box_pos.y <= mouse_pos.y) && (mouse_pos.y <= bounding_box_pos.y + bounding_box_size.y)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 void Button::drawTo(sf::RenderWindow& window) {
 	window.draw(button);
 	window.draw(text);
+}
+
+SceneId Button::get_next_scene() {
+	return next_scene;
 }

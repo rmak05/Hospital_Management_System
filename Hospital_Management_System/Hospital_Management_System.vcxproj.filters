@@ -80,5 +80,8 @@
     <ClInclude Include="ImageBox.h">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
+    <ClInclude Include="Entity_Scene_Types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,10 +11,13 @@ private:
 	sf::RectangleShape box;
 	sf::Font font;
 	sf::Text text;
+	sf::Vector2f bounding_box_pos;
+	sf::Vector2f bounding_box_size;
 
 public:
 	TextBox();
 	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
+	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);
@@ -26,4 +29,6 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setTextPosition(sf::Vector2f pos);
 	void drawTo(sf::RenderWindow& window);
+	bool isMouseHover(sf::Vector2f mouse_pos) const;
+	SceneId get_next_scene();
 };

@@ -4,6 +4,7 @@ App::App() {
 	window_width = window_height = 0;
 	curr_frame = 0;
 	fps = 60u;
+	curr_scene_id = SceneId::_default;
 }
 
 void App::set_curr_scene(SceneId _scene_id) {
@@ -12,8 +13,9 @@ void App::set_curr_scene(SceneId _scene_id) {
 
 void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Login_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Front_Desk_Login_Screen>(window_width, window_height));
 
-	set_curr_scene(SceneId::login_screen);
+	set_curr_scene(SceneId::login);
 }
 
 void App::run() {
@@ -32,6 +34,15 @@ void App::run() {
 	    while (app_window.pollEvent(event)) {
 	        if(event.type == sf::Event::Closed) app_window.close();
 			if(event.type == sf::Event::KeyPressed) app_window.close();
+
+			if (event.type == sf::Event::MouseButtonPressed) {
+				if (event.mouseButton.button == sf::Mouse::Button::Left) {
+				    sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
+
+					SceneId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_scene(mouse_pos);
+					if(next_scene != SceneId::_default) set_curr_scene(next_scene);
+				}
+			}
 	    }
 	
 		app_window.clear(sf::Color::White);

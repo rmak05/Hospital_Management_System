@@ -13,6 +13,17 @@
 //        {
 //            if (event.type == sf::Event::Closed)
 //                window.close();
+//
+//            if (event.type == sf::Event::MouseButtonPressed) {
+//                event.mouseButton.button == sf::Mouse::Button::Left;
+//                //event.mouseButton.
+//            }
+//
+//            if (event.type == sf::Event::MouseButtonPressed) {
+//                if (event.mouseButton.button == sf::Mouse::Left) {
+//                    sf::Vector2f mouse_coord((float)(event.mouseButton.x), (float)(event.mouseButton.y));
+//                }
+//            }
 //        }
 //
 //        window.clear();

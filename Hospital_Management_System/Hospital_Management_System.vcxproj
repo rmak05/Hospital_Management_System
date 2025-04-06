@@ -150,6 +150,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Entity_Scene_Types.h" />
     <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="TextBox.h" />

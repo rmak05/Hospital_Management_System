@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Entity.h"
+#include "Scene.h"
 
 class Button;
 
@@ -13,10 +14,12 @@ private:
 	sf::Text text;
 	sf::Vector2f bounding_box_pos;
 	sf::Vector2f bounding_box_size;
+	SceneId next_scene;
 
 public:
 	Button();
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);
@@ -27,5 +30,7 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setTextPosition(sf::Vector2f pos);
 	bool isMouseHover(sf::RenderWindow& window);
+	bool isMouseHover(sf::Vector2f mouse_pos) const;
 	void drawTo(sf::RenderWindow& window);
+	SceneId get_next_scene();
 };

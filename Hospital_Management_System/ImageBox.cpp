@@ -2,12 +2,12 @@
 
 ImageBox::ImageBox() : Entity(EntityType::image_box) {
 	
-	if (!texture.loadFromFile("./Images/demo.png")) {
+	/*if (!texture.loadFromFile("./Images/demo.png")) {
 		std::cout << "Error occured while loading file\n";
 		return;
 	}
 
-	sprite.setTexture(texture);
+	sprite.setTexture(texture);*/
 }
 
 ImageBox::ImageBox(std::string imageFile, sf::Vector2f pos, sf::Vector2f factor) : Entity(EntityType::image_box) {
@@ -36,4 +36,12 @@ void ImageBox::scaleImage(sf::Vector2f factor) {
 
 void ImageBox::drawTo(sf::RenderWindow& window) {
 	window.draw(sprite);
+}
+
+bool ImageBox::isMouseHover(sf::Vector2f mouse_pos) const {
+	return false;
+}
+
+SceneId ImageBox::get_next_scene() {
+	return SceneId::_default;
 }
