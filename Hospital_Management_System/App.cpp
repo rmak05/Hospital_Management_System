@@ -15,7 +15,7 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Login_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Front_Desk_Login_Screen>(window_width, window_height));
 
-	set_curr_scene(SceneId::login);
+	set_curr_scene(SceneId::frontdesk_login);
 }
 
 void App::run() {
@@ -29,8 +29,10 @@ void App::run() {
 	initialise_scenes();
 
 	while (app_window.isOpen()) {
-	    sf::Event event;
+		curr_frame++;
+		curr_frame %= 1000000000;
 
+	    sf::Event event;
 	    while (app_window.pollEvent(event)) {
 	        if(event.type == sf::Event::Closed){
 				app_window.close();
@@ -54,6 +56,7 @@ void App::run() {
 	    }
 
 		all_scenes[static_cast<int>(curr_scene_id)]->check_mouse_hover(app_window);
+		all_scenes[static_cast<int>(curr_scene_id)]->blink_cursor(curr_frame);
 	
 		app_window.clear(sf::Color::White);
 		all_scenes[static_cast<int>(curr_scene_id)]->draw_entities(app_window);

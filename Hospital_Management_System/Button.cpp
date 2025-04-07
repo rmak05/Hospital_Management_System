@@ -44,6 +44,10 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	button.setPosition(buttonPos);
 	bounding_box_size = boundSize;
 	bounding_box_pos = boundPos;
+	not_hover_color = bgColor;
+	hover_color = get_comp_color(bgColor);
+	not_hover_outline_color = outlineColor;
+	hover_outline_color = get_comp_color(outlineColor);
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";

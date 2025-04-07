@@ -32,6 +32,7 @@ public:
 	virtual SceneId get_next_scene();
 	virtual void setSelected(sf::Vector2f mouse_pos);
 	virtual void typedOn(sf::Uint32 input);
+	virtual void blink_cursor(int curr_frame);
 
 	//bool check_is_active() const;
 	//const EntityType get_type() const;

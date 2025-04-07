@@ -65,6 +65,14 @@ void Scene::draw_entities(sf::RenderWindow& window) {
 	}
 }
 
+void Scene::blink_cursor(int curr_frame) {
+	for (entity_ptr& _entity : all_entities) {
+		if ((_entity->type == EntityType::text_input)) {
+			_entity->blink_cursor(curr_frame);
+		}
+	}
+}
+
 void Scene::add_entity(entity_ptr _entity) {
 	all_entities.push_back(_entity);
 }
@@ -93,7 +101,7 @@ Front_Desk_Login_Screen::Front_Desk_Login_Screen(int w_width, int w_height) : Sc
 
 	add_entity(std::make_shared<TextBox>(std::string("Enter Offical ID"), 30u, OutlineThickness, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 450.0f), sf::Color::Black, darkBlue, sf::Color::Black));
 
-	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 570.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 570.0f), sf::Color::Black, lightBlue, sf::Color::Black));
 
 	add_entity(std::make_shared<Button>(std::string("Login"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 150.0f, 700.0f, 200.0f), 700.0f), sf::Color::Black, lightYellow, sf::Color::White, SceneId::_default));
 }

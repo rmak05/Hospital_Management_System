@@ -49,3 +49,5 @@ void Entity::perform_hover_action() {}
 void Entity::setSelected(sf::Vector2f mouse_pos) {}
 
 void Entity::typedOn(sf::Uint32 input) {}
+
+void Entity::blink_cursor(int curr_frame) {}

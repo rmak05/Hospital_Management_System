@@ -6,16 +6,21 @@ TextInput::TextInput() : Entity(EntityType::text_input) {
 	limit = 0;
 }
 
-TextInput::TextInput(unsigned charSize, float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_input) {
+TextInput::TextInput(unsigned charSize, float outline_thickness, int _limit, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_input) {
 	isSelected = false;
 	hasLimit = true;
-	limit = 20;
+	limit = _limit;
 
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(outline_thickness);
 	box.setOutlineColor(outlineColor);
 	box.setPosition(boxPos);
+	
+	not_hover_color = bgColor;
+	hover_color = get_comp_color(bgColor);
+	not_hover_outline_color = outlineColor;
+	hover_outline_color = get_comp_color(outlineColor);
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
@@ -25,7 +30,7 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, sf::Vector2f bo
 	textbox.setFont(font);
 	textbox.setFillColor(textColor);
 	textbox.setCharacterSize(charSize);
-	textbox.setStyle(sf::Text::Bold);
+	//textbox.setStyle(sf::Text::Bold);
 	textbox.setPosition(boxPos);
 	// below is just dummy text to intitalize textbox,
 	// otherwise, while centering the text vertically inside the box, text.size is giving zero
@@ -35,6 +40,7 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, sf::Vector2f bo
 	// but do check this once if necessary
 	textbox.setString("A");
 	setTextPosition();
+	textbox.setString("");
 }
 
 void TextInput::setTextPosition() {
@@ -66,7 +72,7 @@ void TextInput::inputLogic(int charTyped) {
 			deleteLastChar();
 		}
 	}
-	textbox.setString(text.str() + "_");
+	textbox.setString(text.str() + "|");
 }
 
 void TextInput::setTextSize(int size) {
@@ -129,7 +135,7 @@ void TextInput::setSelected(sf::RenderWindow &window) {
 		//box.setOutlineThickness(2);
 	}
 	else {
-		textbox.setString(text.str() + "_");
+		textbox.setString(text.str() + "|");
 		//box.setOutlineThickness(4);
 	}
 }
@@ -148,11 +154,13 @@ void TextInput::setSelected(sf::Vector2f mouse_pos) {
 		}
 		else {
 			textbox.setString("");
+			//box.setOutlineThickness(2);
 		}
-		//box.setOutlineThickness(2);
+		textbox.setStyle(sf::Text::Regular);
 	}
 	else {
-		textbox.setString(text.str() + "_");
+		textbox.setString(text.str() + "|");
+		textbox.setStyle(sf::Text::Bold);
 		//box.setOutlineThickness(4);
 	}
 }
@@ -214,12 +222,18 @@ bool TextInput::isMouseHover(sf::RenderWindow& window) {
 	float btnXPosWidth = btnPosX + box.getLocalBounds().width;
 	float btnYPosHeight = btnPosY + box.getLocalBounds().height;
 
-	if (mouseX < btnXPosWidth && mouseX > btnPosX && mouseY < btnYPosHeight && mouseY > btnPosY) {
+	if (isSelected) {
+		return true;
+		//box.setOutlineThickness(2);
+	}
+	else if (mouseX < btnXPosWidth && mouseX > btnPosX && mouseY < btnYPosHeight && mouseY > btnPosY) {
 		//box.setOutlineThickness(4);
 		return true;
 	}
-	if(!isSelected)
+	else if (!isSelected) {
+		return false;
 		//box.setOutlineThickness(2);
+	}
 	return false;
 }
 
@@ -230,4 +244,21 @@ bool TextInput::isMouseHover(sf::Vector2f mouse_pos){
 	else {
 		return false;
 	}
+}
+
+void TextInput::perform_not_hover_action() {
+	box.setFillColor(not_hover_color);
+	//box.setOutlineColor(not_hover_outline_color);
+};
+
+void TextInput::perform_hover_action() {
+	box.setFillColor(hover_color);
+	//box.setOutlineColor(hover_outline_color);
+}
+
+void TextInput::blink_cursor(int curr_frame) {
+	if(!isSelected) return;
+
+	if(curr_frame % 60 < 30) textbox.setString(text.str());
+	else textbox.setString(text.str() + "|");
 }

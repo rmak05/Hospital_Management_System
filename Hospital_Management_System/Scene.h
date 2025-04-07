@@ -31,6 +31,7 @@ public:
 	Scene(SceneId _id, int w_width, int w_height);
 
 	void draw_entities(sf::RenderWindow& window);
+	void blink_cursor(int curr_frame);
 	SceneId get_next_scene(sf::Vector2f mouse_pos);
 	void check_mouse_hover(sf::RenderWindow& window);
 	void select_text_input(sf::Vector2f mouse_pos);
