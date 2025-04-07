@@ -20,6 +20,7 @@ private:
 	bool isSelected;
 	bool hasLimit;
 	int limit;
+	bool isCentre;
 	sf::Color not_hover_color;
 	sf::Color hover_color;
 	sf::Color not_hover_outline_color;
@@ -30,7 +31,7 @@ private:
 
 public:
 	TextInput();
-	TextInput(unsigned charSize, float outline_thickness, int _limit, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
+	TextInput(unsigned charSize, float outline_thickness, int _limit, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre);
 
 	void setTextSize(int size);
 	void setTextPosition();
@@ -42,11 +43,9 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setLimit(bool ToF);
 	void setLimit(bool ToF, int lim);
-	void setSelected(sf::RenderWindow &window);
 	void setSelected(sf::Vector2f mouse_pos);
 	std::string getText();
 	void drawTo(sf::RenderWindow& window);
-	void typedOn(sf::Event input);
 	void typedOn(sf::Uint32 input);
 	bool isMouseHover(sf::RenderWindow& window);
 	bool isMouseHover(sf::Vector2f mouse_pos);

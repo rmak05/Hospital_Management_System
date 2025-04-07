@@ -24,8 +24,10 @@ sf::Color Entity::get_comp_color(sf::Color _color) {
 	if(_color == lightBlue) return darkBlue;
 	if(_color == darkBlue) return bgBlue;
 	if(_color == bgBlue) return darkBlue;
-	if(_color == sf::Color::Black) return sf::Color::White;
-	if(_color == sf::Color::White) return sf::Color::Black;
+	if (_color == darkRed) return lightRed;
+	if (_color == lightRed) return darkRed;
+	if(_color == sf::Color::White) return sf::Color::White;
+	if(_color == sf::Color::Black) return sf::Color::Black;
 
 	return sf::Color::Black;
 }
@@ -38,8 +40,8 @@ bool Entity::isMouseHover(sf::Vector2f mouse_pos) {
 	return false;
 }
 
-SceneId Entity::get_next_scene() {
-	return SceneId::_default;
+ScreenId Entity::get_next_screen() {
+	return ScreenId::_default;
 }
 
 void Entity::perform_not_hover_action() {}

@@ -37,11 +37,3 @@ void ImageBox::scaleImage(sf::Vector2f factor) {
 void ImageBox::drawTo(sf::RenderWindow& window) {
 	window.draw(sprite);
 }
-
-//bool ImageBox::isMouseHover(sf::Vector2f mouse_pos) const {
-//	return false;
-//}
-
-//SceneId ImageBox::get_next_scene() {
-//	return SceneId::_default;
-//}

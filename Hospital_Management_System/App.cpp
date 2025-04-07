@@ -4,18 +4,18 @@ App::App() {
 	window_width = window_height = 0;
 	curr_frame = 0;
 	fps = 60u;
-	curr_scene_id = SceneId::_default;
+	curr_scene_id = ScreenId::_default;
 }
 
-void App::set_curr_scene(SceneId _scene_id) {
+void App::set_curr_screen(ScreenId _scene_id) {
 	curr_scene_id = _scene_id;
 }
 
 void App::initialise_scenes() {
-	all_scenes.push_back(std::make_shared<Login_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Home_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Front_Desk_Login_Screen>(window_width, window_height));
 
-	set_curr_scene(SceneId::frontdesk_login);
+	set_curr_screen(ScreenId::home);
 }
 
 void App::run() {
@@ -37,7 +37,7 @@ void App::run() {
 	        if(event.type == sf::Event::Closed){
 				app_window.close();
 			}
-			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) {
+			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape) && (curr_scene_id == ScreenId::home)) {
 				app_window.close();
 			}
 			else if (event.type == sf::Event::TextEntered) {
@@ -46,10 +46,8 @@ void App::run() {
 			else if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left) {
 				    sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
-
-					SceneId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_scene(mouse_pos);
-					if(next_scene != SceneId::_default) set_curr_scene(next_scene);
-
+					ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
 					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
 				}
 			}

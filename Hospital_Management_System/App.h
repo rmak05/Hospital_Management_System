@@ -4,19 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "Scene.h"
+#include "Screen.h"
 #include "Theme.h"
+#include "HomeScreen.h"
+#include "FrontDeskLoginScreen.h"
 
 class App;
-struct config;
 
-// can load some app specific configurations if necessary
-struct config {
-
-};
-
-// main function will create this object and initiate the application using run function
-// the main while loop would be inside run function
 class App {
 private:
 	sf::RenderWindow app_window;
@@ -26,12 +20,10 @@ private:
 	int curr_frame;
 
 	std::vector<scene_ptr> all_scenes;
-	SceneId curr_scene_id;
-	//std::map<SceneId, scene_ptr> scenes_map;
+	ScreenId curr_scene_id;
 
-	void set_curr_scene(SceneId _scene_id);
+	void set_curr_screen(ScreenId _scene_id);
 	void initialise_scenes();
-	//void change_scene();
 
 public:
 	App();

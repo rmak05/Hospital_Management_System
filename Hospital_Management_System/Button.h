@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Entity.h"
-#include "Scene.h"
+#include "Screen.h"
 
 class Button;
 
@@ -14,7 +14,7 @@ private:
 	sf::Text text;
 	sf::Vector2f bounding_box_pos;
 	sf::Vector2f bounding_box_size;
-	SceneId next_scene;
+	ScreenId next_screen;
 	sf::Color not_hover_color;
 	sf::Color hover_color;
 	sf::Color not_hover_outline_color;
@@ -22,8 +22,8 @@ private:
 
 public:
 	Button();
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene);
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);
@@ -36,7 +36,7 @@ public:
 	bool isMouseHover(sf::RenderWindow& window);
 	bool isMouseHover(sf::Vector2f mouse_pos);
 	void drawTo(sf::RenderWindow& window);
-	SceneId get_next_scene();
+	ScreenId get_next_screen();
 	void perform_not_hover_action();
 	void perform_hover_action();
 };

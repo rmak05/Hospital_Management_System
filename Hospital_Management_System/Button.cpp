@@ -1,12 +1,11 @@
 #include "Button.h"
 
 Button::Button() : Entity(EntityType::button) {
-	next_scene = SceneId::_default;
+	next_screen = ScreenId::_default;
 }
 
-// by default the text will be aligned at the centre of the box
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) : Entity(EntityType::button) {
-	next_scene = _next_scene;
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene) : Entity(EntityType::button) {
+	next_screen = _next_scene;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -33,9 +32,8 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-// by default the text will be aligned at the centre of the box
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, SceneId _next_scene) : Entity(EntityType::button) {
-	next_scene = _next_scene;
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene) : Entity(EntityType::button) {
+	next_screen = _next_scene;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -95,7 +93,6 @@ void Button::setPosition(sf::Vector2f pos) {
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-// this position is relative the center of the textbox
 void Button::setTextPosition(sf::Vector2f pos) {
 	float xPos = get_center_coord(pos.x + button.getPosition().x, button.getLocalBounds().width - 2 * button.getOutlineThickness(), text.getLocalBounds().width + 2 * text.getLocalBounds().left);
 	float yPos = get_center_coord(pos.y + button.getPosition().y, button.getLocalBounds().height - 2 * button.getOutlineThickness(), text.getLocalBounds().height + 2 * text.getLocalBounds().top);
@@ -134,8 +131,8 @@ void Button::drawTo(sf::RenderWindow& window) {
 	window.draw(text);
 }
 
-SceneId Button::get_next_scene() {
-	return next_scene;
+ScreenId Button::get_next_screen() {
+	return next_screen;
 }
 
 void Button::perform_not_hover_action() {
