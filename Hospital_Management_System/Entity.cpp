@@ -26,6 +26,7 @@ sf::Color Entity::get_comp_color(sf::Color _color) {
 	if(_color == bgBlue) return darkBlue;
 	if (_color == darkRed) return lightRed;
 	if (_color == lightRed) return darkRed;
+	if (_color == bgWhite) return bgWhite;
 	if(_color == sf::Color::White) return sf::Color::White;
 	if(_color == sf::Color::Black) return sf::Color::Black;
 

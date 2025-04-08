@@ -1,4 +1,5 @@
 #include "App.h"
+#include "Debug.h"
 
 App::App() {
 	window_width = window_height = 0;
@@ -14,11 +15,17 @@ void App::set_curr_screen(ScreenId _scene_id) {
 void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Home_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Front_Desk_Login_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Front_Desk_Home_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Register_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Update_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Login_Patient_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
 
 void App::run() {
+	debug::initialise();
+
 	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 	window_width	= desktop.width;
 	window_height	= desktop.height;
@@ -37,7 +44,7 @@ void App::run() {
 	        if(event.type == sf::Event::Closed){
 				app_window.close();
 			}
-			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape) && (curr_scene_id == ScreenId::home)) {
+			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) {
 				app_window.close();
 			}
 			else if (event.type == sf::Event::TextEntered) {
@@ -50,14 +57,18 @@ void App::run() {
 					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
 					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
 				}
+				else if (event.mouseButton.button == sf::Mouse::Button::Right) {
+					debug::update();
+				}
 			}
 	    }
 
 		all_scenes[static_cast<int>(curr_scene_id)]->check_mouse_hover(app_window);
 		all_scenes[static_cast<int>(curr_scene_id)]->blink_cursor(curr_frame);
 	
-		app_window.clear(sf::Color::White);
+		app_window.clear(bgWhite);
 		all_scenes[static_cast<int>(curr_scene_id)]->draw_entities(app_window);
+		debug::draw(app_window);
 		app_window.display();
 	}
 }

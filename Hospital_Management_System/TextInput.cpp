@@ -161,8 +161,8 @@ void TextInput::typedOn(sf::Uint32 input) {
 				inputLogic(charTyped);
 			}
 		}
+		setTextPosition();
 	}
-	setTextPosition();
 }
 
 bool TextInput::isMouseHover(sf::RenderWindow& window) {

@@ -4,10 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "Screen.h"
 #include "Theme.h"
-#include "HomeScreen.h"
-#include "FrontDeskLoginScreen.h"
+#include "Screen.h"
+#include "AllScreens.h"
 
 class App;
 

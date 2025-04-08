@@ -139,23 +139,27 @@
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FrontDeskHomeScreen.cpp" />
     <ClCompile Include="FrontDeskLoginScreen.cpp" />
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="LoginPatientScreen.cpp" />
+    <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="UpdatePatientScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllScreens.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="enumEntityType.h" />
     <ClInclude Include="enumScreenId.h" />
-    <ClInclude Include="FrontDeskLoginScreen.h" />
-    <ClInclude Include="HomeScreen.h" />
     <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="TextBox.h" />

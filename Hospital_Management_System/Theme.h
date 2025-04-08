@@ -1,12 +1,13 @@
 #pragma once
 
-#define darkYellow   sf::Color(0xffb433ff)
-#define lightYellow  sf::Color(0xffce32ff)
-#define lightBlue	 sf::Color(0xb4ebe6ff)
-#define darkBlue	 sf::Color(0x80cbc4ff)
-#define bgBlue		 sf::Color(0xe1f5f3ff)
-#define darkRed		 sf::Color(0xff3131ff)
-#define lightRed	 sf::Color(0xff5757ff)
+#define darkYellow		sf::Color(0xffb433ff)
+#define lightYellow		sf::Color(0xffce32ff)
+#define lightBlue		sf::Color(0xb4ebe6ff)
+#define darkBlue		sf::Color(0x80cbc4ff)
+#define bgBlue			sf::Color(0xe1f5f3ff)
+#define darkRed			sf::Color(0xff3131ff)
+#define lightRed		sf::Color(0xff5757ff)
+#define bgWhite			sf::Color(0xfbf8efff)
 
 #define TOP_MARGIN		20.0f		
 #define LEFT_MARGIN		20.0f		

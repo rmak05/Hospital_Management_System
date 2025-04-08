@@ -11,8 +11,7 @@
 #include "Theme.h"
 
 class Screen;
-class Home_Screen;
-class Front_Desk_Login_Screen;
+
 typedef std::shared_ptr<Screen> scene_ptr;
 
 class Screen {
