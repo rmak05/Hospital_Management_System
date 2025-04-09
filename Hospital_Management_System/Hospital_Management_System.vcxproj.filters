@@ -28,6 +28,9 @@
     <Filter Include="Source Files\App">
       <UniqueIdentifier>{92e1dfbd-d2a9-4ee9-b8f2-971f7de60186}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Database">
+      <UniqueIdentifier>{13f72fbe-448f-4ab1-a3e1-09b3072b141f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp">
@@ -84,6 +87,9 @@
     <ClCompile Include="LoginPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="Queries.cpp">
+      <Filter>Source Files\Database</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -121,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Queries.h">
+      <Filter>Source Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="enumFuncType.h">
+      <Filter>Source Files\Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

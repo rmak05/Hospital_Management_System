@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Entity.h"
 #include "Screen.h"
+#include "EnumFuncType.h"
 
 class Button;
 
@@ -15,6 +16,7 @@ private:
 	sf::Vector2f bounding_box_pos;
 	sf::Vector2f bounding_box_size;
 	ScreenId next_screen;
+	FuncType func_type;
 	sf::Color not_hover_color;
 	sf::Color hover_color;
 	sf::Color not_hover_outline_color;
@@ -22,8 +24,8 @@ private:
 
 public:
 	Button();
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene);
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);
@@ -39,4 +41,5 @@ public:
 	ScreenId get_next_screen();
 	void perform_not_hover_action();
 	void perform_hover_action();
+	std::vector<std::string> callBack(std::vector<std::string> data);
 };

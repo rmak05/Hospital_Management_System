@@ -2,10 +2,12 @@
 
 Button::Button() : Entity(EntityType::button) {
 	next_screen = ScreenId::_default;
+	func_type = FuncType::_default;
 }
 
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene) : Entity(EntityType::button) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type) : Entity(EntityType::button) {
 	next_screen = _next_scene;
+	func_type = _type;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -32,8 +34,9 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene) : Entity(EntityType::button) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type) : Entity(EntityType::button) {
 	next_screen = _next_scene;
+	func_type = _type;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -143,4 +146,8 @@ void Button::perform_not_hover_action() {
 void Button::perform_hover_action() {
 	button.setFillColor(hover_color);
 	button.setOutlineColor(hover_outline_color);
+}
+
+std::vector<std::string> Button::callBack(std::vector<std::string> data) {
+	return funcHolder.callFunction(func_type, data);
 }

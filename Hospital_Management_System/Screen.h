@@ -31,6 +31,7 @@ public:
 	void check_mouse_hover(sf::RenderWindow& window);
 	void select_text_input(sf::Vector2f mouse_pos);
 	void check_typed_text(sf::Uint32 input);
+	std::vector<std::string> callBack(sf::Vector2f mouse_pos);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

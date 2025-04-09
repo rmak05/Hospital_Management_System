@@ -71,3 +71,15 @@ void Screen::blink_cursor(int curr_frame) {
 void Screen::add_entity(entity_ptr _entity) {
 	all_entities.push_back(_entity);
 }
+
+std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos) {
+	for (entity_ptr& _entity : all_entities) {
+		if ((_entity->type == EntityType::button) && (_entity->isMouseHover(mouse_pos))) {
+			/* extract function */
+			std::vector<std::string> data = { "Ishan" };	
+			/* get data */
+			return _entity->callBack(data);
+		}
+	}
+	return { "2" };
+}

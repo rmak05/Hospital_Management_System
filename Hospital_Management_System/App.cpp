@@ -54,6 +54,7 @@ void App::run() {
 				if (event.mouseButton.button == sf::Mouse::Button::Left) {
 				    sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
 					ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+					all_scenes[static_cast<int>(curr_scene_id)]->callBack(mouse_pos);
 					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
 					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
 				}

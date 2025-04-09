@@ -144,6 +144,7 @@
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="LoginPatientScreen.cpp" />
+    <ClCompile Include="Queries.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="TextBox.cpp" />
@@ -159,8 +160,10 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="enumEntityType.h" />
+    <ClInclude Include="enumFuncType.h" />
     <ClInclude Include="enumScreenId.h" />
     <ClInclude Include="ImageBox.h" />
+    <ClInclude Include="Queries.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="TextBox.h" />
     <ClInclude Include="TextInput.h" />

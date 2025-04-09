@@ -4,6 +4,8 @@
 #include <memory>
 #include "enumEntityType.h"
 #include "enumScreenId.h"
+#include "enumFuncType.h"
+#include "Queries.h"
 
 class Entity;
 typedef std::shared_ptr<Entity> entity_ptr;
@@ -12,6 +14,7 @@ class Entity {
 public:
 	bool is_active;
 	EntityType type;
+	FunctionHolder funcHolder;
 
 	Entity();
 	Entity(EntityType _type);
@@ -25,6 +28,7 @@ public:
 	virtual void typedOn(sf::Uint32 input);
 	virtual void blink_cursor(int curr_frame);
 	virtual ScreenId get_next_screen();
+	virtual std::vector<std::string> callBack(std::vector<std::string> data);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

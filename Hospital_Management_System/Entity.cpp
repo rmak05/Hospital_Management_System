@@ -54,3 +54,7 @@ void Entity::setSelected(sf::Vector2f mouse_pos) {}
 void Entity::typedOn(sf::Uint32 input) {}
 
 void Entity::blink_cursor(int curr_frame) {}
+
+std::vector<std::string> Entity::callBack(std::vector<std::string> data) {
+	return { "1" };
+}
