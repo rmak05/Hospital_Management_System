@@ -144,6 +144,7 @@
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="LoginPatientScreen.cpp" />
+    <ClCompile Include="PatientHomeScreen.cpp" />
     <ClCompile Include="Queries.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />

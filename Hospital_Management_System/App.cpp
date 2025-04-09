@@ -19,8 +19,10 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Register_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Update_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Login_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Patient_home_Screen>(window_width, window_height));
 
-	set_curr_screen(ScreenId::home);
+
+	set_curr_screen(ScreenId::patient_home);
 }
 
 void App::run() {

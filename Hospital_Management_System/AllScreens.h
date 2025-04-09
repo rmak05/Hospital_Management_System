@@ -38,3 +38,8 @@ class Login_Patient_Screen : public Screen {
 public:
 	Login_Patient_Screen(int w_width, int w_height);
 };
+
+class Patient_home_Screen : public Screen {
+public:
+	Patient_home_Screen(int w_width, int w_height);
+};
