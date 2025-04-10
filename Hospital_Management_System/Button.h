@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Entity.h"
-#include "Screen.h"
+#include "enumScreenId.h"
 #include "EnumFuncType.h"
 
 class Button;
@@ -41,5 +41,5 @@ public:
 	ScreenId get_next_screen();
 	void perform_not_hover_action();
 	void perform_hover_action();
-	std::vector<std::string> callBack(std::vector<std::string> data);
+	FuncType get_func_type();
 };

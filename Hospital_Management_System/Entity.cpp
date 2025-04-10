@@ -55,6 +55,10 @@ void Entity::typedOn(sf::Uint32 input) {}
 
 void Entity::blink_cursor(int curr_frame) {}
 
-std::vector<std::string> Entity::callBack(std::vector<std::string> data) {
-	return { "1" };
+std::string Entity::getText() {
+	return std::string();
+}
+
+FuncType Entity::get_func_type() {
+	return FuncType::_default;
 }

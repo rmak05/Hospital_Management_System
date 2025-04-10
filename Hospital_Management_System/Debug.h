@@ -4,6 +4,7 @@
 #include <vector>
 
 namespace debug {
+	bool active = false;
 	bool show_grid;
 	std::vector<sf::VertexArray> grid;
 	std::vector<sf::Text> grid_coord;
@@ -12,12 +13,15 @@ namespace debug {
 	sf::Color grid_coord_color;
 	int side_length;
 
-	void initialise() {
+	void activate() {
+		active = true;
 		show_grid = false;
+		grid.clear();
+		grid_coord.clear();
 		grid_font.loadFromFile("Resources/NotoSans.ttf");
-		side_length = 100;
 		grid_color = sf::Color(255, 0, 0, 255);
 		grid_coord_color = sf::Color(255, 0, 0, 255);
+		side_length = 100;
 
 		for (int i = 0; i < 3000; i += side_length) {
 			sf::VertexArray line(sf::Lines, 2);
@@ -49,11 +53,19 @@ namespace debug {
 		}
 	}
 
+	void deactivate() {
+		active = false;
+	}
+
 	void update() {
+		if(!active) return;
+
 		show_grid = (!show_grid);
 	}
 
 	void draw(sf::RenderWindow& window) {
+		if(!active) return;
+
 		if (show_grid) {
 			for (auto& itr : debug::grid) window.draw(itr);
 			for (auto& itr : debug::grid_coord) window.draw(itr);

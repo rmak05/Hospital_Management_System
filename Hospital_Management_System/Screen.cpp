@@ -72,14 +72,31 @@ void Screen::add_entity(entity_ptr _entity) {
 	all_entities.push_back(_entity);
 }
 
-std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos) {
+std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase& database) {
 	for (entity_ptr& _entity : all_entities) {
 		if ((_entity->type == EntityType::button) && (_entity->isMouseHover(mouse_pos))) {
-			/* extract function */
-			std::vector<std::string> data = { "Ishan" };	
+			std::vector<std::string> form_details = extract_form();
+			FuncType func_type = _entity->get_func_type();
+
+			database.callFunction(func_type, form_details);
+
 			/* get data */
-			return _entity->callBack(data);
+			//return _entity->callBack(data);
+
+			return {""};
 		}
 	}
 	return { "2" };
+}
+
+std::vector<std::string> Screen::extract_form() {
+	std::vector<std::string> form_details;
+
+	for (entity_ptr& _entity : all_entities) {
+		if (_entity->type == EntityType::text_input) {
+			form_details.push_back(_entity->getText());
+		}
+	}
+
+	return form_details;
 }

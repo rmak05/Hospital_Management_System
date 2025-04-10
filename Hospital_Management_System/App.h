@@ -7,6 +7,7 @@
 #include "Theme.h"
 #include "Screen.h"
 #include "AllScreens.h"
+#include "MYSQLDatabase.h"
 
 class App;
 
@@ -20,6 +21,8 @@ private:
 
 	std::vector<scene_ptr> all_scenes;
 	ScreenId curr_scene_id;
+
+	MYSQLDatabase database;
 
 	void set_curr_screen(ScreenId _scene_id);
 	void initialise_scenes();

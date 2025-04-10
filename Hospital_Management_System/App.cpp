@@ -19,14 +19,12 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Register_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Update_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Login_Patient_Screen>(window_width, window_height));
-	all_scenes.push_back(std::make_shared<Patient_home_Screen>(window_width, window_height));
 
-
-	set_curr_screen(ScreenId::patient_home);
+	set_curr_screen(ScreenId::home);
 }
 
 void App::run() {
-	debug::initialise();
+	debug::activate();
 
 	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 	window_width	= desktop.width;
@@ -41,9 +39,9 @@ void App::run() {
 		curr_frame++;
 		curr_frame %= 1000000000;
 
-	    sf::Event event;
-	    while (app_window.pollEvent(event)) {
-	        if(event.type == sf::Event::Closed){
+		sf::Event event;
+		while (app_window.pollEvent(event)) {
+			if(event.type == sf::Event::Closed) {
 				app_window.close();
 			}
 			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) {
@@ -54,21 +52,22 @@ void App::run() {
 			}
 			else if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left) {
-				    sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
-					ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
-					all_scenes[static_cast<int>(curr_scene_id)]->callBack(mouse_pos);
-					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
+					sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
+
 					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
+					all_scenes[static_cast<int>(curr_scene_id)]->callBack(mouse_pos, database);
+					ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Right) {
 					debug::update();
 				}
 			}
-	    }
+		}
 
 		all_scenes[static_cast<int>(curr_scene_id)]->check_mouse_hover(app_window);
 		all_scenes[static_cast<int>(curr_scene_id)]->blink_cursor(curr_frame);
-	
+
 		app_window.clear(bgWhite);
 		all_scenes[static_cast<int>(curr_scene_id)]->draw_entities(app_window);
 		debug::draw(app_window);

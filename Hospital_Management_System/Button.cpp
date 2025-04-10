@@ -148,6 +148,6 @@ void Button::perform_hover_action() {
 	button.setOutlineColor(hover_outline_color);
 }
 
-std::vector<std::string> Button::callBack(std::vector<std::string> data) {
-	return funcHolder.callFunction(func_type, data);
+FuncType Button::get_func_type() {
+	return func_type;
 }

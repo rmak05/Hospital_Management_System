@@ -87,11 +87,11 @@
     <ClCompile Include="LoginPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="Queries.cpp">
-      <Filter>Source Files\Database</Filter>
-    </ClCompile>
     <ClCompile Include="PatientHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MYSQLDatabase.cpp">
+      <Filter>Source Files\Database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,14 +128,14 @@
     <ClInclude Include="AllScreens.h">
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Queries.h">
-      <Filter>Source Files\Database</Filter>
-    </ClInclude>
     <ClInclude Include="enumFuncType.h">
       <Filter>Source Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="MYSQLDatabase.h">
+      <Filter>Source Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Source Files\Res</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
