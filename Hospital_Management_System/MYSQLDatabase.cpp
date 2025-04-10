@@ -6,7 +6,7 @@ MYSQLDatabase::MYSQLDatabase() {
 	try {
 		_driver = sql::mysql::get_mysql_driver_instance();
 		_connection = _driver->connect("tcp://localhost:3306", "root", get_password());
-		_connection->setSchema("hospital_management");
+		_connection->setSchema("Hospital_Management");
 		_statement = _connection->createStatement();
 	}
 	catch (sql::SQLException& e) {

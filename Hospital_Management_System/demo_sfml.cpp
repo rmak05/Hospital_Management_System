@@ -15,7 +15,7 @@ int fun_sfml(){
     std::vector<sf::VertexArray> grid;
     std::vector<sf::Text> grid_coord;
     sf::Font grid_font;
-    grid_font.loadFromFile("Resources/NotoSans.ttf");
+    grid_font.loadFromFile("Fonts/NotoSans.ttf");
     int side_length = 100;
 
     for (int i = 0; i < 3000; i += side_length) {

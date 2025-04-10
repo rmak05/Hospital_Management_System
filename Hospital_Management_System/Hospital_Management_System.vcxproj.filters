@@ -22,14 +22,14 @@
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{25abbdb8-ff11-4b56-b2da-1a1a2b64497f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Res">
-      <UniqueIdentifier>{0c332e1d-f344-4301-81fb-c330a0f41f83}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\App">
       <UniqueIdentifier>{92e1dfbd-d2a9-4ee9-b8f2-971f7de60186}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Database">
       <UniqueIdentifier>{13f72fbe-448f-4ab1-a3e1-09b3072b141f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{0c332e1d-f344-4301-81fb-c330a0f41f83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +111,7 @@
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="Theme.h">
-      <Filter>Source Files\Res</Filter>
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Source Files\Drawables</Filter>
@@ -135,7 +135,7 @@
       <Filter>Source Files\Database</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
-      <Filter>Source Files\Res</Filter>
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

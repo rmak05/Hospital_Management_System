@@ -21,7 +21,7 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	not_hover_outline_color = outlineColor;
 	hover_outline_color = get_comp_color(outlineColor);
 
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}

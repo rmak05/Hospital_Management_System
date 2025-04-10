@@ -23,7 +23,7 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, int _limit, sf:
 	not_hover_outline_color = outlineColor;
 	hover_outline_color = get_comp_color(outlineColor);
 
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}

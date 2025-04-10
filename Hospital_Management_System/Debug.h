@@ -18,7 +18,7 @@ namespace debug {
 		show_grid = false;
 		grid.clear();
 		grid_coord.clear();
-		grid_font.loadFromFile("Resources/NotoSans.ttf");
+		grid_font.loadFromFile("Fonts/NotoSans.ttf");
 		grid_color = sf::Color(255, 0, 0, 255);
 		grid_coord_color = sf::Color(255, 0, 0, 255);
 		side_length = 100;

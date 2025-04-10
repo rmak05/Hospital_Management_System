@@ -11,7 +11,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 	bounding_box_size = boxSize;
 	bounding_box_pos = boxPos;
 
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
 	}
