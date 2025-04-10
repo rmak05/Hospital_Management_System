@@ -21,7 +21,7 @@ Update_Patient_Screen::Update_Patient_Screen(int w_width, int w_height) : Screen
 	add_entity(std::make_shared<TextBox>(std::string("Address"), 30u, OutlineThickness, sf::Vector2f(300.0f, 80.0f), sf::Vector2f(100.0f, 720.0f), sf::Color::Black, darkBlue, sf::Color::White));
 	add_entity(std::make_shared<TextBox>(std::string("Email"), 30u, OutlineThickness, sf::Vector2f(300.0f, 80.0f), sf::Vector2f(100.0f, 830.0f), sf::Color::Black, darkBlue, sf::Color::White));
 
-	add_entity(std::make_shared<TextBox>(std::string("Update"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 200.0f), 960.0f),   sf::Color::Black, darkYellow, sf::Color::Black));
+	add_entity(std::make_shared<Button>(std::string("Update"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 200.0f), 960.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_home, FuncType::update_patient));
 
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/update.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1400.0f) + 1250.0f, 300.0f), sf::Vector2f(0.85f, 0.85f)));
 }

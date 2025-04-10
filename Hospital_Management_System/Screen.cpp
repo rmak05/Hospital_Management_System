@@ -78,15 +78,26 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 			std::vector<std::string> form_details = extract_form();
 			FuncType func_type = _entity->get_func_type();
 
-			database.callFunction(func_type, form_details);
-
-			/* get data */
-			//return _entity->callBack(data);
-
-			return {""};
+			std::vector<std::string> data = database.callFunction(func_type, form_details);
+			int dsize = data.size();
+			if (dsize == 0) {
+				return { "-1" };
+			}
+			else if (data[0] == "-1") {
+				erase_form();
+				return { "-1" };
+			}
+			else if(data[0] == "0") {
+				erase_form();
+				return { "0" };
+			}
+			else if(data[dsize-1] == "1") {
+				data.push_back("1");
+				return data;
+			}
 		}
 	}
-	return { "2" };
+	return { "0" };
 }
 
 std::vector<std::string> Screen::extract_form() {
@@ -99,4 +110,20 @@ std::vector<std::string> Screen::extract_form() {
 	}
 
 	return form_details;
+}
+
+/* also can be made class specific for update and register can work different*/
+void Screen::erase_form() {
+	for (entity_ptr& _entity : all_entities) {
+		if (_entity->type == EntityType::text_input) {
+			_entity->setText(std::string(""));
+		}
+	}
+}
+
+
+/* May be done specific to class */
+void Screen::fill_form(std::vector<std::string> &data) {
+	std::cout << data.size() << "\n";
+	std::cout << "FILL FORM CALLED\n";
 }

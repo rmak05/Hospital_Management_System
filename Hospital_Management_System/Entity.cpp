@@ -62,3 +62,5 @@ std::string Entity::getText() {
 FuncType Entity::get_func_type() {
 	return FuncType::_default;
 }
+
+void Entity::setText(std::string textVal){}

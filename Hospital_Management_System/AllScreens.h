@@ -8,6 +8,7 @@ class Front_Desk_Home_Screen;
 class Register_Patient_Screen;
 class Update_Patient_Screen;
 class Login_Patient_Screen;
+class Patient_home_Screen;
 
 class Home_Screen : public Screen {
 public:

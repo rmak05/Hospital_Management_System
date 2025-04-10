@@ -37,6 +37,11 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, int _limit, sf:
 	textbox.setString("");
 }
 
+void TextInput::setText(std::string textVal) {
+	text.str(textVal);
+	textbox.setString(text.str());
+}
+
 void TextInput::setTextPosition() {
 	float xPos;
 	if(isCentre) xPos = get_center_coord(box.getPosition().x, box.getLocalBounds().width - 2 * box.getOutlineThickness(), textbox.getLocalBounds().width + 2 * textbox.getLocalBounds().left);

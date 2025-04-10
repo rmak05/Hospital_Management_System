@@ -14,8 +14,14 @@ MYSQLDatabase::MYSQLDatabase() {
 	}
 
 	all_functions.push_back([this](std::vector<std::string> data) { 
-    return this->register_patient(data);
+		return this->register_patient(data);
     });
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->update_patient(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_patient_data(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -38,11 +44,13 @@ std::string MYSQLDatabase::get_password() {
 	std::string password;
 	std::getline(password_file, password);
 
+	password_file.close();
+
 	return password;
 }
 
 std::vector<std::string> MYSQLDatabase::callFunction(FuncType _type, std::vector<std::string> data) {
-    if(_type == FuncType::_default) return { "-1" };
+    if(_type == FuncType::_default) return { "0" };
 	
 	int ind = int(_type);
     if (ind < 0) return { "-1" };
@@ -53,25 +61,44 @@ std::vector<std::string> MYSQLDatabase::callFunction(FuncType _type, std::vector
 std::vector<std::string> MYSQLDatabase::register_patient(std::vector<std::string> data) {
 	try {
 		std::string query, data_string;
-
 		query = std::string("INSERT INTO patient VALUES (") + data[0] + ", " + quote1(data[1]) + ", " + data[2] + ", " + quote1(data[3]) + ", " + data[4] + ", " + quote1(data[5]) + ", " + quote1(data[6]) + ");";
-
 		_statement->execute(query);
-
-		/*std::string selectDataSQL = "SELECT * FROM patient";
-		sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
-
-		int count = 0;
-		while (res->next()) {
-			std::cout << " Name " << ++count << ": "
-				<< res->getString("name") << std::endl;
-		}
-
-		delete res;*/
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
 	}
 
 	return { "0" };
 }
+
+std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> data) {
+	try {
+		std::string query, data_string;
+		query = "UPDATE patient SET name = " + quote1(data[1]) + ", age = " + data[2] + ", gender = " + quote1(data[3]) + ", phone = " + data[4] + ", address = " + quote1(data[5]) + ", email = " + quote1(data[6]) + "WHERE patient_id = " + data[0] + ";";
+		_statement->execute(query);
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	return { "0" };
+}
+
+std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string> data) {
+	std::cout << "Patient data database callback\n";
+	return { "1" };
+}
+
+
+/*std::string selectDataSQL = "SELECT * FROM patient";
+sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
+
+int count = 0;
+while (res->next()) {
+	std::cout << " Name " << ++count << ": "
+		<< res->getString("name") << std::endl;
+}
+
+delete res;*/

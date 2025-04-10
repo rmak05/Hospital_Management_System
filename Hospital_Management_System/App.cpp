@@ -19,6 +19,7 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Register_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Update_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Login_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Patient_home_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
@@ -53,11 +54,17 @@ void App::run() {
 			else if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left) {
 					sf::Vector2f mouse_pos((float)(event.mouseButton.x), (float)(event.mouseButton.y));
-
 					all_scenes[static_cast<int>(curr_scene_id)]->select_text_input(mouse_pos);
-					all_scenes[static_cast<int>(curr_scene_id)]->callBack(mouse_pos, database);
-					ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
-					if(next_scene != ScreenId::_default) set_curr_screen(next_scene);
+					std::vector<std::string> data = (all_scenes[static_cast<int>(curr_scene_id)]->callBack(mouse_pos, database));
+					if (data[data.size()-1] == "0") {
+						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+						if (next_scene != ScreenId::_default) set_curr_screen(next_scene);
+					}
+					else if (data[data.size()-1] == "1") {
+						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+						if (next_scene != ScreenId::_default) set_curr_screen(next_scene);
+						all_scenes[static_cast<int>(curr_scene_id)]->fill_form(data);
+					}
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Right) {
 					debug::update();

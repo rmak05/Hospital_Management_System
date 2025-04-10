@@ -33,6 +33,7 @@ public:
 	TextInput();
 	TextInput(unsigned charSize, float outline_thickness, int _limit, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre);
 
+	void setText(std::string textVal);
 	void setTextSize(int size);
 	void setTextPosition();
 	void setTextColor(sf::Color color);
