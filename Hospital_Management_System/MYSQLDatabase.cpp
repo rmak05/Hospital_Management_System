@@ -24,11 +24,11 @@ MYSQLDatabase::~MYSQLDatabase() {
 }
 
 std::string MYSQLDatabase::quote1(std::string str) {
-	return std::string("'") + str + std::string("'");
+	return (std::string("'") + str + std::string("'"));
 }
 
 std::string MYSQLDatabase::quote2(std::string str) {
-	return std::string("\"") + str + std::string("\"");
+	return (std::string("\"") + str + std::string("\""));
 }
 
 std::string MYSQLDatabase::get_password() {

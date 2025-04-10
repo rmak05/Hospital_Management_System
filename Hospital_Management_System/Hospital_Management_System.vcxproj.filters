@@ -28,7 +28,7 @@
     <Filter Include="Source Files\Database">
       <UniqueIdentifier>{13f72fbe-448f-4ab1-a3e1-09b3072b141f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Utility">
+    <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{0c332e1d-f344-4301-81fb-c330a0f41f83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -111,7 +111,7 @@
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="Theme.h">
-      <Filter>Source Files\Utility</Filter>
+      <Filter>Source Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Source Files\Drawables</Filter>
@@ -135,7 +135,7 @@
       <Filter>Source Files\Database</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
-      <Filter>Source Files\Utility</Filter>
+      <Filter>Source Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
