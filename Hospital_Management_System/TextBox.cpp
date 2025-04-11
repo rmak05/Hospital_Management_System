@@ -46,8 +46,9 @@ TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness,
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-void TextBox::setTextVal(sf::String textVal) {
+void TextBox::setText(std::string textVal) {
 	text.setString(textVal);
+	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
 void TextBox::setTextColor(sf::Color textColor) {

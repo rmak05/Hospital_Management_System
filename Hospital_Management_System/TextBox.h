@@ -19,7 +19,7 @@ public:
 	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
 	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
 
-	void setTextVal(sf::String textVal);
+	void setText(std::string textVal);
 	void setTextColor(sf::Color textColor);
 	void setTextSize(int charSize);
 	void setFont(std::string file);

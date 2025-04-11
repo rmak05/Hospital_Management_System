@@ -39,7 +39,7 @@ std::vector<std::string> Register_Patient_Screen::extract_form() {
 }
 
 void Register_Patient_Screen::erase_form() {
-	int aSize = all_entities.size();
+	int aSize = (int)all_entities.size();
 	for (int i = 3; i <= 8; i++) {
 		if (all_entities[i]->type == EntityType::text_input) {
 			all_entities[i]->setText(std::string(""));

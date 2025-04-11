@@ -79,7 +79,7 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 			FuncType func_type = _entity->get_func_type();
 
 			std::vector<std::string> data = database.callFunction(func_type, form_details);
-			int dsize = data.size();
+			int dsize = (int)data.size();
 			if (dsize == 0) {
 				return { "-1" };
 			}
@@ -120,6 +120,6 @@ void Screen::erase_form() {
 }
 
 void Screen::fill_form(std::vector<std::string> &data) {
-	std::cout << data.size() << "\n";
-	std::cout << "FILL FORM CALLED\n";
+	//std::cout << data.size() << "\n";
+	//std::cout << "FILL FORM CALLED\n";
 }
