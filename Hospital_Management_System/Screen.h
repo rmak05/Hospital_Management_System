@@ -33,9 +33,9 @@ public:
 	void select_text_input(sf::Vector2f mouse_pos);
 	void check_typed_text(sf::Uint32 input);
 	std::vector<std::string> callBack(sf::Vector2f mouse_pos, MYSQLDatabase& database);
-	std::vector<std::string> extract_form();
-	void erase_form();
-	void fill_form(std::vector<std::string> &data);
+	virtual std::vector<std::string> extract_form();
+	virtual void erase_form();
+	virtual void fill_form(std::vector<std::string> &data);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

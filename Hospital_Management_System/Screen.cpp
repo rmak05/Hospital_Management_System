@@ -83,16 +83,15 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 			if (dsize == 0) {
 				return { "-1" };
 			}
-			else if (data[0] == "-1") {
+			else if (dsize == 1 and data[0] == "-1") {
 				erase_form();
 				return { "-1" };
 			}
-			else if(data[0] == "0") {
+			else if(dsize == 1 and data[0] == "0") {
 				erase_form();
 				return { "0" };
 			}
 			else if(data[dsize-1] == "1") {
-				data.push_back("1");
 				return data;
 			}
 		}
@@ -112,7 +111,6 @@ std::vector<std::string> Screen::extract_form() {
 	return form_details;
 }
 
-/* also can be made class specific for update and register can work different*/
 void Screen::erase_form() {
 	for (entity_ptr& _entity : all_entities) {
 		if (_entity->type == EntityType::text_input) {
@@ -121,8 +119,6 @@ void Screen::erase_form() {
 	}
 }
 
-
-/* May be done specific to class */
 void Screen::fill_form(std::vector<std::string> &data) {
 	std::cout << data.size() << "\n";
 	std::cout << "FILL FORM CALLED\n";

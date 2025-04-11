@@ -152,6 +152,7 @@
     <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="UpdateLoginPatientScreen.cpp" />
     <ClCompile Include="UpdatePatientScreen.cpp" />
   </ItemGroup>
   <ItemGroup>

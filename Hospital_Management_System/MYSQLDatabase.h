@@ -28,6 +28,7 @@ private:
 	std::vector<std::string> register_patient(std::vector<std::string>);
 	std::vector<std::string> update_patient(std::vector<std::string>);
 	std::vector<std::string> get_patient_data(std::vector<std::string>);
+	std::vector<std::string> generate_patient_id(std::vector<std::string>);
 
 public:
 	MYSQLDatabase();

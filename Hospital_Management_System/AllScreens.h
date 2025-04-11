@@ -9,6 +9,7 @@ class Register_Patient_Screen;
 class Update_Patient_Screen;
 class Login_Patient_Screen;
 class Patient_home_Screen;
+class Update_Login_Patient_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -28,11 +29,18 @@ public:
 class Register_Patient_Screen : public Screen {
 public:
 	Register_Patient_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form();
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
 };
 
 class Update_Patient_Screen : public Screen {
+	std::vector<std::string> patient_data;
 public:
 	Update_Patient_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form();
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
 };
 
 class Login_Patient_Screen : public Screen {
@@ -43,4 +51,12 @@ public:
 class Patient_home_Screen : public Screen {
 public:
 	Patient_home_Screen(int w_width, int w_height);
+};
+
+class Update_Login_Patient_Screen : public Screen {
+public:
+	Update_Login_Patient_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form();
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
 };

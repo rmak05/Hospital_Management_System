@@ -25,3 +25,28 @@ Register_Patient_Screen::Register_Patient_Screen(int w_width, int w_height) : Sc
 
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/register.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f) + 1300.0f, 300.0f), sf::Vector2f(0.12f, 0.12f)));
 }
+
+std::vector<std::string> Register_Patient_Screen::extract_form() {
+	std::vector<std::string> form_details;
+
+	for (entity_ptr& _entity : all_entities) {
+		if (_entity->type == EntityType::text_input) {
+			form_details.push_back(_entity->getText());
+		}
+	}
+
+	return form_details;
+}
+
+void Register_Patient_Screen::erase_form() {
+	int aSize = all_entities.size();
+	for (int i = 3; i <= 8; i++) {
+		if (all_entities[i]->type == EntityType::text_input) {
+			all_entities[i]->setText(std::string(""));
+		}
+	}
+}
+
+void Register_Patient_Screen::fill_form(std::vector<std::string>& data) {
+	all_entities[2]->setText(std::string(data[0]));
+}

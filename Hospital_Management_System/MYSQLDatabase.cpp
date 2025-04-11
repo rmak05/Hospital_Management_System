@@ -22,6 +22,9 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_data(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->generate_patient_id(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -87,18 +90,40 @@ std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> 
 }
 
 std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string> data) {
-	std::cout << "Patient data database callback\n";
-	return { "1" };
+	try {
+		std::cout << data[0] << "\n";
+		std::string selectDataSQL = "SELECT * FROM patient WHERE patient_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
+
+		res->next();
+
+		std::vector<std::string> returnData;
+		returnData.push_back((res->getString("patient_id")));;
+		returnData.push_back(res->getString("name"));
+		returnData.push_back(res->getString("age"));
+		returnData.push_back(res->getString("gender"));
+		returnData.push_back(res->getString("phone"));
+		returnData.push_back(res->getString("address"));
+		returnData.push_back(res->getString("email"));
+
+		delete res;
+
+		returnData.push_back("1");
+		return returnData;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+	return { "-1" };
 }
 
-
-/*std::string selectDataSQL = "SELECT * FROM patient";
-sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
-
-int count = 0;
-while (res->next()) {
-	std::cout << " Name " << ++count << ": "
-		<< res->getString("name") << std::endl;
+std::vector<std::string> MYSQLDatabase::generate_patient_id(std::vector<std::string>) {
+	int num = rand() % 100000;
+	std::string _id = "";
+	while (num > 0) {
+		_id.push_back((num % 10) + '0');
+		num /= 10;
+	}
+	return { _id, "1"};
 }
-
-delete res;*/

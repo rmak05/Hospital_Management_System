@@ -38,7 +38,9 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, int _limit, sf:
 }
 
 void TextInput::setText(std::string textVal) {
-	text.str(textVal);
+	text.str("");
+	text << textVal;
+	//text.str(textVal);
 	textbox.setString(text.str());
 }
 
