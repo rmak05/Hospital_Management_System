@@ -8,5 +8,6 @@ enum class FuncType {
 	update_patient			= 1,
 	get_patient_data		= 2,
 	generate_patient_id		= 3,
-	get_patient_med_data	= 4
+	get_patient_med_data	= 4,
+	get_patient_tests		= 5
 };

@@ -4,7 +4,7 @@ Home_Screen::Home_Screen(int w_width, int w_height) : Screen(ScreenId::home, w_w
 	add_entity(std::make_shared<TextBox>(std::string("HOSPITAL  MANAGEMENT  SYSTEM"), 50u, 0.0f, sf::Vector2f(1500.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f),           sf::Color::White, bgBlue, sf::Color::Black, ScreenId::frontdesk_login));
-	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f),  sf::Color::White, bgBlue, sf::Color::Black, ScreenId::_default));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f),  sf::Color::White, bgBlue, sf::Color::Black, ScreenId::dataentry_login));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 800.0f, 400.0f),  sf::Color::White, bgBlue, sf::Color::Black, ScreenId::_default));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1200.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::_default));
 

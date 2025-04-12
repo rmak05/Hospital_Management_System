@@ -21,6 +21,9 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Login_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Patient_Home_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Update_Login_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Data_Entry_Login_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Data_Entry_Login_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Pending_Tests_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
@@ -76,6 +79,13 @@ void App::run() {
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Right) {
 					debug::update();
+				}
+			}
+			else if (event.type == sf::Event::MouseWheelScrolled) {
+				if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+					int scroll_ticks = (int)event.mouseWheelScroll.delta;
+					
+					all_scenes[static_cast<int>(curr_scene_id)]->scroll_entities(scroll_ticks);
 				}
 			}
 		}

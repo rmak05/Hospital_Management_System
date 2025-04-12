@@ -29,6 +29,7 @@ public:
 	virtual std::string getText();
 	virtual FuncType get_func_type();
 	virtual void setText(std::string textVal);
+	virtual void setPosition(sf::Vector2f pos);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

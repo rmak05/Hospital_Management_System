@@ -135,6 +135,8 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="DataEntryLoginPatientScreen.cpp" />
+    <ClCompile Include="DataEntryLoginScreen.cpp" />
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
@@ -146,6 +148,7 @@
     <ClCompile Include="LoginPatientScreen.cpp" />
     <ClCompile Include="MYSQLDatabase.cpp" />
     <ClCompile Include="PatientHomeScreen.cpp" />
+    <ClCompile Include="PendingTestsScreen.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="TextBox.cpp" />

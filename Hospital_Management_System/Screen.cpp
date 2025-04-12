@@ -119,7 +119,6 @@ void Screen::erase_form() {
 	}
 }
 
-void Screen::fill_form(std::vector<std::string> &data) {
-	//std::cout << data.size() << "\n";
-	//std::cout << "FILL FORM CALLED\n";
-}
+void Screen::fill_form(std::vector<std::string> &data) {}
+
+void Screen::scroll_entities(int delta) {}

@@ -29,7 +29,10 @@ MYSQLDatabase::MYSQLDatabase() {
 	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_med_data(data);
-		});
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_patient_tests(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -149,8 +152,6 @@ std::vector<std::string> MYSQLDatabase::register_patient(std::vector<std::string
 
 	returnData.push_back("1");
 	return returnData;
-
-	//return { "0" };
 }
 
 std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> data) {
@@ -236,7 +237,6 @@ std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> 
 
 	returnData.push_back("1");
 	return returnData;
-	//return { "0" };
 }
 
 std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string> data) {
@@ -256,6 +256,7 @@ std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string
 			returnData.push_back(res->getString("email"));
 		}
 		//res->next();
+		if(returnData.size() == 0) return {"-1"};
 
 		delete res;
 
@@ -269,8 +270,21 @@ std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string
 	return { "-1" };
 }
 
+std::vector<std::string> MYSQLDatabase::generate_patient_id(std::vector<std::string>) {
+	//std::this_thread::sleep_for(std::chrono::seconds(1));
+
+	std::time_t timestamp = std::time(NULL);
+	std::tm *curr_time = std::localtime(&timestamp);
+
+	int patient_id = ((curr_time->tm_year + 1900) * 100000) + (curr_time->tm_hour * 3600) + (curr_time->tm_min * 60) + (curr_time->tm_sec);
+
+	return {std::to_string(patient_id), "1"};
+}
+
 std::vector<std::string> MYSQLDatabase::get_patient_med_data(std::vector<std::string> data) {
 	data = get_patient_data(data);
+
+	if(data.size() == 1) return {"-1"};
 
 	std::vector<std::string> returnData = data;
 	if(!returnData.empty()) returnData.pop_back();
@@ -347,13 +361,34 @@ std::vector<std::string> MYSQLDatabase::get_patient_med_data(std::vector<std::st
 	return returnData;
 }
 
-std::vector<std::string> MYSQLDatabase::generate_patient_id(std::vector<std::string>) {
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+std::vector<std::string> MYSQLDatabase::get_patient_tests(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT test_id, doctor_id, date, time, room_id
+		FROM test
+		WHERE patient_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT test_id, doctor_id, date, time, room_id FROM test WHERE patient_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
 
-	std::time_t timestamp = std::time(NULL);
-	std::tm *curr_time = std::localtime(&timestamp);
+		while (res->next()) {
+			returnData.push_back(res->getString("test_id"));
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back("#");
+		}
 
-	int patient_id = ((curr_time->tm_year + 1900) * 100000) + (curr_time->tm_hour * 3600) + (curr_time->tm_min * 60) + (curr_time->tm_sec);
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
 
-	return {std::to_string(patient_id), "1"};
+	returnData.push_back("1");
+	return returnData;
 }

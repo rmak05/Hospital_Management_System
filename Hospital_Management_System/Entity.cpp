@@ -18,17 +18,20 @@ float Entity::get_center_coord(float div_x, float div_size, float box_size) {
 }
 
 sf::Color Entity::get_comp_color(sf::Color _color) {
-	if(_color == darkYellow) return lightYellow;
-	if(_color == lightYellow) return darkYellow;
-	if(_color == darkBlue) return lightBlue;
-	if(_color == lightBlue) return darkBlue;
-	if(_color == darkBlue) return bgBlue;
-	if(_color == bgBlue) return darkBlue;
-	if (_color == darkRed) return lightRed;
-	if (_color == lightRed) return darkRed;
-	if (_color == bgWhite) return bgWhite;
-	if(_color == sf::Color::White) return sf::Color::White;
-	if(_color == sf::Color::Black) return sf::Color::Black;
+	if(_color == darkYellow)		return lightYellow;
+	if(_color == lightYellow)		return darkYellow;
+	if(_color == darkBlue)			return lightBlue;
+	if(_color == lightBlue)			return darkBlue;
+	if(_color == lightBlueConst)	return lightBlueConst;
+	if(_color == darkBlue)			return bgBlue;
+	if(_color == bgBlue)			return darkBlue;
+	if (_color == darkRed)			return lightRed;
+	if (_color == lightRed)			return darkRed;
+	if (_color == bgWhite)			return bgWhite;
+	if (_color == lightGrey)		return darkGrey;
+	if (_color == darkGrey)			return lightGrey;
+	if(_color == sf::Color::White)	return sf::Color::White;
+	if(_color == sf::Color::Black)	return sf::Color::Black;
 
 	return sf::Color::Black;
 }
@@ -64,3 +67,5 @@ FuncType Entity::get_func_type() {
 }
 
 void Entity::setText(std::string textVal){}
+
+void Entity::setPosition(sf::Vector2f pos){}

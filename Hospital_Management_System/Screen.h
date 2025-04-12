@@ -36,6 +36,7 @@ public:
 	virtual std::vector<std::string> extract_form();
 	virtual void erase_form();
 	virtual void fill_form(std::vector<std::string> &data);
+	virtual void scroll_entities(int delta);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

@@ -10,6 +10,9 @@ class Update_Patient_Screen;
 class Login_Patient_Screen;
 class Patient_Home_Screen;
 class Update_Login_Patient_Screen;
+class Data_Entry_Login_Screen;
+class Data_Entry_Login_Patient_Screen;
+class Pending_Tests_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -63,4 +66,26 @@ public:
 	std::vector<std::string> extract_form();
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
+};
+
+class Data_Entry_Login_Screen : public Screen {
+public:
+	Data_Entry_Login_Screen(int w_width, int w_height);
+};
+
+class Data_Entry_Login_Patient_Screen : public Screen {
+public:
+	Data_Entry_Login_Patient_Screen(int w_width, int w_height);
+};
+
+class Pending_Tests_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+
+public:
+	Pending_Tests_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };
