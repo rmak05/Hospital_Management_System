@@ -133,24 +133,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdmitAppointmentScreen.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="AppointmentHistoryScreen.cpp" />
+    <ClCompile Include="AppointmentScreen.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="DataEntryLoginPatientScreen.cpp" />
     <ClCompile Include="DataEntryLoginScreen.cpp" />
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
+    <ClCompile Include="DoctorHomeScreen.cpp" />
+    <ClCompile Include="DoctorLoginScreen.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FrontDeskHomeScreen.cpp" />
     <ClCompile Include="FrontDeskLoginScreen.cpp" />
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="LoginPatientScreen.cpp" />
+    <ClCompile Include="MyInformationScreen.cpp" />
     <ClCompile Include="MYSQLDatabase.cpp" />
+    <ClCompile Include="PatientAppointmentScreen.cpp" />
+    <ClCompile Include="PatientDetailsHomeScreen.cpp" />
+    <ClCompile Include="PatientDetailsScreen.cpp" />
     <ClCompile Include="PatientHomeScreen.cpp" />
+    <ClCompile Include="PatientRecordScreen.cpp" />
     <ClCompile Include="PendingTestsScreen.cpp" />
+    <ClCompile Include="PrescAppointmentScreen.cpp" />
+    <ClCompile Include="PrescGivenScreen.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="TestHistoryScreen.cpp" />
+    <ClCompile Include="TestResultsScreen.cpp" />
+    <ClCompile Include="TestsAppointmentScreen.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="main.cpp" />
