@@ -22,5 +22,4 @@ Tests_Appointment_Screen::Tests_Appointment_Screen(int w_width, int w_height) : 
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 100, sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 720.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
 
 	add_entity(std::make_shared<Button>(std::string("Print"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(800.0f, 840.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_appointment));
-
 }
