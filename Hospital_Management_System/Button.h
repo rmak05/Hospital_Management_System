@@ -42,4 +42,5 @@ public:
 	void perform_not_hover_action();
 	void perform_hover_action();
 	FuncType get_func_type();
+	std::string getText();
 };

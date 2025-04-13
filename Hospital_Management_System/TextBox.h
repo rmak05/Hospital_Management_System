@@ -29,4 +29,5 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setTextPosition(sf::Vector2f pos);
 	void drawTo(sf::RenderWindow& window);
+	std::string getText();
 };

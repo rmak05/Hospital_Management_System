@@ -32,14 +32,14 @@ Patient_Home_Screen::Patient_Home_Screen(int w_width, int w_height) : Screen(Scr
 	add_entity(std::make_shared<Button>(std::string("History"),				30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 900.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::_default));
 }
 
-void Patient_Home_Screen::fill_form(std::vector<std::string>& data) {
-	for (int i = 11; i <= 18; i++) {
-		all_entities[i]->setText(data[i - 11]);
-	}
-}
-
 void Patient_Home_Screen::erase_form(){
 	for (int i = 11; i <= 18; i++) {
 		all_entities[i]->setText("");
+	}
+}
+
+void Patient_Home_Screen::fill_form(std::vector<std::string>& data) {
+	for (int i = 11; i <= 18; i++) {
+		all_entities[i]->setText(data[i - 11]);
 	}
 }

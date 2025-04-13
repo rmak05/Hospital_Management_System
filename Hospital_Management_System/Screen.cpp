@@ -75,7 +75,7 @@ void Screen::add_entity(entity_ptr _entity) {
 std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase& database) {
 	for (entity_ptr& _entity : all_entities) {
 		if ((_entity->type == EntityType::button) && (_entity->isMouseHover(mouse_pos))) {
-			std::vector<std::string> form_details = extract_form();
+			std::vector<std::string> form_details = extract_form(mouse_pos);
 			FuncType func_type = _entity->get_func_type();
 
 			std::vector<std::string> data = database.callFunction(func_type, form_details);
@@ -88,7 +88,7 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 				return { "-1" };
 			}
 			else if(dsize == 1 and data[0] == "0") {
-				erase_form();
+				//erase_form();
 				return { "0" };
 			}
 			else if(data[dsize-1] == "1") {
@@ -96,10 +96,10 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 			}
 		}
 	}
-	return { "0" };
+	return { "2" };
 }
 
-std::vector<std::string> Screen::extract_form() {
+std::vector<std::string> Screen::extract_form(sf::Vector2f mouse_pos) {
 	std::vector<std::string> form_details;
 
 	for (entity_ptr& _entity : all_entities) {

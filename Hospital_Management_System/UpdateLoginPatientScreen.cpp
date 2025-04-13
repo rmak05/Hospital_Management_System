@@ -14,7 +14,7 @@ Update_Login_Patient_Screen::Update_Login_Patient_Screen(int w_width, int w_heig
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/loginPatient.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f) + 900.0f, 400.0f), sf::Vector2f(0.2f, 0.2f)));
 }
 
-std::vector<std::string> Update_Login_Patient_Screen::extract_form() {
+std::vector<std::string> Update_Login_Patient_Screen::extract_form(sf::Vector2f mouse_pos) {
 	return { all_entities[3]->getText()};
 }
 

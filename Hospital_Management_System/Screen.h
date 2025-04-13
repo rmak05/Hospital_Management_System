@@ -33,7 +33,7 @@ public:
 	void select_text_input(sf::Vector2f mouse_pos);
 	void check_typed_text(sf::Uint32 input);
 	std::vector<std::string> callBack(sf::Vector2f mouse_pos, MYSQLDatabase& database);
-	virtual std::vector<std::string> extract_form();
+	virtual std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 	virtual void erase_form();
 	virtual void fill_form(std::vector<std::string> &data);
 	virtual void scroll_entities(int delta);

@@ -33,6 +33,21 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_tests(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_test_data(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_appointment_data(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->check_doctor_id(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_appointment_patient_data(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_patient_record(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -388,6 +403,201 @@ std::vector<std::string> MYSQLDatabase::get_patient_tests(std::vector<std::strin
 		std::cerr << "SQL Error : " << e.what() << std::endl;
 		return { "-1" };
 	}
+
+	//if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_test_data(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT *
+		FROM test
+		WHERE test_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT * FROM test WHERE test_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		if (res->next()) {
+			returnData.push_back(res->getString("test_id"));
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("equipment_name"));
+			returnData.push_back("");
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back("");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_appointment_data(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT appointment_id, patient_id, date, time
+		FROM appointment
+		WHERE doctor_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT appointment_id, patient_id, date, time FROM appointment WHERE doctor_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("appointment_id"));
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	//if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::check_doctor_id(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT doctor_id
+		FROM doctor
+		WHERE doctor_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT doctor_id FROM doctor WHERE doctor_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		if (res->next()) {
+			returnData.push_back(res->getString("doctor_id"));
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_appointment_patient_data(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	returnData.push_back(data[0]);
+	std::vector<std::string> temp = get_patient_data({data[1]});
+	for(auto itr : temp) returnData.push_back(itr);
+
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_patient_record(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	//returnData.push_back(data[0]);
+
+	try {
+		/*
+		SELECT patient_id, patient.name AS patient_name, disease_name
+		FROM patient
+		NATURAL JOIN treated_by
+		NATURAL JOIN has_disease
+		WHERE doctor_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT patient_id, patient.name AS patient_name, disease_name FROM patient NATURAL JOIN treated_by NATURAL JOIN has_disease WHERE doctor_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("patient_name"));
+			returnData.push_back("");
+			returnData.push_back(res->getString("disease_name"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	returnData.push_back("1");
+	return returnData;
+
+
+	//try {
+	//	/*
+	//	SELECT name
+	//	FROM patient
+	//	WHERE patient_id = data[0];
+	//	*/
+	//	std::string query;
+	//	query = "SELECT name FROM patient WHERE patient_id = " + data[0] + ";";
+	//	sql::ResultSet* res = _statement->executeQuery(query);
+
+	//	if (res->next()) {
+	//		returnData.push_back(res->getString("name"));
+	//	}
+
+	//	delete res;
+	//}
+	//catch (sql::SQLException& e) {
+	//	std::cerr << "SQL Error : " << e.what() << std::endl;
+	//	return { "-1" };
+	//}
+
+	//returnData.push_back("");
+
+	//try {
+	//	/*
+	//	SELECT disease_name
+	//	FROM has_disease
+	//	WHERE patient_id = data[0];
+	//	*/
+	//	std::string query;
+	//	query = "SELECT disease_name FROM has_disease WHERE patient_id = " + data[0] + ";";
+	//	sql::ResultSet* res = _statement->executeQuery(query);
+
+	//	if (res->next()) {
+	//		returnData.push_back(res->getString("disease_name"));
+	//	}
+
+	//	delete res;
+	//}
+	//catch (sql::SQLException& e) {
+	//	std::cerr << "SQL Error : " << e.what() << std::endl;
+	//	return { "-1" };
+	//}
+
+	//if(returnData.empty()) return {"-1"};
 
 	returnData.push_back("1");
 	return returnData;

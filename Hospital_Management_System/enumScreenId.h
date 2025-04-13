@@ -29,5 +29,6 @@ enum class ScreenId {
 	my_information			= 22,
 	dataentry_login			= 23,
 	dataentry_login_patient	= 24,
-	pending_tests			= 25
+	pending_tests			= 25,
+	push_test_results		= 26
 };

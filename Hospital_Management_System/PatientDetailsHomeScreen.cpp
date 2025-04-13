@@ -18,3 +18,7 @@ Patient_Details_Home_Screen::Patient_Details_Home_Screen(int w_width, int w_heig
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/tests.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1600.0f) + 650.0f, 450.0f), sf::Vector2f(0.6f, 0.6f)));
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/appointment.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1200.0f, 450.0f), sf::Vector2f(1.2f, 1.2f)));
 }
+
+void Patient_Details_Home_Screen::fill_form(std::vector<std::string>& data) {
+	patient_id = data[0];
+}

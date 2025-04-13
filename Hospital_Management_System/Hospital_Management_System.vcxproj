@@ -161,6 +161,7 @@
     <ClCompile Include="PendingTestsScreen.cpp" />
     <ClCompile Include="PrescAppointmentScreen.cpp" />
     <ClCompile Include="PrescGivenScreen.cpp" />
+    <ClCompile Include="PushTestResultsScreen.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="TestHistoryScreen.cpp" />

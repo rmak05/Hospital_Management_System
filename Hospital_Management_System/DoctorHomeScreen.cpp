@@ -5,8 +5,8 @@ Doctor_Home_Screen::Doctor_Home_Screen(int w_width, int w_height) : Screen(Scree
 
 	add_entity(std::make_shared<TextBox>(std::string("Doctor : Home"), 50u, 0.0f, sf::Vector2f(1300.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
-	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::appointment));
-	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::patient_record));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::appointment, FuncType::get_appointment_data));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 400.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::patient_record, FuncType::get_patient_record));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 800.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::my_information));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(300.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1200.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::_default));
 
@@ -19,4 +19,12 @@ Doctor_Home_Screen::Doctor_Home_Screen(int w_width, int w_height) : Screen(Scree
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/patientRecords.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 480.0f, 500.0f), sf::Vector2f(1.0f, 1.0f)));
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/myInformation.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 840.0f, 500.0f), sf::Vector2f(0.9f, 0.9f)));
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/patientHistory.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1270.0f, 500.0f), sf::Vector2f(1.0f, 1.0f)));
+}
+
+std::vector<std::string> Doctor_Home_Screen::extract_form(sf::Vector2f mouse_pos) {
+	return {doctor_id};
+}
+
+void Doctor_Home_Screen::fill_form(std::vector<std::string>& data) {
+	doctor_id = data[0];
 }

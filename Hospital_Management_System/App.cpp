@@ -39,6 +39,7 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Data_Entry_Login_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Data_Entry_Login_Patient_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Pending_Tests_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Push_Test_Results_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
@@ -51,6 +52,7 @@ void App::run() {
 	window_height	= desktop.height;
 
 	app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
+	//app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
 	app_window.setFramerateLimit(fps);
 
 	initialise_scenes();
@@ -64,8 +66,8 @@ void App::run() {
 			if(event.type == sf::Event::Closed) {
 				app_window.close();
 			}
-			else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) {
-				app_window.close();
+			else if ((event.type == sf::Event::KeyPressed)) {
+				if(event.key.code == sf::Keyboard::Escape) app_window.close();
 			}
 			else if (event.type == sf::Event::TextEntered) {
 				all_scenes[static_cast<int>(curr_scene_id)]->check_typed_text(event.text.unicode);
@@ -80,12 +82,16 @@ void App::run() {
 
 					if (data.back() == "0") {
 						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+
+						all_scenes[static_cast<int>(curr_scene_id)]->erase_form();
+
 						if (next_scene != ScreenId::_default) set_curr_screen(next_scene);
 					}
 					else if (data.back() == "1") {
+						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+
 						all_scenes[static_cast<int>(curr_scene_id)]->erase_form();
 
-						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
 						if (next_scene != ScreenId::_default) {
 							set_curr_screen(next_scene);
 							all_scenes[static_cast<int>(curr_scene_id)]->fill_form(data);
@@ -114,4 +120,6 @@ void App::run() {
 		debug::draw(app_window);
 		app_window.display();
 	}
+
+	debug::deactivate();
 }

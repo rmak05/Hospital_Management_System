@@ -96,3 +96,7 @@ void TextBox::drawTo(sf::RenderWindow& window) {
 	window.draw(box);
 	window.draw(text);
 }
+
+std::string TextBox::getText() {
+	return text.getString();
+}

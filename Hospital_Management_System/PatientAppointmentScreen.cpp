@@ -24,5 +24,18 @@ Patient_Appointment_Screen::Patient_Appointment_Screen(int w_width, int w_height
 	add_entity(std::make_shared<Button>(std::string("Admit"),		 30u, OutlineThickness, sf::Vector2f(400.0f, 80.0f), sf::Vector2f(1300.0f, 700.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::admit_appointment));
 	
 	add_entity(std::make_shared<Button>(std::string("Appointment Done"), 30u, OutlineThickness, sf::Vector2f(700.0f, 80.0f), sf::Vector2f(600.0f, 850.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::doctor_home));
+}
 
+void Patient_Appointment_Screen::erase_form() {
+	for (int i = 9; i <= 12; i++) {
+		all_entities[i]->setText("");
+	}
+}
+
+void Patient_Appointment_Screen::fill_form(std::vector<std::string>& data) {
+	appointment_id = data[0];
+
+	for (int i = 8; i <= 11; i++) {
+		all_entities[i]->setText(data[i - 8 + 1]);
+	}
 }

@@ -26,7 +26,7 @@ Register_Patient_Screen::Register_Patient_Screen(int w_width, int w_height) : Sc
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/register.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f) + 1300.0f, 300.0f), sf::Vector2f(0.12f, 0.12f)));
 }
 
-std::vector<std::string> Register_Patient_Screen::extract_form() {
+std::vector<std::string> Register_Patient_Screen::extract_form(sf::Vector2f mouse_pos) {
 	std::vector<std::string> form_details;
 
 	for (entity_ptr& _entity : all_entities) {

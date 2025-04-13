@@ -26,7 +26,7 @@ Update_Patient_Screen::Update_Patient_Screen(int w_width, int w_height) : Screen
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/update.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1400.0f) + 1250.0f, 300.0f), sf::Vector2f(0.85f, 0.85f)));
 }
 
-std::vector<std::string> Update_Patient_Screen::extract_form() {
+std::vector<std::string> Update_Patient_Screen::extract_form(sf::Vector2f mouse_pos) {
 	std::vector<std::string> form_details;
 	for (int i = 2; i <= 8; i++) {
 		form_details.push_back(all_entities[i]->getText());

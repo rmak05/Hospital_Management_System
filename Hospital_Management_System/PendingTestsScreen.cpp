@@ -5,8 +5,30 @@ Pending_Tests_Screen::Pending_Tests_Screen(int w_width, int w_height) : Screen(S
 
 	add_entity(std::make_shared<TextBox>(std::string("Pending Tests"), 50u, 0.0f, sf::Vector2f(1300.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
-	entity_pos = {sf::Vector2f(450, 300), sf::Vector2f(450, 525), sf::Vector2f(450, 750), sf::Vector2f(450, 975)};
+	entity_pos = {sf::Vector2f(450.0f, 250.0f), sf::Vector2f(450.0f, 455.0f), sf::Vector2f(450.0f, 660.0f), sf::Vector2f(450.0f, 865.0f)};
 	curr_entity_index = 0;
+
+	scroll_window_size = sf::Vector2f(1300.0f, 800.0f);
+	scroll_window_pos = sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f), 250.0f);
+}
+
+std::vector<std::string> Pending_Tests_Screen::extract_form(sf::Vector2f mouse_pos) {
+	std::vector<std::string> form_details;
+	int index = 0;
+
+	for (entity_ptr _entity : all_entities) {
+		if ((_entity->type == EntityType::button) && (_entity->isMouseHover(mouse_pos))) {
+			if((_entity->getText() == "Back")) continue;
+			std::string test_id = all_entities[index + 1]->getText();
+			form_details.push_back(test_id.substr(10));
+
+			break;
+		}
+
+		index++;
+	}
+
+	return form_details;
 }
 
 void Pending_Tests_Screen::erase_form() {
@@ -16,12 +38,12 @@ void Pending_Tests_Screen::erase_form() {
 void Pending_Tests_Screen::fill_form(std::vector<std::string>& data) {
 	int dsize = ((int)data.size()) - 1;
 	float xcoord = get_center_coord(LEFT_MARGIN, (window_width - 2 * LEFT_MARGIN) * 1.0f, 1020.0f);
-	float ycoord = 300.0f;
+	float ycoord = 250.0f;
 
 	for (int i = 0; i < dsize; i++) {
 		curr_entity_index = 1;
 
-		add_entity(std::make_shared<Button>(std::string(""), 30u, 8.0f, sf::Vector2f(1020.0f, 145.0f), sf::Vector2f(xcoord, ycoord), sf::Color::Black, lightBlueConst, lightGrey, ScreenId::_default));
+		add_entity(std::make_shared<Button>(std::string(""), 30u, 8.0f, sf::Vector2f(1020.0f, 145.0f), sf::Vector2f(xcoord, ycoord), sf::Color::Black, lightBlueConst, lightGrey, ScreenId::push_test_results, FuncType::get_test_data));
 
 		add_entity(std::make_shared<TextBox>(std::string("Test ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite));
 		add_entity(std::make_shared<TextBox>(std::string("Doctor ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite));
@@ -29,22 +51,24 @@ void Pending_Tests_Screen::fill_form(std::vector<std::string>& data) {
 		add_entity(std::make_shared<TextBox>(std::string("Time : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 343, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite));
 		add_entity(std::make_shared<TextBox>(std::string("Room Id : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 679, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite));
 		
-		ycoord += 145 + 80;
+		ycoord += 145 + 60;
 	}
 
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, 5.0f, sf::Vector2f(30.0f, 820.0f), sf::Vector2f(xcoord + 1120, 300.0f), sf::Color::Black, bgWhite, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, 5.0f, sf::Vector2f(30.0f, 760.0f), sf::Vector2f(xcoord + 1120, 250.0f), sf::Color::Black, bgBlue, sf::Color::Black));
 
 	int entity_count = (((int)all_entities.size()) - 3) / 6;
-	float scroll_bar_height = (4.0f / std::max(4, entity_count)) * 820.0f;
+	float scroll_bar_height = (4.0f / std::max(4, entity_count)) * 760.0f - 10;
 
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, 5.0f, sf::Vector2f(30.0f, scroll_bar_height), sf::Vector2f(xcoord + 1120, 300.0f), sf::Color::Black, sf::Color::Black, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, 5.0f, sf::Vector2f(20.0f, scroll_bar_height), sf::Vector2f(xcoord + 1120 + 5, 250.0f + 5), darkBlue, darkBlue, darkBlue));
+
+	scroll_entities(0);
 }
 
 void Pending_Tests_Screen::scroll_entities(int delta) {
 	int entity_count = (((int)all_entities.size()) - 4) / 6;
 
 	if(entity_count <= 4) return;
-	if(delta == 0) return;
+	//if(delta == 0) return;
 	if ((curr_entity_index == 1) && (delta > 0)) return;
 	if ((curr_entity_index + 3 >= entity_count) && (delta < 0)) return;
 
@@ -75,7 +99,7 @@ void Pending_Tests_Screen::scroll_entities(int delta) {
 		}
 	}
 
-	float xcoord = get_center_coord(LEFT_MARGIN, (window_width - 2 * LEFT_MARGIN) * 1.0f, 1020.0f) + 1120;
-	float ycoord = 300.0f + (820.0f / entity_count) * (curr_entity_index - 1);
+	float xcoord = get_center_coord(LEFT_MARGIN, (window_width - 2 * LEFT_MARGIN) * 1.0f, 1020.0f) + 1120 + 5;
+	float ycoord = 250.0f + (760.0f / entity_count) * (curr_entity_index - 1) + 5;
 	all_entities.back()->setPosition(sf::Vector2f(xcoord, ycoord));
 }

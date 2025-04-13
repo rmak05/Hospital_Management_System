@@ -93,6 +93,7 @@ void Button::setBackgroundColor(sf::Color bgColor) {
 
 void Button::setPosition(sf::Vector2f pos) {
 	button.setPosition(pos);
+	bounding_box_pos = pos;
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
@@ -150,4 +151,8 @@ void Button::perform_hover_action() {
 
 FuncType Button::get_func_type() {
 	return func_type;
+}
+
+std::string Button::getText() {
+	return text.getString();
 }
