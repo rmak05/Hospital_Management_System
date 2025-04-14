@@ -36,6 +36,12 @@ private:
 	std::vector<std::string> get_appointment_data(std::vector<std::string> data);
 	std::vector<std::string> check_doctor_id(std::vector<std::string> data);
 	std::vector<std::string> get_appointment_patient_data(std::vector<std::string> data);
+	std::string generate_test_id();
+	std::vector<std::string> get_meeting_data(std::vector<std::string> data);
+	std::vector<std::string> push_presc(std::vector<std::string> data);
+	std::vector<std::string> push_tests(std::vector<std::string> data);
+	std::vector<std::string> admit_patient(std::vector<std::string> data);
+	std::vector<std::string> appointment_done(std::vector<std::string> data);
 	std::vector<std::string> get_patient_record(std::vector<std::string> data);
 
 public:

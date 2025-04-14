@@ -15,5 +15,10 @@ enum class FuncType {
 	get_appointment_data			= 8,
 	check_doctor_id					= 9,
 	get_appointment_patient_data	= 10,
-	get_patient_record				= 11
+	get_meeting_data                = 11,
+	push_presc                      = 12,
+	push_tests                      = 13,
+	admit_patient                   = 14,
+	appointment_done                = 15,
+	get_patient_record				= 16
 };

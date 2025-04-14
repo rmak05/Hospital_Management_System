@@ -122,21 +122,35 @@ public:
 	Patient_Appointment_Screen(int w_width, int w_height);
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Presc_Appointment_Screen : public Screen {
 public:
 	Presc_Appointment_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Tests_Appointment_Screen : public Screen {
 public:
 	Tests_Appointment_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Admit_Appointment_Screen : public Screen {
+private:
+	std::string patient_id;
+	std::string doctor_id;
+
 public:
 	Admit_Appointment_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Patient_Record_Screen : public Screen {

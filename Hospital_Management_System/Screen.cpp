@@ -88,7 +88,6 @@ std::vector<std::string> Screen::callBack(sf::Vector2f mouse_pos, MYSQLDatabase&
 				return { "-1" };
 			}
 			else if(dsize == 1 and data[0] == "0") {
-				//erase_form();
 				return { "0" };
 			}
 			else if(data[dsize-1] == "1") {

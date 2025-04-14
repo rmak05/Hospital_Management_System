@@ -84,20 +84,20 @@ void Appointment_Screen::scroll_entities(int delta) {
 		if ((curr_entity_index <= i) && (i <= curr_entity_index + 3)) {
 			float xcoord = entity_pos[i - curr_entity_index].x;
 			float ycoord = entity_pos[i - curr_entity_index].y;
-			all_entities[1 + (i - 1) * 6 + 1]->setPosition(sf::Vector2f(xcoord, ycoord));
-			all_entities[1 + (i - 1) * 6 + 2]->setPosition(sf::Vector2f(xcoord + 7, ycoord + 5));
-			all_entities[1 + (i - 1) * 6 + 3]->setPosition(sf::Vector2f(xcoord + 513, ycoord + 5));
-			all_entities[1 + (i - 1) * 6 + 4]->setPosition(sf::Vector2f(xcoord + 7, ycoord + 75));
-			all_entities[1 + (i - 1) * 6 + 5]->setPosition(sf::Vector2f(xcoord + 513, ycoord + 75));
+			all_entities[1 + (i - 1) * 5 + 1]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 2]->setPosition(sf::Vector2f(xcoord + 7, ycoord + 5));
+			all_entities[1 + (i - 1) * 5 + 3]->setPosition(sf::Vector2f(xcoord + 513, ycoord + 5));
+			all_entities[1 + (i - 1) * 5 + 4]->setPosition(sf::Vector2f(xcoord + 7, ycoord + 75));
+			all_entities[1 + (i - 1) * 5 + 5]->setPosition(sf::Vector2f(xcoord + 513, ycoord + 75));
 		}
 		else {
 			float xcoord = (-1000.0f);
 			float ycoord = (-1000.0f);
-			all_entities[1 + (i - 1) * 6 + 1]->setPosition(sf::Vector2f(xcoord, ycoord));
-			all_entities[1 + (i - 1) * 6 + 2]->setPosition(sf::Vector2f(xcoord, ycoord));
-			all_entities[1 + (i - 1) * 6 + 3]->setPosition(sf::Vector2f(xcoord, ycoord));
-			all_entities[1 + (i - 1) * 6 + 4]->setPosition(sf::Vector2f(xcoord, ycoord));
-			all_entities[1 + (i - 1) * 6 + 5]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 1]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 2]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 3]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 4]->setPosition(sf::Vector2f(xcoord, ycoord));
+			all_entities[1 + (i - 1) * 5 + 5]->setPosition(sf::Vector2f(xcoord, ycoord));
 		}
 	}
 
