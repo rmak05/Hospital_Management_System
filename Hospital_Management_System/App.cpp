@@ -51,8 +51,8 @@ void App::run() {
 	window_width	= desktop.width;
 	window_height	= desktop.height;
 
-	app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
-	//app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
+	//app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
+	app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
 	app_window.setFramerateLimit(fps);
 
 	initialise_scenes();

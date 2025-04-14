@@ -1,8 +1,10 @@
 #include "TextBox.h"
 
-TextBox::TextBox() : Entity(EntityType::text_box){}
+TextBox::TextBox() : Entity(EntityType::text_box){
+	isCentre = true;
+}
 
-TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_box) {
+TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre, bool textBold) : Entity(EntityType::text_box) {
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(outline_thickness);
@@ -10,6 +12,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 	box.setPosition(boxPos);
 	bounding_box_size = boxSize;
 	bounding_box_pos = boxPos;
+	isCentre = centre;
 
 	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
@@ -20,11 +23,11 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
-	text.setStyle(sf::Text::Bold);
+	if(textBold) text.setStyle(sf::Text::Bold);
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor) : Entity(EntityType::text_box) {
+TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre, bool textBold) : Entity(EntityType::text_box) {
 	box.setSize(boxSize);
 	box.setFillColor(bgColor);
 	box.setOutlineThickness(outline_thickness);
@@ -32,6 +35,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness,
 	box.setPosition(boxPos);
 	bounding_box_size = boundSize;
 	bounding_box_pos = boundPos;
+	isCentre = centre;
 
 	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
@@ -42,7 +46,7 @@ TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness,
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
-	text.setStyle(sf::Text::Bold);
+	if(textBold) text.setStyle(sf::Text::Bold);
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
@@ -86,7 +90,7 @@ void TextBox::setPosition(sf::Vector2f pos) {
 }
 
 void TextBox::setTextPosition(sf::Vector2f pos) {
-	float xPos = get_center_coord(pos.x + box.getPosition().x, box.getLocalBounds().width - 2 * box.getOutlineThickness(), text.getLocalBounds().width + 2 * text.getLocalBounds().left);
+	float xPos = isCentre ? (get_center_coord(box.getPosition().x, box.getLocalBounds().width - 2 * box.getOutlineThickness(), text.getLocalBounds().width + 2 * text.getLocalBounds().left)) : (box.getPosition().x + 10.0f);
 	float yPos = get_center_coord(pos.y + box.getPosition().y, box.getLocalBounds().height - 2 * box.getOutlineThickness(), text.getLocalBounds().height + 2 * text.getLocalBounds().top);
 
 	text.setPosition(xPos, yPos);

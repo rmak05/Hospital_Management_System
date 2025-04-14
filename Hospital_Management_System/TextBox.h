@@ -13,11 +13,12 @@ private:
 	sf::Text text;
 	sf::Vector2f bounding_box_pos;
 	sf::Vector2f bounding_box_size;
+	bool isCentre;
 
 public:
 	TextBox();
-	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
-	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor);
+	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre = true, bool textBold = true);
+	TextBox(std::string textVal, unsigned charSize,float outline_thickness, sf::Vector2f boxSize, sf::Vector2f boxPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, bool centre = true, bool textBold = true);
 
 	void setText(std::string textVal);
 	void setTextColor(sf::Color textColor);

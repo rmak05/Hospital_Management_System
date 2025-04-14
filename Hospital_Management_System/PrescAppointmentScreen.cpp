@@ -7,12 +7,13 @@ Presc_Appointment_Screen::Presc_Appointment_Screen(int w_width, int w_height) : 
 
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/prescription.png"), sf::Vector2f(1700.0f, 100.0f), sf::Vector2f(0.5f, 0.5f)));
 
-	add_entity(std::make_shared<TextBox>(std::string("Prescription Id"), 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 320.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Appointment Id"),  30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 320.0f), sf::Color::Black, darkBlue, sf::Color::Black));
 	add_entity(std::make_shared<TextBox>(std::string("Patient Id"),		 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 420.0f), sf::Color::Black, darkBlue, sf::Color::Black));
 	add_entity(std::make_shared<TextBox>(std::string("Doctor Id"),		 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(980.0f, 420.0f), sf::Color::Black, darkBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Medicines"),	     30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 520.0f), sf::Color::Black, darkBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Medicines"),		 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 620.0f), sf::Color::Black, darkBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string("Prescription"),    30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 720.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Disease"),	     30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 520.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Symptoms"),		 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 620.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Medicine"),		 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 720.0f), sf::Color::Black, darkBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string("Prescription"),	 30u, 0.0f, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(220.0f, 820.0f), sf::Color::Black, darkBlue, sf::Color::Black));
 
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35,  sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 320.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35,  sf::Vector2f(400.0f, 60.0f),   sf::Vector2f(520.0f, 420.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
@@ -20,6 +21,7 @@ Presc_Appointment_Screen::Presc_Appointment_Screen(int w_width, int w_height) : 
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 100, sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 520.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 100, sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 620.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 100, sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 720.0f),  sf::Color::Black, lightBlue, sf::Color::Black, false));
+	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 100, sf::Vector2f(1160.0f, 60.0f),  sf::Vector2f(520.0f, 820.0f), sf::Color::Black, lightBlue, sf::Color::Black, false));
 
-	add_entity(std::make_shared<Button>(std::string("Print"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(800.0f, 840.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_appointment));
+	add_entity(std::make_shared<Button>(std::string("Print"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(800.0f, 940.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_appointment));
 }

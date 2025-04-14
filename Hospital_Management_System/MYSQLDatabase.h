@@ -32,6 +32,7 @@ private:
 	std::vector<std::string> get_patient_med_data(std::vector<std::string> data);
 	std::vector<std::string> get_patient_tests(std::vector<std::string> data);
 	std::vector<std::string> get_test_data(std::vector<std::string> data);
+	std::vector<std::string> push_test_data(std::vector<std::string> data);
 	std::vector<std::string> get_appointment_data(std::vector<std::string> data);
 	std::vector<std::string> check_doctor_id(std::vector<std::string> data);
 	std::vector<std::string> get_appointment_patient_data(std::vector<std::string> data);

@@ -15,14 +15,14 @@ Patient_Home_Screen::Patient_Home_Screen(int w_width, int w_height) : Screen(Scr
 	add_entity(std::make_shared<TextBox>(std::string("Disease"),    30u, 0.0f, sf::Vector2f(260.0f, 60.0f),   sf::Vector2f(120.0f, 820.0f),	sf::Color::Black, darkBlue, sf::Color::White));
 	add_entity(std::make_shared<TextBox>(std::string("Room No."),   30u, 0.0f, sf::Vector2f(260.0f, 60.0f),   sf::Vector2f(120.0f, 920.0f),	sf::Color::Black, darkBlue, sf::Color::White));
 
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 320.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 420.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(320.0f, 520.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(820.0f, 520.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 620.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 720.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 820.0f), sf::Color::Black, lightBlue, sf::Color::Black));
-	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 920.0f), sf::Color::Black, lightBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 320.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 420.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(320.0f, 520.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(260.0f, 60.0f), sf::Vector2f(820.0f, 520.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 620.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 720.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 820.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(660.0f, 60.0f), sf::Vector2f(420.0f, 920.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
 
 	add_entity(std::make_shared<Button>(std::string("Admit"),				30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 300.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::_default));
 	add_entity(std::make_shared<Button>(std::string("Discharge"),		    30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 420.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::_default));

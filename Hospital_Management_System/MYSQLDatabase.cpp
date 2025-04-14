@@ -37,6 +37,9 @@ MYSQLDatabase::MYSQLDatabase() {
 		return this->get_test_data(data);
 	});
 	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->push_test_data(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_data(data);
 	});
 	all_functions.push_back([this](std::vector<std::string> data) {
@@ -86,6 +89,11 @@ std::vector<std::string> MYSQLDatabase::callFunction(FuncType _type, std::vector
 
 std::vector<std::string> MYSQLDatabase::register_patient(std::vector<std::string> data) {
 	try {
+		/* 
+		INSERT INTO patient VALUES
+		(1, 'Alice Smith', 30, 'F', 9876543210, '123 Park St, Cityville', 'alice@example.com'),
+		(2, 'Bob Johnson', 45, 'M', 9876543211, '456 Lake Rd, Townville', 'bob@example.com');
+		*/
 		std::string query, data_string;
 		query = std::string("INSERT INTO patient VALUES (") + data[0] + ", " + quote1(data[1]) + ", " + data[2] + ", " + quote1(data[3]) + ", " + data[4] + ", " + quote1(data[5]) + ", " + quote1(data[6]) + ");";
 		_statement->execute(query);
@@ -98,72 +106,9 @@ std::vector<std::string> MYSQLDatabase::register_patient(std::vector<std::string
 	std::vector<std::string> returnData = data;
 	if(!returnData.empty()) returnData.pop_back();
 	if(!returnData.empty()) returnData.pop_back();
-
-	try {
-		/*
-		SELECT name
-		FROM doctor
-		NATURAL JOIN
-		treated_by
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT name FROM doctor NATURAL JOIN treated_by WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT disease_name
-		FROM disease
-		NATURAL JOIN
-		has_disease
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT disease_name FROM disease NATURAL JOIN has_disease WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("disease_name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT room_id
-		FROM room
-		NATURAL JOIN
-		is_admitted
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT room_id FROM room NATURAL JOIN is_admitted WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("room_id"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
+	returnData.push_back("");
+	returnData.push_back("");
+	returnData.push_back("");
 
 	returnData.push_back("1");
 	return returnData;
@@ -171,6 +116,11 @@ std::vector<std::string> MYSQLDatabase::register_patient(std::vector<std::string
 
 std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> data) {
 	try {
+		/*
+		UPDATE patient
+		SET name = , age = , ..
+		WHERE patient_id = data[0];
+		*/
 		std::string query;
 		query = "UPDATE patient SET name = " + quote1(data[1]) + ", age = " + data[2] + ", gender = " + quote1(data[3]) + ", phone = " + data[4] + ", address = " + quote1(data[5]) + ", email = " + quote1(data[6]) + "WHERE patient_id = " + data[0] + ";";
 		_statement->execute(query);
@@ -186,64 +136,30 @@ std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> 
 
 	try {
 		/*
-		SELECT name
+		SELECT name, room_id, disease_name
 		FROM doctor
-		NATURAL JOIN
-		treated_by
-		WHERE patient_id = data[0];
+		INNER JOIN treated_by
+		ON doctor.doctor_id = treated_by.doctor_id
+		INNER JOIN is_admitted
+		ON treated_by.patient_id = is_admitted.patient_id
+		WHERE treated_by.patient_id = 1 and is_currently = 1 and is_admit = 1;
 		*/
+
 		std::string query;
-		query = "SELECT name FROM doctor NATURAL JOIN treated_by WHERE patient_id = " + data[0] + ";";
+		query = "SELECT name, room_id, disease_name FROM doctor INNER JOIN treated_by ON doctor.doctor_id = treated_by.doctor_id INNER JOIN is_admitted ON treated_by.patient_id = is_admitted.patient_id "
+			"WHERE treated_by.patient_id = " + data[0] + " and is_currently = 1 and is_admit = 1;";
+
 		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT disease_name
-		FROM disease
-		NATURAL JOIN
-		has_disease
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT disease_name FROM disease NATURAL JOIN has_disease WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("disease_name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT room_id
-		FROM room
-		NATURAL JOIN
-		is_admitted
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT room_id FROM room NATURAL JOIN is_admitted WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("room_id"));
-		else returnData.push_back("");
-
-		delete res;
+		if (res->next()) {
+			returnData.push_back(res->getString("name"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("disease_name"));
+		}
+		else {
+			returnData.push_back("");
+			returnData.push_back("");
+			returnData.push_back("");
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error : " << e.what() << std::endl;
@@ -256,7 +172,10 @@ std::vector<std::string> MYSQLDatabase::update_patient(std::vector<std::string> 
 
 std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string> data) {
 	try {
-		//std::cout << data[0] << "\n";
+		/*
+		SELECT * FROM patient 
+		WHERE patient_id = data[0];
+		*/
 		std::string selectDataSQL = "SELECT * FROM patient WHERE patient_id = " + data[0] + ";";
 		sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
 
@@ -270,7 +189,7 @@ std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string
 			returnData.push_back(res->getString("address"));
 			returnData.push_back(res->getString("email"));
 		}
-		//res->next();
+
 		if(returnData.size() == 0) return {"-1"};
 
 		delete res;
@@ -282,6 +201,7 @@ std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string
 		std::cerr << "SQL Error : " << e.what() << std::endl;
 		return { "-1" };
 	}
+
 	return { "-1" };
 }
 
@@ -308,64 +228,30 @@ std::vector<std::string> MYSQLDatabase::get_patient_med_data(std::vector<std::st
 
 	try {
 		/*
-		SELECT name
+		SELECT name, room_id, disease_name
 		FROM doctor
-		NATURAL JOIN
-		treated_by
-		WHERE patient_id = data[0];
+		INNER JOIN treated_by
+		ON doctor.doctor_id = treated_by.doctor_id
+		INNER JOIN is_admitted
+		ON treated_by.patient_id = is_admitted.patient_id
+		WHERE treated_by.patient_id = 1 and is_currently = 1 and is_admit = 1;
 		*/
+
 		std::string query;
-		query = "SELECT name FROM doctor NATURAL JOIN treated_by WHERE patient_id = " + data[0] + ";";
+		query = "SELECT name, room_id, disease_name FROM doctor INNER JOIN treated_by ON doctor.doctor_id = treated_by.doctor_id INNER JOIN is_admitted ON treated_by.patient_id = is_admitted.patient_id "
+			"WHERE treated_by.patient_id = " + data[0] + " and is_currently = 1 and is_admit = 1;";
+
 		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT disease_name
-		FROM disease
-		NATURAL JOIN
-		has_disease
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT disease_name FROM disease NATURAL JOIN has_disease WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("disease_name"));
-		else returnData.push_back("");
-
-		delete res;
-	}
-	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error : " << e.what() << std::endl;
-		return { "-1" };
-	}
-
-	try {
-		/*
-		SELECT room_id
-		FROM room
-		NATURAL JOIN
-		is_admitted
-		WHERE patient_id = data[0];
-		*/
-		std::string query;
-		query = "SELECT room_id FROM room NATURAL JOIN is_admitted WHERE patient_id = " + data[0] + ";";
-		sql::ResultSet* res = _statement->executeQuery(query);
-
-		if(res->next()) returnData.push_back(res->getString("room_id"));
-		else returnData.push_back("");
-
-		delete res;
+		if (res->next()) {
+			returnData.push_back(res->getString("name"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("disease_name"));
+		}
+		else {
+			returnData.push_back("");
+			returnData.push_back("");
+			returnData.push_back("");
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error : " << e.what() << std::endl;
@@ -382,10 +268,10 @@ std::vector<std::string> MYSQLDatabase::get_patient_tests(std::vector<std::strin
 		/*
 		SELECT test_id, doctor_id, date, time, room_id
 		FROM test
-		WHERE patient_id = data[0];
+		WHERE patient_id = data[0] and is_scheduled = 1 and is_pending = 1;
 		*/
 		std::string query;
-		query = "SELECT test_id, doctor_id, date, time, room_id FROM test WHERE patient_id = " + data[0] + ";";
+		query = "SELECT test_id, doctor_id, date, time, room_id FROM test WHERE patient_id = " + data[0] + " and is_scheduled = 1 and is_pending = 1;";
 		sql::ResultSet* res = _statement->executeQuery(query);
 
 		while (res->next()) {
@@ -428,7 +314,7 @@ std::vector<std::string> MYSQLDatabase::get_test_data(std::vector<std::string> d
 			returnData.push_back(res->getString("doctor_id"));
 			returnData.push_back(res->getString("room_id"));
 			returnData.push_back(res->getString("equipment_name"));
-			returnData.push_back("");
+			returnData.push_back(res->getString("test"));
 			returnData.push_back(res->getString("date"));
 			returnData.push_back(res->getString("time"));
 			returnData.push_back("");
@@ -445,6 +331,24 @@ std::vector<std::string> MYSQLDatabase::get_test_data(std::vector<std::string> d
 
 	returnData.push_back("1");
 	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::push_test_data(std::vector<std::string> data) {
+	try {
+		/*
+		UPDATE test 
+		SET results = data[1], is_pending = 0
+		WHERE test_id = data[0];
+		*/
+		std::string query;
+		query = "UPDATE test SET results = " + quote1(data[1]) + ", is_pending = 0 WHERE test_id = " + data[0] + ";";
+		_statement->execute(query);
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+	return { "0" };
 }
 
 std::vector<std::string> MYSQLDatabase::get_appointment_data(std::vector<std::string> data) {

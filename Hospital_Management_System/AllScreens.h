@@ -223,4 +223,5 @@ public:
 	Push_Test_Results_Screen(int w_width, int w_height);
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };

@@ -5,7 +5,8 @@ Register_Patient_Screen::Register_Patient_Screen(int w_width, int w_height) : Sc
 
 	add_entity(std::make_shared<TextBox>(std::string("Register Patient"), 50u, 0.0f, sf::Vector2f(1300.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
-	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35, sf::Vector2f(1000.0f, 70.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1000.0f), 280.0f), sf::Color::Black, lightBlue, sf::Color::Black, false));
+	add_entity(std::make_shared<TextBox>(std::string(""), 30u, OutlineThickness, sf::Vector2f(1000.0f, 70.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1000.0f), 280.0f), sf::Color::Black, lightBlue, sf::Color::Black, false, false));
+	
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35, sf::Vector2f(1000.0f, 70.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1000.0f), 390.0f), sf::Color::Black, lightBlue, sf::Color::Black, false));
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35, sf::Vector2f(290.0f, 70.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1000.0f), 500.0f), sf::Color::Black, lightBlue, sf::Color::Black, false));
 	add_entity(std::make_shared<TextInput>(30u, OutlineThickness, 35, sf::Vector2f(290.0f, 70.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1000.0f) + 710.0f, 500.0f), sf::Color::Black, lightBlue, sf::Color::Black, false));
@@ -29,10 +30,8 @@ Register_Patient_Screen::Register_Patient_Screen(int w_width, int w_height) : Sc
 std::vector<std::string> Register_Patient_Screen::extract_form(sf::Vector2f mouse_pos) {
 	std::vector<std::string> form_details;
 
-	for (entity_ptr& _entity : all_entities) {
-		if (_entity->type == EntityType::text_input) {
-			form_details.push_back(_entity->getText());
-		}
+	for (int i = 2; i <= 8; i++) {
+		form_details.push_back(all_entities[i]->getText());
 	}
 
 	return form_details;
