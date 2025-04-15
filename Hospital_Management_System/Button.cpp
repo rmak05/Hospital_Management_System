@@ -108,6 +108,8 @@ bool Button::isMouseHover(sf::RenderWindow& window) {
 	int mouseX = sf::Mouse::getPosition(window).x;
 	int mouseY = sf::Mouse::getPosition(window).y;
 
+	return isMouseHover(sf::Vector2f((float)mouseX, (float)mouseY));
+
 	float btnPosX = button.getPosition().x;
 	float btnPosY = button.getPosition().y;
 

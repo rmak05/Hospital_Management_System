@@ -66,6 +66,18 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_record(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_test_history(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_complete_test_data(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_appointment_history(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_presc_data(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -593,6 +605,144 @@ std::vector<std::string> MYSQLDatabase::get_patient_record(std::vector<std::stri
 		std::cerr << "SQL Error : " << e.what() << std::endl;
 		return { "-1" };
 	}
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_test_history(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT test_id, test, room_id, date, time
+		FROM test
+		WHERE patient_id = data[0] AND is_pending = 0;
+		*/
+		std::string query;
+		query = "SELECT test_id, test, room_id, date, time FROM test WHERE patient_id = " + data[0] + " AND is_pending = 0;";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("test_id"));
+			returnData.push_back(res->getString("test"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	//if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_complete_test_data(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT *
+		FROM test
+		WHERE test_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT * FROM test WHERE test_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		if (res->next()) {
+			returnData.push_back(res->getString("test_id"));
+			returnData.push_back(res->getString("test"));
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("equipment_name"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back(res->getString("results"));
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_appointment_history(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT appointment_id, date, time
+		FROM appointment
+		WHERE patient_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT appointment_id, date, time FROM appointment WHERE patient_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("appointment_id"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_presc_data(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT *
+		FROM prescription
+		NATURAL JOIN appointment
+		WHERE appointment_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT * FROM prescription NATURAL JOIN appointment WHERE appointment_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		if (res->next()) {
+			returnData.push_back("");
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("date"));
+			returnData.push_back(res->getString("time"));
+			returnData.push_back(res->getString("presc"));
+			returnData.push_back(res->getString("medicine_name"));
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
 
 	returnData.push_back("1");
 	return returnData;

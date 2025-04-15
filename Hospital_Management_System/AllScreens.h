@@ -175,16 +175,37 @@ private:
 public:
 	Patient_Details_Home_Screen(int w_width, int w_height);
 	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Test_History_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+
 public:
 	Test_History_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };
 
 class Appointment_History_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+
 public:
 	Appointment_History_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };
 
 class Patient_Details_Screen : public Screen {
@@ -195,11 +216,15 @@ public:
 class Test_Results_Screen : public Screen {
 public:
 	Test_Results_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
 };
 
 class Presc_Given_Screen : public Screen {
 public:
 	Presc_Given_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
 };
 
 class My_Information_Screen : public Screen {
