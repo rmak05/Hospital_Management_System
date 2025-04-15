@@ -218,6 +218,8 @@ public:
 class Patient_Details_Screen : public Screen {
 public:
 	Patient_Details_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
 };
 
 class Test_Results_Screen : public Screen {
@@ -237,6 +239,8 @@ public:
 class My_Information_Screen : public Screen {
 public:
 	My_Information_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
 };
 
 class Data_Entry_Login_Screen : public Screen {

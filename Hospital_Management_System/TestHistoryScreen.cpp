@@ -45,11 +45,11 @@ void Test_History_Screen::fill_form(std::vector<std::string>& data) {
 
 		add_entity(std::make_shared<Button>(std::string(""), 30u, 8.0f, sf::Vector2f(1020.0f, 145.0f), sf::Vector2f(xcoord, ycoord), sf::Color::Black, lightBlueConst, lightGrey, ScreenId::test_results, FuncType::get_complete_test_data));
 
-		add_entity(std::make_shared<TextBox>(std::string("Test ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite));
-		add_entity(std::make_shared<TextBox>(std::string("Test Details : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite));
-		add_entity(std::make_shared<TextBox>(std::string("Room ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite));
-		add_entity(std::make_shared<TextBox>(std::string("Date : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 343, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite));
-		add_entity(std::make_shared<TextBox>(std::string("Time : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 679, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite));
+		add_entity(std::make_shared<TextBox>(std::string("Test ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Test Details : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Room ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Date : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 343, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Time : ") + data[i++], 30u, 0.0f, sf::Vector2f(334.0f, 65.0f), sf::Vector2f(xcoord + 679, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
 
 		ycoord += 145 + 60;
 	}

@@ -13,7 +13,6 @@
 class MYSQLDatabase;
 
 class MYSQLDatabase {
-
 private:
 	sql::mysql::MySQL_Driver *_driver;
 	sql::Connection *_connection;
@@ -48,6 +47,8 @@ private:
 	std::vector<std::string> get_appointment_history(std::vector<std::string> data);
 	std::vector<std::string> get_presc_data(std::vector<std::string> data);
 	std::vector<std::string> get_patient_information(std::vector<std::string> data);
+	std::vector<std::string> get_doctor_data(std::vector<std::string> data);
+
 public:
 	MYSQLDatabase();
 	~MYSQLDatabase();

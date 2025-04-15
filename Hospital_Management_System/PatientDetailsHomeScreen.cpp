@@ -6,7 +6,7 @@ Patient_Details_Home_Screen::Patient_Details_Home_Screen(int w_width, int w_heig
 
 	add_entity(std::make_shared<TextBox>(std::string("Patient Details"), 50u, 0.0f, sf::Vector2f(1300.0f, 100.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f), 100.0f), sf::Color::White, darkYellow, sf::Color::White));
 
-	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(400.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::patient_details));
+	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(400.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f), 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::patient_details, FuncType::get_patient_information));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(400.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 550.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::test_history, FuncType::get_test_history));
 	add_entity(std::make_shared<Button>(std::string(""), 50u, OutlineThickness, sf::Vector2f(400.0f, 500.0f), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1500.0f) + 1100.0f, 400.0f), sf::Color::White, bgBlue, sf::Color::Black, ScreenId::appointment_history, FuncType::get_appointment_history));
 
