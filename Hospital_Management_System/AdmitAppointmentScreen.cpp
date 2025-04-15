@@ -12,7 +12,6 @@ Admit_Appointment_Screen::Admit_Appointment_Screen(int w_width, int w_height) : 
 	add_entity(std::make_shared<Button>(std::string("Send"), 30u, OutlineThickness, sf::Vector2f(200.0f, 80.0f), sf::Vector2f(get_center_coord(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f) + 150.0f, 700.0f, 200.0f), 700.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_appointment, FuncType::admit_patient));
 
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/patientLogin.png"), sf::Vector2f(get_center_coord(LEFT_MARGIN, (w_width - 2 * LEFT_MARGIN) * 1.0f, 1300.0f) + 900.0f, 400.0f), sf::Vector2f(0.2f, 0.2f)));
-
 }
 
 void Admit_Appointment_Screen::fill_form(std::vector<std::string>& data) {

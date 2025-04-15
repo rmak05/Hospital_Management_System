@@ -47,7 +47,7 @@ private:
 	std::vector<std::string> get_complete_test_data(std::vector<std::string> data);
 	std::vector<std::string> get_appointment_history(std::vector<std::string> data);
 	std::vector<std::string> get_presc_data(std::vector<std::string> data);
-
+	std::vector<std::string> get_patient_information(std::vector<std::string> data);
 public:
 	MYSQLDatabase();
 	~MYSQLDatabase();

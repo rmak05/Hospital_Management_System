@@ -68,16 +68,19 @@ MYSQLDatabase::MYSQLDatabase() {
 	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_test_history(data);
-	});
+		});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_complete_test_data(data);
-	});
+		});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_history(data);
-	});
+		});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_presc_data(data);
-	});
+		});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_patient_information(data);
+		});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -743,6 +746,71 @@ std::vector<std::string> MYSQLDatabase::get_presc_data(std::vector<std::string> 
 	}
 
 	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_patient_information(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT * FROM patient
+		WHERE patient_id = data[0];
+		*/
+		std::string selectDataSQL = "SELECT * FROM patient WHERE patient_id = " + data[0] + ";";
+		sql::ResultSet* res = _statement->executeQuery(selectDataSQL);
+
+		if (res->next()) {
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("name"));
+			returnData.push_back(res->getString("age"));
+			returnData.push_back(res->getString("gender"));
+			returnData.push_back(res->getString("phone"));
+			returnData.push_back(res->getString("address"));
+			returnData.push_back(res->getString("email"));
+		}
+
+		if (returnData.size() == 0) return { "-1" };
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	try {
+		/*
+		SELECT doctor_id, room_id, disease_name
+		FROM doctor
+		INNER JOIN treated_by
+		ON doctor.doctor_id = treated_by.doctor_id
+		INNER JOIN is_admitted
+		ON treated_by.patient_id = is_admitted.patient_id
+		WHERE treated_by.patient_id = 1 AND is_currently = 1 AND is_admit = 1 AND is_scheduled = 1;
+		*/
+
+		std::string query;
+		query = "SELECT doctor.doctor_id, room_id, disease_name FROM doctor INNER JOIN treated_by ON doctor.doctor_id = treated_by.doctor_id INNER JOIN is_admitted ON treated_by.patient_id = is_admitted.patient_id "
+			"WHERE treated_by.patient_id = " + data[0] + " AND is_currently = 1 AND is_admit = 1 AND is_scheduled = 1;";
+
+		sql::ResultSet* res = _statement->executeQuery(query);
+		if (res->next()) {
+			returnData.push_back(std::to_string(res->getInt("doctor_id")));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("disease_name"));
+		}
+		else {
+			returnData.push_back("");
+			returnData.push_back("");
+			returnData.push_back("");
+		}
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
 
 	returnData.push_back("1");
 	return returnData;

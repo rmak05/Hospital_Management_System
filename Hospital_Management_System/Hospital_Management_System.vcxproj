@@ -134,6 +134,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AdmitAppointmentScreen.cpp" />
+    <ClCompile Include="AdmitHistoryScreen.cpp" />
+    <ClCompile Include="AdmitScreen.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AppointmentHistoryScreen.cpp" />
     <ClCompile Include="AppointmentScreen.cpp" />
@@ -143,6 +145,7 @@
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
+    <ClCompile Include="DischargeScreen.cpp" />
     <ClCompile Include="DoctorHomeScreen.cpp" />
     <ClCompile Include="DoctorLoginScreen.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -157,12 +160,15 @@
     <ClCompile Include="PatientDetailsHomeScreen.cpp" />
     <ClCompile Include="PatientDetailsScreen.cpp" />
     <ClCompile Include="PatientHomeScreen.cpp" />
+    <ClCompile Include="PatientInformationScreen.cpp" />
     <ClCompile Include="PatientRecordScreen.cpp" />
     <ClCompile Include="PendingTestsScreen.cpp" />
     <ClCompile Include="PrescAppointmentScreen.cpp" />
     <ClCompile Include="PrescGivenScreen.cpp" />
     <ClCompile Include="PushTestResultsScreen.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
+    <ClCompile Include="ScheduleAppointmentScreen.cpp" />
+    <ClCompile Include="ScheduleTestsScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="TestHistoryScreen.cpp" />
     <ClCompile Include="TestResultsScreen.cpp" />

@@ -24,5 +24,6 @@ enum class FuncType {
 	get_test_history				= 17,
 	get_complete_test_data			= 18,
 	get_appointment_history			= 19,
-	get_presc_data					= 20
+	get_presc_data					= 20,
+	get_patient_information         = 21
 };
