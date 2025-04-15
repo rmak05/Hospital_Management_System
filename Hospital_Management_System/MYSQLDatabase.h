@@ -43,6 +43,7 @@ private:
 	std::vector<std::string> admit_patient(std::vector<std::string> data);
 	std::vector<std::string> appointment_done(std::vector<std::string> data);
 	std::vector<std::string> get_patient_record(std::vector<std::string> data);
+	std::vector<std::string> get_patient_information(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();

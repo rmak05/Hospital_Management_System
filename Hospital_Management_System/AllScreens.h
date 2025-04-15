@@ -29,6 +29,12 @@ class Data_Entry_Login_Screen;
 class Data_Entry_Login_Patient_Screen;
 class Pending_Tests_Screen;
 class Push_Test_Results_Screen;
+class Patient_Information_Screen;
+class Admit_Screen;
+class Discharge_Screen;
+class Schedule_Appointment_Screen;
+class Schedule_Tests_Screen;
+class Admit_History_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -74,6 +80,7 @@ public:
 	Patient_Home_Screen(int w_width, int w_height);
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Update_Login_Patient_Screen : public Screen {
@@ -238,4 +245,36 @@ public:
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
 	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Patient_Information_Screen : public Screen {
+public:
+	Patient_Information_Screen(int w_width, int w_height);
+	void fill_form(std::vector<std::string>& data);
+	void erase_form();
+};
+
+class Admit_Screen : public Screen {
+public:
+	Admit_Screen(int w_width, int w_height);
+};
+
+class Discharge_Screen : public Screen {
+public:
+	Discharge_Screen(int w_width, int w_height);
+};
+
+class Schedule_Appointment_Screen : public Screen {
+public:
+	Schedule_Appointment_Screen(int w_width, int w_height);
+};
+
+class Schedule_Tests_Screen : public Screen {
+public:
+	Schedule_Tests_Screen(int w_width, int w_height);
+};
+
+class Admit_History_Screen : public Screen {
+public:
+	Admit_History_Screen(int w_width, int w_height);
 };

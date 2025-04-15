@@ -20,5 +20,6 @@ enum class FuncType {
 	push_tests                      = 13,
 	admit_patient                   = 14,
 	appointment_done                = 15,
-	get_patient_record				= 16
+	get_patient_record				= 16,
+	get_patient_information         = 17
 };
