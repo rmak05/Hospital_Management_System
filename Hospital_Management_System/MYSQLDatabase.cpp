@@ -703,6 +703,7 @@ std::vector<std::string> MYSQLDatabase::get_appointment_history(std::vector<std:
 			returnData.push_back(res->getString("appointment_id"));
 			returnData.push_back(res->getString("date"));
 			returnData.push_back(res->getString("time"));
+			returnData.push_back("#");
 		}
 
 		delete res;
