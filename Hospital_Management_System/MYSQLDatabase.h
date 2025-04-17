@@ -4,6 +4,10 @@
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
 #include <iostream>
+#include <chrono>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
 #include <mysql_connection.h>
 #include <mysql_driver.h>
 #include <vector>
@@ -48,6 +52,12 @@ private:
 	std::vector<std::string> get_presc_data(std::vector<std::string> data);
 	std::vector<std::string> get_patient_information(std::vector<std::string> data);
 	std::vector<std::string> get_doctor_data(std::vector<std::string> data);
+	std::vector<std::string> get_admit_request(std::vector<std::string> data);
+	std::vector<std::string> get_room_data(std::vector<std::string> data);
+	std::vector<std::string> get_room_patient_id(std::vector<std::string> data);
+	std::vector<std::string> frontdesk_admit_patient(std::vector<std::string> data);
+	std::vector<std::string> get_discharge_details(std::vector<std::string> data);
+	std::vector<std::string> frontdesk_discharge_patient(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();

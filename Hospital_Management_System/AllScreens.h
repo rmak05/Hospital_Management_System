@@ -35,6 +35,8 @@ class Discharge_Screen;
 class Schedule_Appointment_Screen;
 class Schedule_Tests_Screen;
 class Admit_History_Screen;
+class Choose_Room_Screen;
+class FrontDesk_Admit_Patient_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -284,13 +286,27 @@ public:
 };
 
 class Admit_Screen : public Screen {
+private:
+	std::string patient_id;
+
 public:
 	Admit_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Discharge_Screen : public Screen {
+private:
+	std::string patient_id;
+	std::string doctor_id;
+	std::string room_id;
+
 public:
 	Discharge_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };
 
 class Schedule_Appointment_Screen : public Screen {
@@ -306,4 +322,27 @@ public:
 class Admit_History_Screen : public Screen {
 public:
 	Admit_History_Screen(int w_width, int w_height);
+};
+
+class Choose_Room_Screen : public Screen {
+private:
+	std::string patient_id;
+
+public:
+	Choose_Room_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class FrontDesk_Admit_Patient_Screen : public Screen {
+private:
+	std::string patient_id;
+	std::string room_id;
+
+public:
+	FrontDesk_Admit_Patient_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };

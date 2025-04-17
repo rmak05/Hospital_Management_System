@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <iostream>
 #include "enumEntityType.h"
 #include "enumScreenId.h"
 #include "enumFuncType.h"
@@ -30,6 +31,8 @@ public:
 	virtual FuncType get_func_type();
 	virtual void setText(std::string textVal);
 	virtual void setPosition(sf::Vector2f pos);
+	virtual void setBackgroundColor(sf::Color bgColor);
+	virtual void setDoNothing(bool _do_nothing);
 
 protected:
 	float get_center_coord(float div_x, float div_size, float box_size);

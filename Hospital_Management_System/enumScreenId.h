@@ -36,5 +36,7 @@ enum class ScreenId {
 	discharge               = 29,
 	schedule_appointment    = 30,
 	schedule_tests          = 31,
-	admit_history           = 32
+	admit_history           = 32,
+	choose_room             = 33,
+	frontdesk_admit_patient = 34
 };
