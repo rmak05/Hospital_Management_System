@@ -48,6 +48,7 @@ private:
 	std::vector<std::string> get_presc_data(std::vector<std::string> data);
 	std::vector<std::string> get_patient_information(std::vector<std::string> data);
 	std::vector<std::string> get_doctor_data(std::vector<std::string> data);
+	std::vector<std::string> get_admit_history(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();

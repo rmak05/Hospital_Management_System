@@ -304,6 +304,15 @@ public:
 };
 
 class Admit_History_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+
 public:
 	Admit_History_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };

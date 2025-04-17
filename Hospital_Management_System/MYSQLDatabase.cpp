@@ -84,6 +84,9 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_doctor_data(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_admit_history(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -713,7 +716,7 @@ std::vector<std::string> MYSQLDatabase::get_appointment_history(std::vector<std:
 		return { "-1" };
 	}
 
-	if(returnData.empty()) return {"-1"};
+	//if(returnData.empty()) return {"-1"};
 
 	returnData.push_back("1");
 	return returnData;
@@ -855,6 +858,40 @@ std::vector<std::string> MYSQLDatabase::get_doctor_data(std::vector<std::string>
 	}
 
 	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_admit_history(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT *
+		FROM is_admitted
+		WHERE patient_id = data[0] AND is_scheduled = 1 AND is_admit = 0;
+		*/
+		std::string query;
+		query = "SELECT * FROM is_admitted WHERE patient_id = " + data[0] + " AND is_scheduled = 1 AND is_admit = 0;";
+		sql::ResultSet* res = _statement->executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back(res->getString("admit_date"));
+			returnData.push_back(res->getString("admit_time"));
+			returnData.push_back(res->getString("discharge_date"));
+			returnData.push_back(res->getString("discharge_time"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	//if(returnData.empty()) return {"-1"};
 
 	returnData.push_back("1");
 	return returnData;
