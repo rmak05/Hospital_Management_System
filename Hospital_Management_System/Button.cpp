@@ -3,11 +3,13 @@
 Button::Button() : Entity(EntityType::button) {
 	next_screen = ScreenId::_default;
 	func_type = FuncType::_default;
+	do_nothing = true;
 }
 
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type) : Entity(EntityType::button) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type, bool _do_nothing) : Entity(EntityType::button) {
 	next_screen = _next_scene;
 	func_type = _type;
+	do_nothing = _do_nothing;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -34,9 +36,10 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	setTextPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
-Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type) : Entity(EntityType::button) {
+Button::Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type, bool _do_nothing) : Entity(EntityType::button) {
 	next_screen = _next_scene;
 	func_type = _type;
+	do_nothing = _do_nothing;
 
 	button.setSize(buttonSize);
 	button.setFillColor(bgColor);
@@ -88,7 +91,8 @@ void Button::setButtonSize(sf::Vector2f buttonSize) {
 }
 
 void Button::setBackgroundColor(sf::Color bgColor) {
-	button.setFillColor(bgColor);
+	not_hover_color = bgColor;
+	hover_color = get_comp_color(bgColor);
 }
 
 void Button::setPosition(sf::Vector2f pos) {
@@ -138,6 +142,7 @@ void Button::drawTo(sf::RenderWindow& window) {
 }
 
 ScreenId Button::get_next_screen() {
+	if (do_nothing) return ScreenId::_default;
 	return next_screen;
 }
 
@@ -152,9 +157,15 @@ void Button::perform_hover_action() {
 }
 
 FuncType Button::get_func_type() {
+	if (do_nothing) return FuncType::_default;
 	return func_type;
 }
 
 std::string Button::getText() {
 	return text.getString();
 }
+
+void Button::setDoNothing(bool _do_nothing) {
+	do_nothing = _do_nothing;
+}
+

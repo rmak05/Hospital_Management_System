@@ -46,6 +46,8 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Schedule_Appointment_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Schedule_Tests_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Admit_History_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Choose_Room_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<FrontDesk_Admit_Patient_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }

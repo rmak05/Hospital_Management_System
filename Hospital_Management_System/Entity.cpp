@@ -69,3 +69,7 @@ FuncType Entity::get_func_type() {
 void Entity::setText(std::string textVal){}
 
 void Entity::setPosition(sf::Vector2f pos){}
+
+void Entity::setBackgroundColor(sf::Color bgColor){}
+
+void Entity::setDoNothing(bool do_nothing) {}

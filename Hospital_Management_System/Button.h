@@ -21,11 +21,12 @@ private:
 	sf::Color hover_color;
 	sf::Color not_hover_outline_color;
 	sf::Color hover_outline_color;
+	bool do_nothing;
 
 public:
 	Button();
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default);
-	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default, bool do_nothing = false);
+	Button(std::string textVal, unsigned charSize, float outline_thickness, sf::Vector2f buttonSize, sf::Vector2f buttonPos, sf::Vector2f boundSize, sf::Vector2f boundPos, sf::Color textColor, sf::Color bgColor, sf::Color outlineColor, ScreenId _next_scene, FuncType _type = FuncType::_default, bool do_nothing = false);
 
 	void setTextVal(sf::String textVal);
 	void setTextColor(sf::Color textColor);
@@ -43,4 +44,5 @@ public:
 	void perform_hover_action();
 	FuncType get_func_type();
 	std::string getText();
+	void setDoNothing(bool _do_nothing);
 };
