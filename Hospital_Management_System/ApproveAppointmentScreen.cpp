@@ -13,7 +13,7 @@ void Approve_Appointment_Screen::fill_form(std::vector<std::string>& data) {
 	_time = data[3];
 	room_id = data[4];
 
-	add_entity(std::make_shared<TextBox>("Schedule Appointment on : " + _date + " ," + _time, 30u, OutlineThickness, sf::Vector2f(1000.0f, 80.0f), sf::Vector2f(300.0f, 400.0f), sf::Color::Black, lightBlue, sf::Color::Black));
+	add_entity(std::make_shared<TextBox>("Schedule Appointment on : " + _date + " , " + _time, 30u, OutlineThickness, sf::Vector2f(1000.0f, 80.0f), sf::Vector2f(300.0f, 400.0f), sf::Color::Black, lightBlue, sf::Color::Black));
 	add_entity(std::make_shared<Button>(std::string("Confirm"), 30u, OutlineThickness, sf::Vector2f(300.0f, 80.0f), sf::Vector2f(600.0f, 520.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_home, FuncType::add_appointment));
 	add_entity(std::make_shared<ImageBox>(std::string("./Images/patientLogin.png"), sf::Vector2f(1350.0f, 400.0f), sf::Vector2f(0.2f, 0.2f)));
 }

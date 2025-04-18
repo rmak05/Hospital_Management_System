@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include <functional>
+#include <fstream>
 #include "enumFuncType.h"
 
 class MYSQLDatabase;
@@ -19,6 +20,11 @@ private:
 	sql::Statement *_statement;
 
 	std::vector<std::function<std::vector<std::string>(std::vector<std::string>)>> all_functions;
+
+	std::ofstream query_file;
+
+	bool execute(std::string query);
+	sql::ResultSet* executeQuery(std::string query);
 
 	std::string quote1(std::string str);
 	std::string quote2(std::string str);
