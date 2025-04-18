@@ -1,4 +1,5 @@
 #include "TextInput.h"
+#include "Theme.h"
 
 TextInput::TextInput() : Entity(EntityType::text_input) {
 	isSelected = false;
@@ -23,12 +24,12 @@ TextInput::TextInput(unsigned charSize, float outline_thickness, int _limit, sf:
 	not_hover_outline_color = outlineColor;
 	hover_outline_color = get_comp_color(outlineColor);
 
-	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
+	/*if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
+	}*/
 
-	textbox.setFont(font);
+	textbox.setFont(global_font);
 	textbox.setFillColor(textColor);
 	textbox.setCharacterSize(charSize);
 	textbox.setPosition(boxPos);
@@ -98,11 +99,11 @@ void TextInput::setOutlineColor(sf::Color color) {
 }
 
 void TextInput::setFont(std::string file) {
-	if (!font.loadFromFile(file)) {
+	/*if (!font.loadFromFile(file)) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
-	textbox.setFont(font);
+	}*/
+	textbox.setFont(global_font);
 }
 
 void TextInput::setPosition(sf::Vector2f pos) {

@@ -55,6 +55,16 @@ private:
 	std::vector<std::string> get_discharge_details(std::vector<std::string> data);
 	std::vector<std::string> frontdesk_discharge_patient(std::vector<std::string> data);
 	std::vector<std::string> get_admit_history(std::vector<std::string> data);
+	std::vector<std::string> get_doctor_speciality(std::vector<std::string> data);
+	int get_hour(std::string& _time);
+	std::vector<std::string> get_appointment_slots(std::vector<std::string> data);
+	std::vector<std::string> confirm_appointment(std::vector<std::string> data);
+	std::string generate_appointment_id();
+	std::vector<std::string> add_appointment(std::vector<std::string> data);
+	std::vector<std::string> get_schedule_test(std::vector<std::string> data);
+	std::vector<std::string> get_test_slots(std::vector<std::string> data);
+	std::vector<std::string> confirm_test(std::vector<std::string> data);
+	std::vector<std::string> add_test(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();

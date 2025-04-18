@@ -1,7 +1,6 @@
 #include "ImageBox.h"
 
 ImageBox::ImageBox() : Entity(EntityType::image_box) {
-	
 	if (!texture.loadFromFile("./Images/demo.png")) {
 		std::cout << "Error occured while loading file\n";
 		return;
@@ -11,7 +10,6 @@ ImageBox::ImageBox() : Entity(EntityType::image_box) {
 }
 
 ImageBox::ImageBox(std::string imageFile, sf::Vector2f pos, sf::Vector2f factor) : Entity(EntityType::image_box) {
-	
 	if (!texture.loadFromFile(imageFile)) {
 		std::cout << "Error occured while loading file\n";
 		return;

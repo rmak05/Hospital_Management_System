@@ -3,6 +3,7 @@
 enum class ScreenId;
 
 enum class ScreenId {
+	_exit					= (-2),
 	_default				= (-1),
 	home					= 0,
 	frontdesk_login			= 1,
@@ -38,5 +39,11 @@ enum class ScreenId {
 	schedule_tests          = 31,
 	admit_history           = 32,
 	choose_room             = 33,
-	frontdesk_admit_patient = 34
+	frontdesk_admit_patient	= 34,
+	admin_login				= 35,
+	admin_home				= 36,
+	appointment_slots		= 37,
+	approve_appointment		= 38,
+	test_slots				= 39,
+	approve_test			= 40
 };

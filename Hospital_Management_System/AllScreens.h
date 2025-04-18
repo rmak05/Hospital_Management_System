@@ -37,6 +37,12 @@ class Schedule_Tests_Screen;
 class Admit_History_Screen;
 class Choose_Room_Screen;
 class FrontDesk_Admit_Patient_Screen;
+class Admin_Login_Screen;
+class Admin_Home_Screen;
+class Appointment_Slots_Screen;
+class Approve_Appointment_Screen;
+class Test_Slots_Screen;
+class Approve_Test_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -310,13 +316,34 @@ public:
 };
 
 class Schedule_Appointment_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+	std::string patient_id;
+
 public:
 	Schedule_Appointment_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };
 
 class Schedule_Tests_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+
 public:
 	Schedule_Tests_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 };
 
 class Admit_History_Screen : public Screen {
@@ -351,6 +378,77 @@ private:
 
 public:
 	FrontDesk_Admit_Patient_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Admin_Login_Screen : public Screen {
+public:
+	Admin_Login_Screen(int w_width, int w_height);
+};
+
+class Admin_Home_Screen : public Screen {
+public:
+	Admin_Home_Screen(int w_width, int w_height);
+};
+
+class Appointment_Slots_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+	std::string doctor_id;
+	std::string patient_id;
+
+public:
+	Appointment_Slots_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Approve_Appointment_Screen : public Screen {
+private:
+	std::string doctor_id;
+	std::string patient_id;
+	std::string room_id;
+	std::string _date;
+	std::string _time;
+
+public:
+	Approve_Appointment_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Test_Slots_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+	std::string test_id;
+
+public:
+	Test_Slots_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Approve_Test_Screen : public Screen {
+private:
+	std::string test_id;
+	std::string _date;
+	std::string _time;
+
+public:
+	Approve_Test_Screen(int w_width, int w_height);
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
 	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);

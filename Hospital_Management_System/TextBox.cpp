@@ -1,4 +1,5 @@
 #include "TextBox.h"
+#include "Theme.h"
 
 TextBox::TextBox() : Entity(EntityType::text_box){
 	isCentre = true;
@@ -14,12 +15,12 @@ TextBox::TextBox(std::string textVal, unsigned charSize, float outline_thickness
 	bounding_box_pos = boxPos;
 	isCentre = centre;
 
-	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
+	/*if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
+	}*/
 
-	text.setFont(font);
+	text.setFont(global_font);
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
@@ -37,12 +38,12 @@ TextBox::TextBox(std::string textVal, unsigned charSize,float outline_thickness,
 	bounding_box_pos = boundPos;
 	isCentre = centre;
 
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+	/*if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
+	}*/
 
-	text.setFont(font);
+	text.setFont(global_font);
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
@@ -65,11 +66,11 @@ void TextBox::setTextSize(int charSize) {
 
 
 void TextBox::setFont(std::string file) {
-	if (!font.loadFromFile(file)) {
+	/*if (!font.loadFromFile(file)) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
-	text.setFont(font);
+	}*/
+	text.setFont(global_font);
 }
 
 void TextBox::setBoxSize(sf::Vector2f size) {

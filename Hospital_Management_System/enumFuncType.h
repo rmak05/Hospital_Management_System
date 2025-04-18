@@ -33,5 +33,13 @@ enum class FuncType {
 	frontdesk_admit_patient			= 26,
 	get_discharge_details			= 27,
 	frontdesk_discharge_patient     = 28,
-	get_admit_history				= 29
+	get_admit_history				= 29,
+	get_doctor_speciality			= 30,
+	get_appointment_slots			= 31,
+	confirm_appointment				= 32,
+	add_appointment					= 33,
+	get_schedule_test				= 34,
+	get_test_slots					= 35,
+	confirm_test					= 36,
+	add_test						= 37
 };
