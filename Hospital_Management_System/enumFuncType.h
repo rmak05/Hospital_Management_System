@@ -41,5 +41,11 @@ enum class FuncType {
 	get_schedule_test				= 34,
 	get_test_slots					= 35,
 	confirm_test					= 36,
-	add_test						= 37
+	add_test						= 37,
+	get_doctor_id					= 38,
+	add_doctor						= 39,
+	delete_doctor					= 40,
+	get_doctor_details				= 41,
+	update_doctor					= 42,
+	view_doctor						= 43
 };

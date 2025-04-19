@@ -23,118 +23,136 @@ MYSQLDatabase::MYSQLDatabase() {
 
 	all_functions.push_back([this](std::vector<std::string> data) { 
 		return this->register_patient(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->update_patient(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->generate_patient_id(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_med_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_tests(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_test_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->push_test_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->check_doctor_id(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_patient_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_meeting_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->push_presc(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->push_tests(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->admit_patient(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->appointment_done(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_record(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_test_history(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_complete_test_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_history(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_presc_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_patient_information(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_doctor_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_admit_request(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_room_data(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_room_patient_id(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->frontdesk_admit_patient(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_discharge_details(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->frontdesk_discharge_patient(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_admit_history(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_doctor_speciality(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_appointment_slots(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->confirm_appointment(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->add_appointment(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_schedule_test(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->get_test_slots(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->confirm_test(data);
-		});
+	});
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->add_test(data);
-		});
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_doctor_id(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->add_doctor(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->delete_doctor(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->get_doctor_details(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->update_doctor(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->view_doctor(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -1488,5 +1506,155 @@ std::vector<std::string> MYSQLDatabase::add_test(std::vector<std::string> data) 
 	}
 
 	returnData.push_back("0");
+	return returnData;
+}
+
+std::string MYSQLDatabase::generate_doctor_id() {
+	time_t _time = time(NULL);
+
+	return std::to_string(_time % 10000 + 10000);
+}
+
+std::vector<std::string> MYSQLDatabase::get_doctor_id(std::vector<std::string> data) {
+	return {generate_doctor_id(), "1"};
+}
+
+std::vector<std::string> MYSQLDatabase::add_doctor(std::vector<std::string> data) {
+	try {
+		/* 
+		INSERT INTO doctor VALUES
+		(101, 'Dr. Ananya Sharma', 45, 'F', 9876543210, 'ananya.sharma@hospital.com', '12 Green Park, Delhi', 'Cardiology', 'Senior Consultant', 180000);
+		*/
+		std::string query, data_string;
+		query = "INSERT INTO doctor VALUES \n(" + data[0] + ", " + quote1(data[1]) + ", " + data[2] + ", " + quote1(data[3]) + ", " + data[4] + ", " + quote1(data[5]) + ", " + quote1(data[6]) + ", " + quote1(data[7]) + ", " + quote1(data[8]) + ", " + data[9] + ");";
+		execute(query);
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	std::vector<std::string> returnData;
+
+	returnData.push_back("0");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::delete_doctor(std::vector<std::string> data) {
+	try {
+		/* 
+		DELETE
+		FROM doctor
+		WHERE doctor_id = data[0];
+		*/
+		std::string query, data_string;
+		query = "DELETE \nFROM doctor \nWHERE doctor_id = " + data[0] + ";";
+		execute(query);
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	std::vector<std::string> returnData;
+
+	returnData.push_back("0");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::get_doctor_details(std::vector<std::string> data) {
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT *
+		FROM doctor
+		WHERE doctor_id = data[0];
+		*/
+		std::string query;
+		query = "SELECT * \nFROM doctor \nWHERE doctor_id = " + data[0] + ";";
+		sql::ResultSet* res = executeQuery(query);
+
+		if (res->next()) {
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("name"));
+			returnData.push_back(res->getString("age"));
+			returnData.push_back(res->getString("gender"));
+			returnData.push_back(res->getString("phone"));
+			returnData.push_back(res->getString("email"));
+			returnData.push_back(res->getString("address"));
+			returnData.push_back(res->getString("speciality"));
+			returnData.push_back(res->getString("designation"));
+			returnData.push_back(res->getString("salary"));
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	if(returnData.empty()) return {"-1"};
+
+	returnData.push_back("1");
+	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::update_doctor(std::vector<std::string> data) {
+	try {
+		/*
+		UPDATE doctor
+		SET name = data[1], age = data[2], gender = data[3], phone = data[4], email = data[5], address = data[6], speciality = data[7], designation = data[8], salary = data[9]
+		WHERE doctor_id = data[0];
+		*/
+		std::string query;
+		query = "UPDATE doctor \nSET name = " + quote1(data[1]) + ", age = " + data[2] + ", gender = " + quote1(data[3]) + ", phone = " + data[4] + ", email = " + quote1(data[5]) + ", address = " + quote1(data[6]) + ", speciality = " + quote1(data[7]) + ", designation = " + quote1(data[8]) + ", salary = " + data[9] + "\nWHERE doctor_id = " + data[0] + ";";
+		execute(query);
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	return {"0"};
+}
+
+std::vector<std::string> MYSQLDatabase::view_doctor(std::vector<std::string> data) {
+	if(data[0] == "") data[0] = "0";
+	if(data[1] == "") data[1] = "200";
+	if(data[2] == "") data[2] = "0";
+	if(data[3] == "") data[3] = "1000000000";
+
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT doctor_id, speciality, age, gender, salary
+		FROM doctor
+		WHERE age >= data[0] AND age <= data[1] AND salary >= data[2] AND salary <= data[3] AND gender = data[4] AND speciality = data[5];
+		*/
+		std::string query;
+		query = "SELECT doctor_id, speciality, age, gender, salary \nFROM doctor \nWHERE age >= " + data[0] + " AND age <= " + data[1] + " AND salary >= " + data[2] + " AND salary <= " + data[3];
+		if(data[4] != "") query += " AND gender = " + quote1(data[4]);
+		if(data[5] != "") query += " AND speciality = " + quote1(data[5]);
+		query += ";";
+		sql::ResultSet* res = executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("doctor_id"));
+			returnData.push_back(res->getString("speciality"));
+			returnData.push_back(res->getString("age"));
+			returnData.push_back(res->getString("gender"));
+			returnData.push_back(res->getString("salary"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	returnData.push_back("1");
 	return returnData;
 }

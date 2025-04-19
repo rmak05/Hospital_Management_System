@@ -150,6 +150,7 @@
     <ClCompile Include="ChooseRoomScreen.cpp" />
     <ClCompile Include="DataEntryLoginPatientScreen.cpp" />
     <ClCompile Include="DataEntryLoginScreen.cpp" />
+    <ClCompile Include="DeleteDoctorScreen.cpp" />
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="demo_mysql.cpp" />
     <ClCompile Include="demo_sfml.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="LoginPatientScreen.cpp" />
+    <ClCompile Include="ManageDoctorScreen.cpp" />
     <ClCompile Include="MyInformationScreen.cpp" />
     <ClCompile Include="MYSQLDatabase.cpp" />
     <ClCompile Include="PatientAppointmentScreen.cpp" />
@@ -175,6 +177,7 @@
     <ClCompile Include="PrescAppointmentScreen.cpp" />
     <ClCompile Include="PrescGivenScreen.cpp" />
     <ClCompile Include="PushTestResultsScreen.cpp" />
+    <ClCompile Include="RegisterDoctorScreen.cpp" />
     <ClCompile Include="RegisterPatientScreen.cpp" />
     <ClCompile Include="ScheduleAppointmentScreen.cpp" />
     <ClCompile Include="ScheduleTestsScreen.cpp" />
@@ -189,6 +192,10 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="UpdateLoginPatientScreen.cpp" />
     <ClCompile Include="UpdatePatientScreen.cpp" />
+    <ClCompile Include="UpdateDoctorDetailsScreen.cpp" />
+    <ClCompile Include="UpdateDoctorScreen.cpp" />
+    <ClCompile Include="ViewDoctorFiltersScreen.cpp" />
+    <ClCompile Include="ViewDoctorScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllScreens.h" />

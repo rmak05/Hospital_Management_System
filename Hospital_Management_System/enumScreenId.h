@@ -45,5 +45,12 @@ enum class ScreenId {
 	appointment_slots		= 37,
 	approve_appointment		= 38,
 	test_slots				= 39,
-	approve_test			= 40
+	approve_test			= 40,
+	manage_doctor			= 41,
+	register_doctor			= 42,
+	delete_doctor			= 43,
+	update_doctor			= 44,
+	update_doctor_details	= 45,
+	view_doctor_filters		= 46,
+	view_doctor				= 47	
 };
