@@ -58,12 +58,12 @@ void Schedule_Appointment_Screen::fill_form(std::vector<std::string>& data) {
 	for (int i = 0; i < dsize; i++) {
 		curr_entity_index = 1;
 
-		add_entity(std::make_shared<Button>(std::string(""), 30u, 8.0f, sf::Vector2f(1020.0f, 145.0f), sf::Vector2f(xcoord, ycoord), sf::Color::Black, lightBlueConst, lightGrey, ScreenId::appointment_slots, FuncType::get_appointment_slots));
+		add_entity(std::make_shared<Button>(std::string(""), 25u, 8.0f, sf::Vector2f(1020.0f, 145.0f), sf::Vector2f(xcoord, ycoord), sf::Color::Black, lightBlueConst, lightGrey, ScreenId::appointment_slots, FuncType::get_appointment_slots));
 
-		add_entity(std::make_shared<TextBox>(std::string("Doctor ID : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
-		add_entity(std::make_shared<TextBox>(std::string("Doctor Name : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
-		add_entity(std::make_shared<TextBox>(std::string("Speciality : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
-		add_entity(std::make_shared<TextBox>(std::string("Gender : ") + data[i++], 30u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Doctor ID : ") + data[i++], 25u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Doctor Name : ") + data[i++], 25u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 5), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Speciality : ") + data[i++], 25u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 7, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
+		add_entity(std::make_shared<TextBox>(std::string("Gender : ") + data[i++], 25u, 0.0f, sf::Vector2f(500.0f, 65.0f), sf::Vector2f(xcoord + 513, ycoord + 75), sf::Color::Black, lightBlueConst, bgWhite, false));
 
 		ycoord += 145 + 60;
 	}
