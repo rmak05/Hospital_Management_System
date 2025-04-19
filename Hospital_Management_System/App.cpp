@@ -1,11 +1,17 @@
 #include "App.h"
 #include "Debug.h"
 
+sf::Font global_font;
+
 App::App() {
 	window_width = window_height = 0;
 	curr_frame = 0;
 	fps = 60u;
 	curr_scene_id = ScreenId::_default;
+	if (!global_font.loadFromFile("Fonts/NotoSans.ttf")) {
+		std::cout << "Error loading the font file\n";
+		return;
+	}
 }
 
 void App::set_curr_screen(ScreenId _scene_id) {
@@ -48,6 +54,12 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Admit_History_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Choose_Room_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<FrontDesk_Admit_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Admin_Login_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Admin_Home_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Appointment_Slots_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Approve_Appointment_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Test_Slots_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Approve_Test_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
@@ -59,9 +71,13 @@ void App::run() {
 	window_width	= desktop.width;
 	window_height	= desktop.height;
 
-	app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
-	//app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
+	//app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
+	app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
 	app_window.setFramerateLimit(fps);
+	sf::Image app_icon;
+	if (app_icon.loadFromFile("Images/hospital_icon.png")) {
+		app_window.setIcon(app_icon.getSize().x, app_icon.getSize().y, app_icon.getPixelsPtr());
+	}
 
 	initialise_scenes();
 
@@ -90,6 +106,12 @@ void App::run() {
 
 					if (data.back() == "0") {
 						ScreenId next_scene = all_scenes[static_cast<int>(curr_scene_id)]->get_next_screen(mouse_pos);
+
+						if (next_scene == ScreenId::_exit) {
+							app_window.close();
+
+							break;
+						}
 
 						all_scenes[static_cast<int>(curr_scene_id)]->erase_form();
 

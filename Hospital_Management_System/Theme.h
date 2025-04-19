@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 #define darkYellow		sf::Color(0xffb433ff)
 #define lightYellow		sf::Color(0xffce32ff)
 #define lightBlue		sf::Color(0xb4ebe6ff)
@@ -18,3 +20,5 @@
 #define BOTTOM_MARGIN	20.0f		
 
 #define OutlineThickness 4.0f
+
+extern sf::Font global_font;

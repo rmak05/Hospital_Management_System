@@ -15,7 +15,7 @@ void Admit_Screen::fill_form(std::vector<std::string>& data) {
 		add_entity(std::make_shared<ImageBox>(std::string("./Images/patientLogin.png"), sf::Vector2f(1350.0f,400.0f), sf::Vector2f(0.2f, 0.2f)));
 	}
 	else {
-		add_entity(std::make_shared<TextBox>(std::string("No Admit Request"), 30u, OutlineThickness, sf::Vector2f(500.0f, 80.0f), sf::Vector2f(600.0f, 400.0f), sf::Color::Black, lightBlue, sf::Color::Black));
+		add_entity(std::make_shared<TextBox>(std::string("No Admit Request"), 30u, OutlineThickness, sf::Vector2f(500.0f, 80.0f), sf::Vector2f(700.0f, 400.0f), sf::Color::Black, lightBlue, sf::Color::Black));
 	}
 }
 

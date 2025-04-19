@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Theme.h"
 
 Button::Button() : Entity(EntityType::button) {
 	next_screen = ScreenId::_default;
@@ -23,12 +24,12 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	not_hover_outline_color = outlineColor;
 	hover_outline_color = get_comp_color(outlineColor);
 
-	if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
+	/*if (!font.loadFromFile("Fonts/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
+	}*/
 
-	text.setFont(font);
+	text.setFont(global_font);
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
@@ -53,12 +54,12 @@ Button::Button(std::string textVal, unsigned charSize, float outline_thickness, 
 	not_hover_outline_color = outlineColor;
 	hover_outline_color = get_comp_color(outlineColor);
 
-	if (!font.loadFromFile("Resources/NotoSans.ttf")) {
+	/*if (!font.loadFromFile("Resources/NotoSans.ttf")) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
+	}*/
 
-	text.setFont(font);
+	text.setFont(global_font);
 	text.setString(textVal);
 	text.setFillColor(textColor);
 	text.setCharacterSize(charSize);
@@ -79,11 +80,11 @@ void Button::setTextSize(int charSize) {
 }
 
 void Button::setFont(std::string file) {
-	if (!font.loadFromFile(file)) {
+	/*if (!font.loadFromFile(file)) {
 		std::cout << "Error loading the font file\n";
 		return;
-	}
-	text.setFont(font);
+	}*/
+	text.setFont(global_font);
 }
 
 void Button::setButtonSize(sf::Vector2f buttonSize) {

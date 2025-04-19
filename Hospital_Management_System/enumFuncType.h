@@ -25,12 +25,21 @@ enum class FuncType {
 	get_complete_test_data			= 18,
 	get_appointment_history			= 19,
 	get_presc_data					= 20,
-	get_patient_information			= 21,
+	get_patient_information         = 21,
 	get_doctor_data					= 22,
 	get_admit_request				= 23,
 	get_room_data					= 24,
 	get_room_patient_id				= 25,
 	frontdesk_admit_patient			= 26,
 	get_discharge_details			= 27,
-	frontdesk_discharge_patient     = 28
+	frontdesk_discharge_patient     = 28,
+	get_admit_history				= 29,
+	get_doctor_speciality			= 30,
+	get_appointment_slots			= 31,
+	confirm_appointment				= 32,
+	add_appointment					= 33,
+	get_schedule_test				= 34,
+	get_test_slots					= 35,
+	confirm_test					= 36,
+	add_test						= 37
 };

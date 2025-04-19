@@ -26,10 +26,10 @@ Patient_Home_Screen::Patient_Home_Screen(int w_width, int w_height) : Screen(Scr
 
 	add_entity(std::make_shared<Button>(std::string("Admit"),				30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 300.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::admit,				FuncType::get_admit_request));
 	add_entity(std::make_shared<Button>(std::string("Discharge"),		    30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 420.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::discharge,			FuncType::get_discharge_details));
-	add_entity(std::make_shared<Button>(std::string("Appointment"),			30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 540.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::schedule_appointment));
-	add_entity(std::make_shared<Button>(std::string("Scheduling Tests"),	30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 660.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::schedule_tests));
+	add_entity(std::make_shared<Button>(std::string("Appointment"),			30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 540.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::schedule_appointment, FuncType::get_doctor_speciality));
+	add_entity(std::make_shared<Button>(std::string("Scheduling Tests"),	30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 660.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::schedule_tests, FuncType::get_schedule_test));
 	add_entity(std::make_shared<Button>(std::string("Patient Information"), 30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 780.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::patient_information,	FuncType::get_patient_information));
-	add_entity(std::make_shared<Button>(std::string("Admit History"),		30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 900.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::admit_history));
+	add_entity(std::make_shared<Button>(std::string("Admit History"),		30u, OutlineThickness, sf::Vector2f(600.0f, 80.0f), sf::Vector2f(1200.0f, 900.0f), sf::Color::Black, lightYellow, sf::Color::Black, ScreenId::admit_history,		FuncType::get_admit_history));
 }
 
 void Patient_Home_Screen::erase_form(){

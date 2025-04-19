@@ -3,15 +3,12 @@
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
-#include <iostream>
-#include <chrono>
-#include <ctime>
-#include <sstream>
-#include <iomanip>
 #include <mysql_connection.h>
 #include <mysql_driver.h>
 #include <vector>
+#include <string>
 #include <functional>
+#include <fstream>
 #include "enumFuncType.h"
 
 class MYSQLDatabase;
@@ -23,6 +20,11 @@ private:
 	sql::Statement *_statement;
 
 	std::vector<std::function<std::vector<std::string>(std::vector<std::string>)>> all_functions;
+
+	std::ofstream query_file;
+
+	bool execute(std::string query);
+	sql::ResultSet* executeQuery(std::string query);
 
 	std::string quote1(std::string str);
 	std::string quote2(std::string str);
@@ -58,6 +60,17 @@ private:
 	std::vector<std::string> frontdesk_admit_patient(std::vector<std::string> data);
 	std::vector<std::string> get_discharge_details(std::vector<std::string> data);
 	std::vector<std::string> frontdesk_discharge_patient(std::vector<std::string> data);
+	std::vector<std::string> get_admit_history(std::vector<std::string> data);
+	std::vector<std::string> get_doctor_speciality(std::vector<std::string> data);
+	int get_hour(std::string& _time);
+	std::vector<std::string> get_appointment_slots(std::vector<std::string> data);
+	std::vector<std::string> confirm_appointment(std::vector<std::string> data);
+	std::string generate_appointment_id();
+	std::vector<std::string> add_appointment(std::vector<std::string> data);
+	std::vector<std::string> get_schedule_test(std::vector<std::string> data);
+	std::vector<std::string> get_test_slots(std::vector<std::string> data);
+	std::vector<std::string> confirm_test(std::vector<std::string> data);
+	std::vector<std::string> add_test(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();
