@@ -151,9 +151,6 @@
     <ClCompile Include="DataEntryLoginPatientScreen.cpp" />
     <ClCompile Include="DataEntryLoginScreen.cpp" />
     <ClCompile Include="DeleteDoctorScreen.cpp" />
-    <ClCompile Include="demo.cpp" />
-    <ClCompile Include="demo_mysql.cpp" />
-    <ClCompile Include="demo_sfml.cpp" />
     <ClCompile Include="DischargeScreen.cpp" />
     <ClCompile Include="DoctorHomeScreen.cpp" />
     <ClCompile Include="DoctorLoginScreen.cpp" />
@@ -189,7 +186,6 @@
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="UpdateLoginPatientScreen.cpp" />
     <ClCompile Include="UpdatePatientScreen.cpp" />
     <ClCompile Include="UpdateDoctorDetailsScreen.cpp" />
@@ -216,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Hospital_Management_System.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="error.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -156,6 +156,18 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->view_doctor(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->check_frontdesk_login(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->check_dataentry_login(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->check_doctor_login(data);
+	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->check_admin_login(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -1784,4 +1796,24 @@ std::vector<std::string> MYSQLDatabase::view_doctor(std::vector<std::string> dat
 
 	returnData.push_back("1");
 	return returnData;
+}
+
+std::vector<std::string> MYSQLDatabase::check_frontdesk_login(std::vector<std::string> data) {
+	if(data[0] == "123") return {"0"};
+	else return {"-1"};
+}
+
+std::vector<std::string> MYSQLDatabase::check_dataentry_login(std::vector<std::string> data) {
+	if(data[0] == "456") return {"0"};
+	else return {"-1"};
+}
+
+std::vector<std::string> MYSQLDatabase::check_doctor_login(std::vector<std::string> data) {
+	if(data[0] == "789") return {"0"};
+	else return {"-1"};
+}
+
+std::vector<std::string> MYSQLDatabase::check_admin_login(std::vector<std::string> data) {
+	if(data[0] == "0192") return {"0"};
+	else return {"-1"};
 }

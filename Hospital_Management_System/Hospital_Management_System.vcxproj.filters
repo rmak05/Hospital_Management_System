@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Drawables">
       <UniqueIdentifier>{b037b145-cf9a-4c2d-895c-b28a5d1be154}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Demo">
-      <UniqueIdentifier>{e0da343f-9523-45fa-be33-53faf2f12e3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{25abbdb8-ff11-4b56-b2da-1a1a2b64497f}</UniqueIdentifier>
     </Filter>
@@ -45,15 +42,6 @@
     <ClCompile Include="ImageBox.cpp">
       <Filter>Source Files\Drawables</Filter>
     </ClCompile>
-    <ClCompile Include="demo.cpp">
-      <Filter>Source Files\Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="demo_mysql.cpp">
-      <Filter>Source Files\Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="demo_sfml.cpp">
-      <Filter>Source Files\Demo</Filter>
-    </ClCompile>
     <ClCompile Include="HomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
@@ -65,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files\Demo</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Source Files\App</Filter>
@@ -268,5 +253,10 @@
     <ResourceCompile Include="Hospital_Management_System.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="error.txt">
+      <Filter>Source Files\Utilities</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -82,6 +82,10 @@ private:
 	std::vector<std::string> get_doctor_details(std::vector<std::string> data);
 	std::vector<std::string> update_doctor(std::vector<std::string> data);
 	std::vector<std::string> view_doctor(std::vector<std::string> data);
+	std::vector<std::string> check_frontdesk_login(std::vector<std::string> data);
+	std::vector<std::string> check_dataentry_login(std::vector<std::string> data);
+	std::vector<std::string> check_doctor_login(std::vector<std::string> data);
+	std::vector<std::string> check_admin_login(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();
