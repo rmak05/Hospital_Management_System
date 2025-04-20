@@ -19,9 +19,11 @@ MYSQLDatabase::MYSQLDatabase() {
 		_connection = _driver->connect("tcp://localhost:3306", "root", get_password());
 		_connection->setSchema("Hospital_Management");
 		_statement = _connection->createStatement();
+
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error : " << e.what() << std::endl;
+		exit(EXIT_FAILURE);
 	}
 
 	all_functions.push_back([this](std::vector<std::string> data) { 
