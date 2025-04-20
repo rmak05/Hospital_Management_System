@@ -43,10 +43,8 @@ std::vector<std::string> Register_Doctor_Screen::extract_form(sf::Vector2f mouse
 }
 
 void Register_Doctor_Screen::erase_form() {
-	for (int i = 2; i <= 11; i++) {
-		//if (all_entities[i]->type == EntityType::text_input) {
+	for (int i = 3; i <= 11; i++) {
 		all_entities[i]->setText(std::string(""));
-		//}
 	}
 }
 

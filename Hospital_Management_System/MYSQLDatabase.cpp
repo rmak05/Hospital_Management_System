@@ -829,10 +829,10 @@ std::vector<std::string> MYSQLDatabase::get_appointment_history(std::vector<std:
 		/*
 		SELECT appointment_id, date, time
 		FROM appointment
-		WHERE patient_id = data[0];
+		WHERE patient_id = data[0] AND is_pending = 0;
 		*/
 		std::string query;
-		query = "SELECT appointment_id, date, time \nFROM appointment \nWHERE patient_id = " + data[0] + ";";
+		query = "SELECT appointment_id, date, time \nFROM appointment \nWHERE patient_id = " + data[0] + " AND is_pending = 0;";
 		sql::ResultSet* res = executeQuery(query);
 
 		while (res->next()) {
@@ -879,6 +879,9 @@ std::vector<std::string> MYSQLDatabase::get_presc_data(std::vector<std::string> 
 			returnData.push_back(res->getString("medicine_name"));
 			returnData.push_back(res->getString("presc"));
 		}
+		else {
+			for (int i = 0; i < 9; i++) returnData.push_back("");
+		}
 
 		delete res;
 	}
@@ -886,8 +889,6 @@ std::vector<std::string> MYSQLDatabase::get_presc_data(std::vector<std::string> 
 		std::cerr << "SQL Error : " << e.what() << std::endl;
 		return { "-1" };
 	}
-
-	if(returnData.empty()) return {"-1"};
 
 	returnData.push_back("1");
 	return returnData;
