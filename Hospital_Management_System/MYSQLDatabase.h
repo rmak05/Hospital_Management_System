@@ -24,6 +24,7 @@ private:
 
 	std::mt19937 rand_gen;
 	std::uniform_int_distribution<> uni_7_digit_gen;
+	std::uniform_int_distribution<> uni_3_digit_gen;
 	std::ofstream query_file;
 
 	bool execute(std::string query);

@@ -79,7 +79,10 @@ void App::run() {
 	window_height	= desktop.height;
 
 	//app_window.create(desktop, "Hospital Management System", sf::Style::Fullscreen);
-	app_window.create(sf::VideoMode(1850, 1150), "Hospital Management System");
+	app_window.create(sf::VideoMode(1920, 1080), "Hospital Management System");
+	window_width = 1920;
+	window_height = 1080;
+
 	app_window.setFramerateLimit(fps);
 	sf::Image app_icon;
 	if (app_icon.loadFromFile("Images/hospital_icon.png")) {

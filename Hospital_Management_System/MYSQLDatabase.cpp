@@ -10,6 +10,7 @@
 MYSQLDatabase::MYSQLDatabase() {
 	rand_gen = std::mt19937((unsigned)std::chrono::steady_clock::now().time_since_epoch().count());
 	uni_7_digit_gen = std::uniform_int_distribution<>(1000000, 9999999);
+	uni_3_digit_gen = std::uniform_int_distribution<>(100, 999);
 
 	query_file.open("Queries/queries.sql", std::ios::out);
 
@@ -1592,7 +1593,7 @@ std::string MYSQLDatabase::generate_doctor_id() {
 	bool found = false;
 
 	while (!found) {
-		doctor_id = uni_7_digit_gen(rand_gen);
+		doctor_id = uni_3_digit_gen(rand_gen);
 		try {
 			/*
 			SELECT doctor_id
