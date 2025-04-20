@@ -60,6 +60,13 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Approve_Appointment_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Test_Slots_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<Approve_Test_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Manage_Doctor_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Register_Doctor_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Delete_Doctor_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Update_Doctor_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Update_Doctor_Details_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<View_Doctor_Filters_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<View_Doctor_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }
@@ -71,8 +78,8 @@ void App::run() {
 	window_width	= desktop.width;
 	window_height	= desktop.height;
 
-	//app_window.create(desktop, "Hostpital DBMS", sf::Style::Fullscreen);
-	app_window.create(sf::VideoMode(1850, 1150), "Hostpital DBMS");
+	//app_window.create(desktop, "Hospital Management System", sf::Style::Fullscreen);
+	app_window.create(sf::VideoMode(1850, 1150), "Hospital Management System");
 	app_window.setFramerateLimit(fps);
 	sf::Image app_icon;
 	if (app_icon.loadFromFile("Images/hospital_icon.png")) {

@@ -43,6 +43,13 @@ class Appointment_Slots_Screen;
 class Approve_Appointment_Screen;
 class Test_Slots_Screen;
 class Approve_Test_Screen;
+class Manage_Doctor_Screen;
+class Register_Doctor_Screen;
+class Delete_Doctor_Screen;
+class Update_Doctor_Screen;
+class Update_Doctor_Details_Screen;
+class View_Doctor_Filters_Screen;
+class View_Doctor_Screen;
 
 class Home_Screen : public Screen {
 public:
@@ -451,5 +458,58 @@ public:
 	Approve_Test_Screen(int w_width, int w_height);
 	void erase_form();
 	void fill_form(std::vector<std::string>& data);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+};
+
+class Manage_Doctor_Screen : public Screen {
+public:
+	Manage_Doctor_Screen(int w_width, int w_height);
+};
+
+class Register_Doctor_Screen : public Screen {
+public:
+	Register_Doctor_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+};
+
+class Delete_Doctor_Screen : public Screen {
+public:
+	Delete_Doctor_Screen(int w_width, int w_height);
+};
+
+class Update_Doctor_Screen : public Screen {
+public:
+	Update_Doctor_Screen(int w_width, int w_height);
+};
+
+class Update_Doctor_Details_Screen : public Screen {
+public:
+	Update_Doctor_Details_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+};
+
+class View_Doctor_Filters_Screen : public Screen {
+public:
+	View_Doctor_Filters_Screen(int w_width, int w_height);
+	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
+	void erase_form();
+};
+
+class View_Doctor_Screen : public Screen {
+private:
+	std::vector<sf::Vector2f> entity_pos;
+	int curr_entity_index;
+	sf::Vector2f scroll_window_size;
+	sf::Vector2f scroll_window_pos;
+
+public:
+	View_Doctor_Screen(int w_width, int w_height);
+	void erase_form();
+	void fill_form(std::vector<std::string>& data);
+	void scroll_entities(int delta);
 	std::vector<std::string> extract_form(sf::Vector2f mouse_pos);
 };

@@ -71,6 +71,13 @@ private:
 	std::vector<std::string> get_test_slots(std::vector<std::string> data);
 	std::vector<std::string> confirm_test(std::vector<std::string> data);
 	std::vector<std::string> add_test(std::vector<std::string> data);
+	std::string generate_doctor_id();
+	std::vector<std::string> get_doctor_id(std::vector<std::string> data);
+	std::vector<std::string> add_doctor(std::vector<std::string> data);
+	std::vector<std::string> delete_doctor(std::vector<std::string> data);
+	std::vector<std::string> get_doctor_details(std::vector<std::string> data);
+	std::vector<std::string> update_doctor(std::vector<std::string> data);
+	std::vector<std::string> view_doctor(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();
