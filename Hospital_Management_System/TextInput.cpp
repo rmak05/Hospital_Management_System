@@ -144,7 +144,15 @@ void TextInput::setSelected(sf::Vector2f mouse_pos) {
 }
 
 std::string TextInput::getText() {
-	return text.str();
+	std::string _text = text.str();
+
+	while ((!_text.empty()) && (_text.back() == ' ')) {
+		_text.pop_back();
+	}
+
+	return _text;
+
+	//return text.str();
 }
 
 void TextInput::drawTo(sf::RenderWindow& window) {
