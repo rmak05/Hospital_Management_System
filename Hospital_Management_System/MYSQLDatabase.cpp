@@ -1,7 +1,6 @@
 #include "MYSQLDatabase.h"
 #include <iostream>
 #include <fstream>
-#include <thread>
 #include <chrono>
 #include <ctime>
 #include <sstream>
@@ -9,6 +8,9 @@
 #include <set>
 
 MYSQLDatabase::MYSQLDatabase() {
+	rand_gen = std::mt19937((unsigned)std::chrono::steady_clock::now().time_since_epoch().count());
+	uni_7_digit_gen = std::uniform_int_distribution<>(1000000, 9999999);
+
 	query_file.open("Queries/queries.sql", std::ios::out);
 
 	try {
@@ -323,14 +325,41 @@ std::vector<std::string> MYSQLDatabase::get_patient_data(std::vector<std::string
 }
 
 std::vector<std::string> MYSQLDatabase::generate_patient_id(std::vector<std::string>) {
-	//std::this_thread::sleep_for(std::chrono::seconds(1));
+	int patient_id;
+	bool found = false;
 
-	std::time_t timestamp = std::time(NULL);
+	while (!found) {
+		patient_id = uni_7_digit_gen(rand_gen);
+		try {
+			/*
+			SELECT patient_id
+			FROM patient
+			WHERE patient_id = patient_id;
+			*/
+			std::string query;
+			query = "SELECT patient_id \nFROM patient \nWHERE patient_id = " + std::to_string(patient_id) + ";";
+			sql::ResultSet* res = executeQuery(query);
+
+			if (!(res->next())) {
+				found = true;
+			}
+
+			delete res;
+		}
+		catch (sql::SQLException& e) {
+			std::cerr << "SQL Error : " << e.what() << std::endl;
+			return { "-1" };
+		}
+	}
+
+	return {std::to_string(patient_id), "1"};
+
+	/*std::time_t timestamp = std::time(NULL);
 	std::tm *curr_time = std::localtime(&timestamp);
 
 	int patient_id = ((curr_time->tm_year + 1900) * 100000) + (curr_time->tm_hour * 3600) + (curr_time->tm_min * 60) + (curr_time->tm_sec);
 
-	return {std::to_string(patient_id), "1"};
+	return {std::to_string(patient_id), "1"};*/
 }
 
 std::vector<std::string> MYSQLDatabase::get_patient_med_data(std::vector<std::string> data) {
@@ -540,10 +569,33 @@ std::vector<std::string> MYSQLDatabase::get_appointment_patient_data(std::vector
 }
 
 std::string  MYSQLDatabase::generate_test_id() {
-	std::time_t timestamp = std::time(NULL);
-	std::tm* curr_time = std::localtime(&timestamp);
+	int test_id;
+	bool found = false;
 
-	int test_id = ((curr_time->tm_year + 1900) * 100000) + (curr_time->tm_hour * 3600) + (curr_time->tm_min * 60) + (curr_time->tm_sec);
+	while (!found) {
+		test_id = uni_7_digit_gen(rand_gen);
+		try {
+			/*
+			SELECT test_id
+			FROM test
+			WHERE test_id = test_id;
+			*/
+			std::string query;
+			query = "SELECT test_id \nFROM test \nWHERE test_id = " + std::to_string(test_id) + ";";
+			sql::ResultSet* res = executeQuery(query);
+
+			if (!(res->next())) {
+				found = true;
+			}
+
+			delete res;
+		}
+		catch (sql::SQLException& e) {
+			std::cerr << "SQL Error : " << e.what() << std::endl;
+			return { "-1" };
+		}
+	}
+
 	return std::to_string(test_id);
 }
 
@@ -1317,9 +1369,34 @@ std::vector<std::string> MYSQLDatabase::confirm_appointment(std::vector<std::str
 }
 
 std::string MYSQLDatabase::generate_appointment_id() {
-	time_t _time = time(NULL);
+	int appointment_id;
+	bool found = false;
 
-	return std::to_string(_time % 10000 + 10000);
+	while (!found) {
+		appointment_id = uni_7_digit_gen(rand_gen);
+		try {
+			/*
+			SELECT appointment_id
+			FROM appointment
+			WHERE appointment_id = appointment_id;
+			*/
+			std::string query;
+			query = "SELECT appointment_id \nFROM appointment \nWHERE appointment_id = " + std::to_string(appointment_id) + ";";
+			sql::ResultSet* res = executeQuery(query);
+
+			if (!(res->next())) {
+				found = true;
+			}
+
+			delete res;
+		}
+		catch (sql::SQLException& e) {
+			std::cerr << "SQL Error : " << e.what() << std::endl;
+			return { "-1" };
+		}
+	}
+
+	return std::to_string(appointment_id);
 }
 
 std::vector<std::string> MYSQLDatabase::add_appointment(std::vector<std::string> data) {
@@ -1510,9 +1587,57 @@ std::vector<std::string> MYSQLDatabase::add_test(std::vector<std::string> data) 
 }
 
 std::string MYSQLDatabase::generate_doctor_id() {
-	time_t _time = time(NULL);
+	int doctor_id;
+	bool found = false;
 
-	return std::to_string(_time % 10000 + 10000);
+	while (!found) {
+		doctor_id = uni_7_digit_gen(rand_gen);
+		try {
+			/*
+			SELECT doctor_id
+			FROM doctor
+			WHERE doctor_id = doctor_id;
+			*/
+			std::string query;
+			query = "SELECT doctor_id \nFROM doctor \nWHERE doctor_id = " + std::to_string(doctor_id) + ";";
+			sql::ResultSet* res = executeQuery(query);
+
+			if (!(res->next())) {
+				found = true;
+			}
+
+			delete res;
+		}
+		catch (sql::SQLException& e) {
+			std::cerr << "SQL Error : " << e.what() << std::endl;
+			return { "-1" };
+		}
+	}
+
+	//try {
+	//	/*
+	//	SELECT MAX(doctor_id) AS id
+	//	FROM doctor;
+	//	*/
+	//	std::string query;
+	//	query = "SELECT MAX(doctor_id) AS id \nFROM doctor;";
+	//	sql::ResultSet* res = executeQuery(query);
+
+	//	if (res->next()) {
+	//		doctor_id = std::stoi(res->getString("id"));
+	//	}
+	//	else {
+	//		doctor_id = 101;
+	//	}
+
+	//	delete res;
+	//}
+	//catch (sql::SQLException& e) {
+	//	std::cerr << "SQL Error : " << e.what() << std::endl;
+	//	return { "-1" };
+	//}
+
+	return std::to_string(doctor_id);
 }
 
 std::vector<std::string> MYSQLDatabase::get_doctor_id(std::vector<std::string> data) {

@@ -9,6 +9,7 @@
 #include <string>
 #include <functional>
 #include <fstream>
+#include <random>
 #include "enumFuncType.h"
 
 class MYSQLDatabase;
@@ -21,6 +22,8 @@ private:
 
 	std::vector<std::function<std::vector<std::string>(std::vector<std::string>)>> all_functions;
 
+	std::mt19937 rand_gen;
+	std::uniform_int_distribution<> uni_7_digit_gen;
 	std::ofstream query_file;
 
 	bool execute(std::string query);
