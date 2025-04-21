@@ -12,7 +12,7 @@ MYSQLDatabase::MYSQLDatabase() {
 	uni_7_digit_gen = std::uniform_int_distribution<>(1000000, 9999999);
 	uni_3_digit_gen = std::uniform_int_distribution<>(100, 999);
 
-	query_file.open("Queries/queries.sql", std::ios::out);
+	query_file.open("Queries/live_queries.sql", std::ios::out);
 
 	try {
 		_driver = sql::mysql::get_mysql_driver_instance();
