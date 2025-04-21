@@ -35,40 +35,82 @@ This application was made as a part of the course **Database Systems Laboratory 
     - View all doctors' details.
 
 ## Hospital Workflow
+
 <img src="README_Images/pic1.png" alt="Image not found">
 
 - **Patient Visit and Registration**
-
+    
     - The Front desk operator registers a new patient.
     - The Front desk operator also schedules an appointment for the patient as per available time slots.
-
+      
+<img src="README_Images/pic2.png" alt="Image not found">
+<img src="README_Images/pic3.png" alt="Image not found">
+<img src="README_Images/pic4.png" alt="Image not found">
+<img src="README_Images/pic5.png" alt="Image not found">
+     
+    
 - **Doctor's Appointment**
 
     - On the scheduled date of the appointment, the doctor accesses the appointment details.
     - The Doctor will issue a prescription if necessary.
     - The Doctor can raise admit and test requests.
+      
+<img src="README_Images/pic11.png" alt="Image not found">
+<img src="README_Images/pic12.png" alt="Image not found">
+<img src="README_Images/pic13.png" alt="Image not found">
+<img src="README_Images/pic14.png" alt="Image not found">
+<img src="README_Images/pic15.png" alt="Image not found">
+<img src="README_Images/pic16.png" alt="Image not found">
+<img src="README_Images/pic17.png" alt="Image not found">
 
 - **Handling Requests**
 
     - The Front desk operator processes and confirms the admit requests.
     - The Front desk operator schedules the tests as raised by the doctor as per available time slots.
     - The Front desk operator can discharge the patients once they have recovered.
+      
+<img src="README_Images/pic18.png" alt="Image not found">
+<img src="README_Images/pic19.png" alt="Image not found">
+<img src="README_Images/pic20.png" alt="Image not found">
+<img src="README_Images/pic21.png" alt="Image not found">
+<img src="README_Images/pic22.png" alt="Image not found">
+<img src="README_Images/pic23.png" alt="Image not found">
+<img src="README_Images/pic24.png" alt="Image not found">
 
 - **Tests Management**
 
     - The Data entry operator can check pending tests of a patient.
     - The Data entry operator updates the system with test results once they have been completed.
+ 
+<img src="README_Images/pic27.png" alt="Image not found">
+<img src="README_Images/pic28.png" alt="Image not found">
+<img src="README_Images/pic29.png" alt="Image not found">
 
 - **Follow-up by Doctor**
 
     - The Doctor can view the test results pushed by the data entry operator.
     - The Doctor can also review the patient's medical history and records.
 
+<img src="README_Images/pic30.png" alt="Image not found">
+<img src="README_Images/pic31.png" alt="Image not found">
+<img src="README_Images/pic32.png" alt="Image not found">
+<img src="README_Images/pic33.png" alt="Image not found">
+<img src="README_Images/pic34.png" alt="Image not found">
+<img src="README_Images/pic35.png" alt="Image not found">
+<img src="README_Images/pic36.png" alt="Image not found">
+
 - **Admin Control**
 
     - Can register a new doctor.
     - Can update or delete the details of an existing doctor.
     - Can view the details of all doctors, using various filters like age, gender, salary and specialty
+
+<img src="README_Images/pic38.png" alt="Image not found">
+<img src="README_Images/pic39.png" alt="Image not found">
+<img src="README_Images/pic40.png" alt="Image not found">
+<img src="README_Images/pic41.png" alt="Image not found">
+<img src="README_Images/pic42.png" alt="Image not found">
+<img src="README_Images/pic43.png" alt="Image not found">
 
 ## Code Workflow
 
