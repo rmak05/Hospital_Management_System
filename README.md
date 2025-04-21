@@ -35,6 +35,7 @@ This application was made as a part of the course **Database Systems Laboratory 
     - View all doctors' details.
 
 ## Hospital Workflow
+<img src="README_Images/pic1.png" alt="Image not found" width="600" height="400">
 
 - **Patient Visit and Registration**
 
