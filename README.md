@@ -2,6 +2,8 @@
 
 This application was made as a part of the course **Database Systems Laboratory (CS3P002)**. This application can be used to maintain records of patients and doctors; and schedule tests and appointments; while having different kinds of data access to various users.
 
+[@GitHub](https://github.com/rmak05/Hospital_Management_System)
+
 ## Tech Stack
 - **C++** - Core programming language
 - **SFML (Simple and Fast Multimedia Library)** - GUI and multimedia handling
