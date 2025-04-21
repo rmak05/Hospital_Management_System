@@ -4,6 +4,11 @@ This application was made as a part of the course **Database Systems Laboratory 
 
 [@GitHub](https://github.com/rmak05/Hospital_Management_System)
 
+## **Contributors**
+
+- **Ravilisetty Makarandh - 22CS01002** ([@rmak05](https://github.com/rmak05))
+- **Ishan Kinger - 22CS01014** ([@ishankinger](https://github.com/ishankinger))
+
 ## Tech Stack
 - **C++** - Core programming language
 - **SFML (Simple and Fast Multimedia Library)** - GUI and multimedia handling
@@ -145,8 +150,3 @@ The application follows an object-oriented design to ensure modularity, scalabil
     - Each database operation (insert patient, fetch appointments, etc.) is stored in a dedicated member function.
     - The App class calls these functions when needed, passing in the necessary data.
     - Results from the database class are returned to the App class for further processing or display.
-
-## **Contributors**
-
-- **Ravilisetty Makarandh - 22CS01002** ([@rmak05](https://github.com/rmak05))
-- **Ishan Kinger - 22CS01014** ([@ishankinger](https://github.com/ishankinger))
