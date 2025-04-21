@@ -51,5 +51,6 @@ enum class FuncType {
 	check_frontdesk_login           = 44,
 	check_dataentry_login           = 45,
 	check_doctor_login              = 46,
-	check_admin_login               = 47
+	check_admin_login               = 47,
+	view_patient                    = 48
 };

@@ -170,6 +170,9 @@ MYSQLDatabase::MYSQLDatabase() {
 	all_functions.push_back([this](std::vector<std::string> data) {
 		return this->check_admin_login(data);
 	});
+	all_functions.push_back([this](std::vector<std::string> data) {
+		return this->view_patient(data);
+	});
 }
 
 MYSQLDatabase::~MYSQLDatabase() {
@@ -1818,4 +1821,44 @@ std::vector<std::string> MYSQLDatabase::check_doctor_login(std::vector<std::stri
 std::vector<std::string> MYSQLDatabase::check_admin_login(std::vector<std::string> data) {
 	if(data[0] == "0192") return {"0"};
 	else return {"-1"};
+}
+
+std::vector<std::string> MYSQLDatabase::view_patient(std::vector<std::string> data) {
+	if(data[0] == "") data[0] = "0";
+	if(data[1] == "") data[1] = "200";
+
+	std::vector<std::string> returnData;
+	try {
+		/*
+		SELECT patient_id, disease_name, age, gender, room_id
+		FROM patient
+		NATURAL JOIN is_admitted
+		WHERE age >= data[0] AND age <= data[1] AND gender = data[2] AND room_id = data[3] AND disease_name = data[4];
+		*/
+		std::string query;
+		query = "SELECT patient_id, disease_name, age, gender, room_id \nFROM patient \nNATURAL JOIN is_admitted \nWHERE age >= " + data[0] + " AND age <= " + data[1];
+		if(data[2] != "") query += " AND gender = " + quote1(data[2]);
+		if(data[3] != "") query += " AND (is_admit = 1 AND room_id = " + quote1(data[3]) + ")";
+		if(data[4] != "") query += " AND (is_admit = 1 AND disease_name = " + quote1(data[4]) + ")";
+		query += ";";
+		sql::ResultSet* res = executeQuery(query);
+
+		while (res->next()) {
+			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("disease_name"));
+			returnData.push_back(res->getString("age"));
+			returnData.push_back(res->getString("gender"));
+			returnData.push_back(res->getString("room_id"));
+			returnData.push_back("#");
+		}
+
+		delete res;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error : " << e.what() << std::endl;
+		return { "-1" };
+	}
+
+	returnData.push_back("1");
+	return returnData;
 }

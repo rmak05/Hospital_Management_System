@@ -52,5 +52,8 @@ enum class ScreenId {
 	update_doctor           = 44,
 	update_doctor_details   = 45,
 	view_doctor_filters     = 46,
-	view_doctor             = 47	
+	view_doctor             = 47,
+	view_patient_filters    = 48,
+	view_patient            = 49,
+	manage_patient          = 50
 };

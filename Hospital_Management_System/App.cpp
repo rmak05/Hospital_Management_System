@@ -67,6 +67,9 @@ void App::initialise_scenes() {
 	all_scenes.push_back(std::make_shared<Update_Doctor_Details_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<View_Doctor_Filters_Screen>(window_width, window_height));
 	all_scenes.push_back(std::make_shared<View_Doctor_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<View_Patient_Filters_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<View_Patient_Screen>(window_width, window_height));
+	all_scenes.push_back(std::make_shared<Manage_Patient_Screen>(window_width, window_height));
 
 	set_curr_screen(ScreenId::home);
 }

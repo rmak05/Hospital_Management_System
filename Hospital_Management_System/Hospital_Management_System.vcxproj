@@ -162,6 +162,7 @@
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="LoginPatientScreen.cpp" />
     <ClCompile Include="ManageDoctorScreen.cpp" />
+    <ClCompile Include="ManagePatientScreen.cpp" />
     <ClCompile Include="MyInformationScreen.cpp" />
     <ClCompile Include="MYSQLDatabase.cpp" />
     <ClCompile Include="PatientAppointmentScreen.cpp" />
@@ -192,6 +193,8 @@
     <ClCompile Include="UpdateDoctorScreen.cpp" />
     <ClCompile Include="ViewDoctorFiltersScreen.cpp" />
     <ClCompile Include="ViewDoctorScreen.cpp" />
+    <ClCompile Include="ViewPatientFiltersScreen.cpp" />
+    <ClCompile Include="ViewPatientScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllScreens.h" />

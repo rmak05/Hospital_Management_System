@@ -86,6 +86,7 @@ private:
 	std::vector<std::string> check_dataentry_login(std::vector<std::string> data);
 	std::vector<std::string> check_doctor_login(std::vector<std::string> data);
 	std::vector<std::string> check_admin_login(std::vector<std::string> data);
+	std::vector<std::string> view_patient(std::vector<std::string> data);
 
 public:
 	MYSQLDatabase();
