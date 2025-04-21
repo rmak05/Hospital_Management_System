@@ -69,6 +69,38 @@ This application was made as a part of the course **Database Systems Laboratory 
     - Can update or delete the details of an existing doctor.
     - Can view the details of all doctors, using various filters like age, gender, salary and specialty
 
+## Code Workflow
+
+The application follows an object-oriented design to ensure modularity, scalability, and readability. Below is an overview of the core classes, their responsibilities and how they interact with each other.
+
+- **Entity Class**
+
+    - Base class for UI components.
+    - Derived classes include Button, Text Box, Text Input Box and Image Box.
+    - Each entity implements its own rendering and event-handling logic using virtual functions.
+
+- **Screen Class**
+
+    - Abstract base class for all UI screens.
+    - Each specific screen (Home, Login, Registration, etc.) is implemented as a derived class.
+    - Every screen maintains a list of entities that it contains.
+    - Each screen implements its own rendering and event-handling logic using virtual functions.
+
+- **App Class**
+
+    - This is the central controller of the application which is instantiated in the main() function.
+    - Maintains a list of all available screens in the application.
+    - Manages screen transitions based on user interaction (like button clicks).
+    - Renders all the entities of the current screen.
+    - Acts as an interface between the Database and a Screen by transferring data to and fro.
+
+- **Database Class**
+
+    - Handles all interactions with the MySQL database.
+    - Each database operation (insert patient, fetch appointments, etc.) is stored in a dedicated member function.
+    - The App class calls these functions when needed, passing in the necessary data.
+    - Results from the database class are returned to the App class for further processing or display.
+
 ## **Contributors**
 
 - **Ravilisetty Makarandh - 22CS01002** ([@rmak05](https://github.com/rmak05))
