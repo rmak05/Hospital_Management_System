@@ -1,5 +1,5 @@
-#include "TextInput.h"
-#include "Theme.h"
+#include "TextInput.hpp"
+#include "Theme.hpp"
 
 TextInput::TextInput() : Entity(EntityType::text_input) {
 	isSelected = false;

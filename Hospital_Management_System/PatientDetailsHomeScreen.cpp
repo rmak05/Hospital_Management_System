@@ -1,4 +1,4 @@
-#include "AllScreens.h"
+#include "AllScreens.hpp"
 
 Patient_Details_Home_Screen::Patient_Details_Home_Screen(int w_width, int w_height) : Screen(ScreenId::patient_details_home, w_width, w_height) {
 

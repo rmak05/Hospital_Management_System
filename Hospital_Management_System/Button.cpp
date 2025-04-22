@@ -1,5 +1,5 @@
-#include "Button.h"
-#include "Theme.h"
+#include "Button.hpp"
+#include "Theme.hpp"
 
 Button::Button() : Entity(EntityType::button) {
 	next_screen = ScreenId::_default;

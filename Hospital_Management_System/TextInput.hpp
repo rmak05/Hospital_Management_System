@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
-#include "Entity.h"
+#include "Entity.hpp"
 
 #define DELETE_KEY 8
 #define ENTER_KEY 13

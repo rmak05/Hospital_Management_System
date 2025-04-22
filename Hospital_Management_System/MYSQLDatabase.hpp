@@ -10,7 +10,7 @@
 #include <functional>
 #include <fstream>
 #include <random>
-#include "enumFuncType.h"
+#include "enumFuncType.hpp"
 
 class MYSQLDatabase;
 

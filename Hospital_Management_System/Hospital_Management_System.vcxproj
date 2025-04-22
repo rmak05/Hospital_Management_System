@@ -197,21 +197,21 @@
     <ClCompile Include="ViewPatientScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AllScreens.h" />
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="enumEntityType.h" />
-    <ClInclude Include="enumFuncType.h" />
-    <ClInclude Include="enumScreenId.h" />
-    <ClInclude Include="ImageBox.h" />
-    <ClInclude Include="MYSQLDatabase.h" />
+    <ClInclude Include="AllScreens.hpp" />
+    <ClInclude Include="App.hpp" />
+    <ClInclude Include="Button.hpp" />
+    <ClInclude Include="Debug.hpp" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="enumEntityType.hpp" />
+    <ClInclude Include="enumFuncType.hpp" />
+    <ClInclude Include="enumScreenId.hpp" />
+    <ClInclude Include="ImageBox.hpp" />
+    <ClInclude Include="MYSQLDatabase.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="TextBox.h" />
-    <ClInclude Include="TextInput.h" />
-    <ClInclude Include="Theme.h" />
+    <ClInclude Include="Screen.hpp" />
+    <ClInclude Include="TextBox.hpp" />
+    <ClInclude Include="TextInput.hpp" />
+    <ClInclude Include="Theme.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Hospital_Management_System.rc" />

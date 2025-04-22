@@ -212,46 +212,46 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="Button.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="TextInput.h">
+    <ClInclude Include="TextInput.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="TextBox.h">
+    <ClInclude Include="TextBox.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="ImageBox.h">
+    <ClInclude Include="ImageBox.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="Screen.h">
+    <ClInclude Include="Screen.hpp">
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Theme.h">
+    <ClInclude Include="Theme.hpp">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Entity.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="App.h">
+    <ClInclude Include="App.hpp">
       <Filter>Source Files\App</Filter>
     </ClInclude>
-    <ClInclude Include="enumScreenId.h">
+    <ClInclude Include="enumScreenId.hpp">
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="enumEntityType.h">
+    <ClInclude Include="enumEntityType.hpp">
       <Filter>Source Files\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="AllScreens.h">
+    <ClInclude Include="AllScreens.hpp">
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="enumFuncType.h">
+    <ClInclude Include="enumFuncType.hpp">
       <Filter>Source Files\Database</Filter>
     </ClInclude>
-    <ClInclude Include="MYSQLDatabase.h">
+    <ClInclude Include="MYSQLDatabase.hpp">
       <Filter>Source Files\Database</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
+    <ClInclude Include="Debug.hpp">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">

@@ -2,14 +2,14 @@
 
 #include <memory>
 #include <vector>
-#include "Entity.h"
-#include "enumScreenId.h"
-#include "TextBox.h"
-#include "Button.h"
-#include "ImageBox.h"
-#include "TextInput.h"
-#include "Theme.h"
-#include "MYSQLDatabase.h"
+#include "Entity.hpp"
+#include "enumScreenId.hpp"
+#include "TextBox.hpp"
+#include "Button.hpp"
+#include "ImageBox.hpp"
+#include "TextInput.hpp"
+#include "Theme.hpp"
+#include "MYSQLDatabase.hpp"
 
 class Screen;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Screen.h"
+#include "Screen.hpp"
 
 class Home_Screen;
 class Front_Desk_Login_Screen;

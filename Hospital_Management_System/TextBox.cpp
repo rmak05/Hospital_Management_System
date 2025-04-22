@@ -1,5 +1,5 @@
-#include "TextBox.h"
-#include "Theme.h"
+#include "TextBox.hpp"
+#include "Theme.hpp"
 
 TextBox::TextBox() : Entity(EntityType::text_box){
 	isCentre = true;

@@ -1,5 +1,5 @@
-#include "App.h"
-#include "Debug.h"
+#include "App.hpp"
+#include "Debug.hpp"
 
 sf::Font global_font;
 
@@ -81,10 +81,11 @@ void App::run() {
 	window_width	= desktop.width;
 	window_height	= desktop.height;
 
-	//app_window.create(desktop, "Hospital Management System", sf::Style::Fullscreen);
-	app_window.create(sf::VideoMode(1920, 1180), "Hospital Management System");
+	app_window.create(desktop, "Hospital Management System", sf::Style::Fullscreen);
+
+	/*app_window.create(sf::VideoMode(1920, 1180), "Hospital Management System");
 	window_width = 1920;
-	window_height = 1180;
+	window_height = 1180;*/
 
 	app_window.setFramerateLimit(fps);
 	sf::Image app_icon;

@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Entity.h"
+#include "Entity.hpp"
 
 class ImageBox;
 

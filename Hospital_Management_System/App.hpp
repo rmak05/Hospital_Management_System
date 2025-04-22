@@ -4,10 +4,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "Theme.h"
-#include "Screen.h"
-#include "AllScreens.h"
-#include "MYSQLDatabase.h"
+#include "Theme.hpp"
+#include "Screen.hpp"
+#include "AllScreens.hpp"
+#include "MYSQLDatabase.hpp"
 
 class App;
 

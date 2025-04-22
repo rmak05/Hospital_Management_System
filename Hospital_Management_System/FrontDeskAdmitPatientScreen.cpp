@@ -1,4 +1,4 @@
-#include "AllScreens.h"
+#include "AllScreens.hpp"
 
 FrontDesk_Admit_Patient_Screen::FrontDesk_Admit_Patient_Screen(int w_width, int w_height) : Screen(ScreenId::frontdesk_admit_patient, w_width, w_height) {
 	add_entity(std::make_shared<Button>(std::string("Back"), 30u, OutlineThickness, sf::Vector2f(150.0f, 80.0f), sf::Vector2f(100.0f, 110.0f), sf::Color::Black, lightRed, sf::Color::Black, ScreenId::patient_home));

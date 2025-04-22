@@ -1,4 +1,4 @@
-#include "MYSQLDatabase.h"
+#include "MYSQLDatabase.hpp"
 #include <iostream>
 #include <fstream>
 #include <chrono>

@@ -1,5 +1,5 @@
-#include "Entity.h"
-#include "Theme.h"
+#include "Entity.hpp"
+#include "Theme.hpp"
 
 Entity::Entity() {
 	is_active = false;

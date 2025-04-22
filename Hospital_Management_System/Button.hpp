@@ -2,9 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Entity.h"
-#include "enumScreenId.h"
-#include "EnumFuncType.h"
+#include "Entity.hpp"
+#include "enumFuncType.hpp"
 
 class Button;
 

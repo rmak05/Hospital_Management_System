@@ -3,9 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <iostream>
-#include "enumEntityType.h"
-#include "enumScreenId.h"
-#include "enumFuncType.h"
+#include "enumEntityType.hpp"
+#include "enumScreenId.hpp"
+#include "enumFuncType.hpp"
 
 class Entity;
 typedef std::shared_ptr<Entity> entity_ptr;

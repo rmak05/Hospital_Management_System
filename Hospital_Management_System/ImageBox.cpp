@@ -1,4 +1,4 @@
-#include "ImageBox.h"
+#include "ImageBox.hpp"
 
 ImageBox::ImageBox() : Entity(EntityType::image_box) {
 	if (!texture.loadFromFile("./Images/demo.png")) {
