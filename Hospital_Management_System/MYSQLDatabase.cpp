@@ -1832,11 +1832,11 @@ std::vector<std::string> MYSQLDatabase::view_patient(std::vector<std::string> da
 		/*
 		SELECT patient_id, disease_name, age, gender, room_id
 		FROM patient
-		NATURAL JOIN is_admitted
+		LEFT NATURAL JOIN is_admitted
 		WHERE age >= data[0] AND age <= data[1] AND gender = data[2] AND room_id = data[3] AND disease_name = data[4];
 		*/
 		std::string query;
-		query = "SELECT patient_id, disease_name, age, gender, room_id \nFROM patient \nNATURAL JOIN is_admitted \nWHERE age >= " + data[0] + " AND age <= " + data[1];
+		query = "SELECT patient.patient_id AS id, disease_name, age, gender, room_id \nFROM patient \nLEFT JOIN is_admitted\nON patient.patient_id = is_admitted.patient_id \nWHERE age >= " + data[0] + " AND age <= " + data[1];
 		if(data[2] != "") query += " AND gender = " + quote1(data[2]);
 		if(data[3] != "") query += " AND (is_admit = 1 AND room_id = " + quote1(data[3]) + ")";
 		if(data[4] != "") query += " AND (is_admit = 1 AND disease_name = " + quote1(data[4]) + ")";
@@ -1844,7 +1844,7 @@ std::vector<std::string> MYSQLDatabase::view_patient(std::vector<std::string> da
 		sql::ResultSet* res = executeQuery(query);
 
 		while (res->next()) {
-			returnData.push_back(res->getString("patient_id"));
+			returnData.push_back(res->getString("id"));
 			returnData.push_back(res->getString("disease_name"));
 			returnData.push_back(res->getString("age"));
 			returnData.push_back(res->getString("gender"));
