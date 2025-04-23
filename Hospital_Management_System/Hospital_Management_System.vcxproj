@@ -132,6 +132,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>%MYSQL_9.2.0_DIR%\lib64\vs14;%SFML_2.6.2_DIR%\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>mysqlcppconn.lib;sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <HeapReserveSize>1073741824</HeapReserveSize>
+      <HeapCommitSize>4096</HeapCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -186,7 +188,7 @@
     <ClCompile Include="TestSlotsScreen.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextInput.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="UpdateLoginPatientScreen.cpp" />
     <ClCompile Include="UpdatePatientScreen.cpp" />
     <ClCompile Include="UpdateDoctorDetailsScreen.cpp" />

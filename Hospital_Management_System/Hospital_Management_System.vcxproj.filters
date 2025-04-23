@@ -57,7 +57,7 @@
     <ClCompile Include="App.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
     <ClCompile Include="FrontDeskHomeScreen.cpp">
