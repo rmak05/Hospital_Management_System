@@ -13,249 +13,261 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Drawables">
-      <UniqueIdentifier>{b037b145-cf9a-4c2d-895c-b28a5d1be154}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Screens">
-      <UniqueIdentifier>{25abbdb8-ff11-4b56-b2da-1a1a2b64497f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\App">
-      <UniqueIdentifier>{92e1dfbd-d2a9-4ee9-b8f2-971f7de60186}</UniqueIdentifier>
+      <UniqueIdentifier>{a39d6be1-9d12-455c-9966-3e0e7b1f3ab6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Database">
-      <UniqueIdentifier>{13f72fbe-448f-4ab1-a3e1-09b3072b141f}</UniqueIdentifier>
+      <UniqueIdentifier>{caea84e6-92df-4135-b4f7-4e9598addec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drawables">
+      <UniqueIdentifier>{086b97df-6b9f-404e-8a62-8737a2f80cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{d5b23d1f-38a8-4246-b7e8-ad698e501c13}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Utilities">
-      <UniqueIdentifier>{0c332e1d-f344-4301-81fb-c330a0f41f83}</UniqueIdentifier>
+      <UniqueIdentifier>{787bf9ad-ce1f-4d39-9659-dca183d0520a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Demo">
+      <UniqueIdentifier>{3b577fce-0ff8-4b1a-8551-70dfe64eb458}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="TextInput.cpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageBox.cpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="HomeScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="FrontDeskLoginScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="App.cpp">
+    <ClCompile Include="App\App.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="App\Main.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
-    <ClCompile Include="FrontDeskHomeScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="RegisterPatientScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdatePatientScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginPatientScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="PatientHomeScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="MYSQLDatabase.cpp">
+    <ClCompile Include="Database\MYSQLDatabase.cpp">
       <Filter>Source Files\Database</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateLoginPatientScreen.cpp">
+    <ClCompile Include="Drawables\Button.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\Entity.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\ImageBox.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\TextBox.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\TextInput.cpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\AdminHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DataEntryLoginScreen.cpp">
+    <ClCompile Include="Screens\AdminLoginScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DataEntryLoginPatientScreen.cpp">
+    <ClCompile Include="Screens\AdmitAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PendingTestsScreen.cpp">
+    <ClCompile Include="Screens\AdmitHistoryScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AdmitAppointmentScreen.cpp">
+    <ClCompile Include="Screens\AdmitScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AppointmentHistoryScreen.cpp">
+    <ClCompile Include="Screens\AppointmentHistoryScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AppointmentScreen.cpp">
+    <ClCompile Include="Screens\AppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DoctorHomeScreen.cpp">
+    <ClCompile Include="Screens\AppointmentSlotsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DoctorLoginScreen.cpp">
+    <ClCompile Include="Screens\ApproveAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="MyInformationScreen.cpp">
+    <ClCompile Include="Screens\ApproveTestScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PatientAppointmentScreen.cpp">
+    <ClCompile Include="Screens\ChooseRoomScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PatientDetailsHomeScreen.cpp">
+    <ClCompile Include="Screens\DataEntryLoginPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PatientDetailsScreen.cpp">
+    <ClCompile Include="Screens\DataEntryLoginScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PatientRecordScreen.cpp">
+    <ClCompile Include="Screens\DeleteDoctorScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PrescAppointmentScreen.cpp">
+    <ClCompile Include="Screens\DischargeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PrescGivenScreen.cpp">
+    <ClCompile Include="Screens\DoctorHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="TestHistoryScreen.cpp">
+    <ClCompile Include="Screens\DoctorLoginScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="TestResultsScreen.cpp">
+    <ClCompile Include="Screens\FrontDeskAdmitPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="TestsAppointmentScreen.cpp">
+    <ClCompile Include="Screens\FrontDeskHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PushTestResultsScreen.cpp">
+    <ClCompile Include="Screens\FrontDeskLoginScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AdmitHistoryScreen.cpp">
+    <ClCompile Include="Screens\HomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AdmitScreen.cpp">
+    <ClCompile Include="Screens\LoginPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DischargeScreen.cpp">
+    <ClCompile Include="Screens\ManageDoctorScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="PatientInformationScreen.cpp">
+    <ClCompile Include="Screens\ManagePatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ScheduleAppointmentScreen.cpp">
+    <ClCompile Include="Screens\MyInformationScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ScheduleTestsScreen.cpp">
+    <ClCompile Include="Screens\PatientAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ChooseRoomScreen.cpp">
+    <ClCompile Include="Screens\PatientDetailsHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="FrontDeskAdmitPatientScreen.cpp">
+    <ClCompile Include="Screens\PatientDetailsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AdminLoginScreen.cpp">
+    <ClCompile Include="Screens\PatientHomeScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AdminHomeScreen.cpp">
+    <ClCompile Include="Screens\PatientInformationScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AppointmentSlotsScreen.cpp">
+    <ClCompile Include="Screens\PatientRecordScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ApproveAppointmentScreen.cpp">
+    <ClCompile Include="Screens\PendingTestsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="TestSlotsScreen.cpp">
+    <ClCompile Include="Screens\PrescAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ApproveTestScreen.cpp">
+    <ClCompile Include="Screens\PrescGivenScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ManageDoctorScreen.cpp">
+    <ClCompile Include="Screens\PushTestResultsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="RegisterDoctorScreen.cpp">
+    <ClCompile Include="Screens\RegisterDoctorScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="DeleteDoctorScreen.cpp">
+    <ClCompile Include="Screens\RegisterPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateDoctorScreen.cpp">
+    <ClCompile Include="Screens\ScheduleAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateDoctorDetailsScreen.cpp">
+    <ClCompile Include="Screens\ScheduleTestsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ViewDoctorFiltersScreen.cpp">
+    <ClCompile Include="Screens\Screen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ViewDoctorScreen.cpp">
+    <ClCompile Include="Screens\TestHistoryScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ViewPatientFiltersScreen.cpp">
+    <ClCompile Include="Screens\TestResultsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ViewPatientScreen.cpp">
+    <ClCompile Include="Screens\TestsAppointmentScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="ManagePatientScreen.cpp">
+    <ClCompile Include="Screens\TestSlotsScreen.cpp">
       <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\UpdateDoctorDetailsScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\UpdateDoctorScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\UpdateLoginPatientScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\UpdatePatientScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\ViewDoctorFiltersScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\ViewDoctorScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\ViewPatientFiltersScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\ViewPatientScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo\Demo_MYSQL.cpp">
+      <Filter>Source Files\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo\Demo_SFML.cpp">
+      <Filter>Source Files\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Demo\Demo_Test.cpp">
+      <Filter>Source Files\Demo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="TextInput.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageBox.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="Screen.hpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="Theme.hpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="App.hpp">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="enumScreenId.hpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="enumEntityType.hpp">
-      <Filter>Source Files\Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="AllScreens.hpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="enumFuncType.hpp">
-      <Filter>Source Files\Database</Filter>
-    </ClInclude>
-    <ClInclude Include="MYSQLDatabase.hpp">
-      <Filter>Source Files\Database</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.hpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="App\App.hpp">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\enumFuncType.hpp">
+      <Filter>Source Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Database\MYSQLDatabase.hpp">
+      <Filter>Source Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\Button.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\Entity.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\enumEntityType.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\ImageBox.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\TextBox.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\TextInput.hpp">
+      <Filter>Source Files\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\AllScreens.hpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\enumScreenId.hpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\Screen.hpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Debug.hpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Theme.hpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,7 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="error.txt">
-      <Filter>Source Files\Utilities</Filter>
+      <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
 </Project>

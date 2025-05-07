@@ -105,7 +105,7 @@ void App::run() {
 				app_window.close();
 			}
 			else if ((event.type == sf::Event::KeyPressed)) {
-				if(event.key.code == sf::Keyboard::Escape) app_window.close();
+				//if(event.key.code == sf::Keyboard::Escape) app_window.close();
 			}
 			else if (event.type == sf::Event::TextEntered) {
 				all_scenes[static_cast<int>(curr_scene_id)]->check_typed_text(event.text.unicode);

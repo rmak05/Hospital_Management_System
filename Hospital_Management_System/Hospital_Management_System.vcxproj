@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%MYSQL_9.2.0_DIR%\include\jdbc;%SFML_2.6.2_DIR%\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Utilities;$(ProjectDir)Screens;$(ProjectDir)Drawables;$(ProjectDir)Database;$(ProjectDir)App;%MYSQL_9.2.0_DIR%\include\jdbc;%SFML_2.6.2_DIR%\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,83 +137,86 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdminHomeScreen.cpp" />
-    <ClCompile Include="AdminLoginScreen.cpp" />
-    <ClCompile Include="AdmitAppointmentScreen.cpp" />
-    <ClCompile Include="AdmitHistoryScreen.cpp" />
-    <ClCompile Include="AdmitScreen.cpp" />
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="AppointmentHistoryScreen.cpp" />
-    <ClCompile Include="AppointmentScreen.cpp" />
-    <ClCompile Include="AppointmentSlotsScreen.cpp" />
-    <ClCompile Include="ApproveAppointmentScreen.cpp" />
-    <ClCompile Include="ApproveTestScreen.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="ChooseRoomScreen.cpp" />
-    <ClCompile Include="DataEntryLoginPatientScreen.cpp" />
-    <ClCompile Include="DataEntryLoginScreen.cpp" />
-    <ClCompile Include="DeleteDoctorScreen.cpp" />
-    <ClCompile Include="DischargeScreen.cpp" />
-    <ClCompile Include="DoctorHomeScreen.cpp" />
-    <ClCompile Include="DoctorLoginScreen.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="FrontDeskAdmitPatientScreen.cpp" />
-    <ClCompile Include="FrontDeskHomeScreen.cpp" />
-    <ClCompile Include="FrontDeskLoginScreen.cpp" />
-    <ClCompile Include="HomeScreen.cpp" />
-    <ClCompile Include="ImageBox.cpp" />
-    <ClCompile Include="LoginPatientScreen.cpp" />
-    <ClCompile Include="ManageDoctorScreen.cpp" />
-    <ClCompile Include="ManagePatientScreen.cpp" />
-    <ClCompile Include="MyInformationScreen.cpp" />
-    <ClCompile Include="MYSQLDatabase.cpp" />
-    <ClCompile Include="PatientAppointmentScreen.cpp" />
-    <ClCompile Include="PatientDetailsHomeScreen.cpp" />
-    <ClCompile Include="PatientDetailsScreen.cpp" />
-    <ClCompile Include="PatientHomeScreen.cpp" />
-    <ClCompile Include="PatientInformationScreen.cpp" />
-    <ClCompile Include="PatientRecordScreen.cpp" />
-    <ClCompile Include="PendingTestsScreen.cpp" />
-    <ClCompile Include="PrescAppointmentScreen.cpp" />
-    <ClCompile Include="PrescGivenScreen.cpp" />
-    <ClCompile Include="PushTestResultsScreen.cpp" />
-    <ClCompile Include="RegisterDoctorScreen.cpp" />
-    <ClCompile Include="RegisterPatientScreen.cpp" />
-    <ClCompile Include="ScheduleAppointmentScreen.cpp" />
-    <ClCompile Include="ScheduleTestsScreen.cpp" />
-    <ClCompile Include="Screen.cpp" />
-    <ClCompile Include="TestHistoryScreen.cpp" />
-    <ClCompile Include="TestResultsScreen.cpp" />
-    <ClCompile Include="TestsAppointmentScreen.cpp" />
-    <ClCompile Include="TestSlotsScreen.cpp" />
-    <ClCompile Include="TextBox.cpp" />
-    <ClCompile Include="TextInput.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="UpdateLoginPatientScreen.cpp" />
-    <ClCompile Include="UpdatePatientScreen.cpp" />
-    <ClCompile Include="UpdateDoctorDetailsScreen.cpp" />
-    <ClCompile Include="UpdateDoctorScreen.cpp" />
-    <ClCompile Include="ViewDoctorFiltersScreen.cpp" />
-    <ClCompile Include="ViewDoctorScreen.cpp" />
-    <ClCompile Include="ViewPatientFiltersScreen.cpp" />
-    <ClCompile Include="ViewPatientScreen.cpp" />
+    <ClCompile Include="App\App.cpp" />
+    <ClCompile Include="App\Main.cpp" />
+    <ClCompile Include="Database\MYSQLDatabase.cpp" />
+    <ClCompile Include="Demo\Demo_MYSQL.cpp" />
+    <ClCompile Include="Demo\Demo_SFML.cpp" />
+    <ClCompile Include="Demo\Demo_Test.cpp" />
+    <ClCompile Include="Drawables\Button.cpp" />
+    <ClCompile Include="Drawables\Entity.cpp" />
+    <ClCompile Include="Drawables\ImageBox.cpp" />
+    <ClCompile Include="Drawables\TextBox.cpp" />
+    <ClCompile Include="Drawables\TextInput.cpp" />
+    <ClCompile Include="Screens\AdminHomeScreen.cpp" />
+    <ClCompile Include="Screens\AdminLoginScreen.cpp" />
+    <ClCompile Include="Screens\AdmitAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\AdmitHistoryScreen.cpp" />
+    <ClCompile Include="Screens\AdmitScreen.cpp" />
+    <ClCompile Include="Screens\AppointmentHistoryScreen.cpp" />
+    <ClCompile Include="Screens\AppointmentScreen.cpp" />
+    <ClCompile Include="Screens\AppointmentSlotsScreen.cpp" />
+    <ClCompile Include="Screens\ApproveAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\ApproveTestScreen.cpp" />
+    <ClCompile Include="Screens\ChooseRoomScreen.cpp" />
+    <ClCompile Include="Screens\DataEntryLoginPatientScreen.cpp" />
+    <ClCompile Include="Screens\DataEntryLoginScreen.cpp" />
+    <ClCompile Include="Screens\DeleteDoctorScreen.cpp" />
+    <ClCompile Include="Screens\DischargeScreen.cpp" />
+    <ClCompile Include="Screens\DoctorHomeScreen.cpp" />
+    <ClCompile Include="Screens\DoctorLoginScreen.cpp" />
+    <ClCompile Include="Screens\FrontDeskAdmitPatientScreen.cpp" />
+    <ClCompile Include="Screens\FrontDeskHomeScreen.cpp" />
+    <ClCompile Include="Screens\FrontDeskLoginScreen.cpp" />
+    <ClCompile Include="Screens\HomeScreen.cpp" />
+    <ClCompile Include="Screens\LoginPatientScreen.cpp" />
+    <ClCompile Include="Screens\ManageDoctorScreen.cpp" />
+    <ClCompile Include="Screens\ManagePatientScreen.cpp" />
+    <ClCompile Include="Screens\MyInformationScreen.cpp" />
+    <ClCompile Include="Screens\PatientAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\PatientDetailsHomeScreen.cpp" />
+    <ClCompile Include="Screens\PatientDetailsScreen.cpp" />
+    <ClCompile Include="Screens\PatientHomeScreen.cpp" />
+    <ClCompile Include="Screens\PatientInformationScreen.cpp" />
+    <ClCompile Include="Screens\PatientRecordScreen.cpp" />
+    <ClCompile Include="Screens\PendingTestsScreen.cpp" />
+    <ClCompile Include="Screens\PrescAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\PrescGivenScreen.cpp" />
+    <ClCompile Include="Screens\PushTestResultsScreen.cpp" />
+    <ClCompile Include="Screens\RegisterDoctorScreen.cpp" />
+    <ClCompile Include="Screens\RegisterPatientScreen.cpp" />
+    <ClCompile Include="Screens\ScheduleAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\ScheduleTestsScreen.cpp" />
+    <ClCompile Include="Screens\Screen.cpp" />
+    <ClCompile Include="Screens\TestHistoryScreen.cpp" />
+    <ClCompile Include="Screens\TestResultsScreen.cpp" />
+    <ClCompile Include="Screens\TestsAppointmentScreen.cpp" />
+    <ClCompile Include="Screens\TestSlotsScreen.cpp" />
+    <ClCompile Include="Screens\UpdateDoctorDetailsScreen.cpp" />
+    <ClCompile Include="Screens\UpdateDoctorScreen.cpp" />
+    <ClCompile Include="Screens\UpdateLoginPatientScreen.cpp" />
+    <ClCompile Include="Screens\UpdatePatientScreen.cpp" />
+    <ClCompile Include="Screens\ViewDoctorFiltersScreen.cpp" />
+    <ClCompile Include="Screens\ViewDoctorScreen.cpp" />
+    <ClCompile Include="Screens\ViewPatientFiltersScreen.cpp" />
+    <ClCompile Include="Screens\ViewPatientScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AllScreens.hpp" />
-    <ClInclude Include="App.hpp" />
-    <ClInclude Include="Button.hpp" />
-    <ClInclude Include="Debug.hpp" />
-    <ClInclude Include="Entity.hpp" />
-    <ClInclude Include="enumEntityType.hpp" />
-    <ClInclude Include="enumFuncType.hpp" />
-    <ClInclude Include="enumScreenId.hpp" />
-    <ClInclude Include="ImageBox.hpp" />
-    <ClInclude Include="MYSQLDatabase.hpp" />
+    <ClInclude Include="App\App.hpp" />
+    <ClInclude Include="Database\enumFuncType.hpp" />
+    <ClInclude Include="Database\MYSQLDatabase.hpp" />
+    <ClInclude Include="Drawables\Button.hpp" />
+    <ClInclude Include="Drawables\Entity.hpp" />
+    <ClInclude Include="Drawables\enumEntityType.hpp" />
+    <ClInclude Include="Drawables\ImageBox.hpp" />
+    <ClInclude Include="Drawables\TextBox.hpp" />
+    <ClInclude Include="Drawables\TextInput.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Screen.hpp" />
-    <ClInclude Include="TextBox.hpp" />
-    <ClInclude Include="TextInput.hpp" />
-    <ClInclude Include="Theme.hpp" />
+    <ClInclude Include="Screens\AllScreens.hpp" />
+    <ClInclude Include="Screens\enumScreenId.hpp" />
+    <ClInclude Include="Screens\Screen.hpp" />
+    <ClInclude Include="Utilities\Debug.hpp" />
+    <ClInclude Include="Utilities\Theme.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Hospital_Management_System.rc" />
