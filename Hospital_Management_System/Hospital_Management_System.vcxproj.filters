@@ -28,9 +28,6 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{787bf9ad-ce1f-4d39-9659-dca183d0520a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Demo">
-      <UniqueIdentifier>{3b577fce-0ff8-4b1a-8551-70dfe64eb458}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App\App.cpp">
@@ -212,15 +209,6 @@
     </ClCompile>
     <ClCompile Include="Screens\ViewPatientScreen.cpp">
       <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo\Demo_MYSQL.cpp">
-      <Filter>Source Files\Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo\Demo_SFML.cpp">
-      <Filter>Source Files\Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="Demo\Demo_Test.cpp">
-      <Filter>Source Files\Demo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

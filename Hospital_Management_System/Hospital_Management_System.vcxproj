@@ -140,9 +140,6 @@
     <ClCompile Include="App\App.cpp" />
     <ClCompile Include="App\Main.cpp" />
     <ClCompile Include="Database\MYSQLDatabase.cpp" />
-    <ClCompile Include="Demo\Demo_MYSQL.cpp" />
-    <ClCompile Include="Demo\Demo_SFML.cpp" />
-    <ClCompile Include="Demo\Demo_Test.cpp" />
     <ClCompile Include="Drawables\Button.cpp" />
     <ClCompile Include="Drawables\Entity.cpp" />
     <ClCompile Include="Drawables\ImageBox.cpp" />
