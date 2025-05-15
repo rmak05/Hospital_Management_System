@@ -362,6 +362,7 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Custom Added files
+# Custom Added files and folders
 Hospital_Management_System/password.txt
 Hospital_Management_System/Demo/
+Hospital_Management_System_Application/
