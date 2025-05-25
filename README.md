@@ -1,6 +1,6 @@
 # Hospital Management System
 
-This application was made as a part of the course **Database Systems Laboratory (CS3P002)**. This application can be used to maintain records of patients and doctors; and schedule tests and appointments; while having different kinds of data access to various users.
+An application for handling hospital operations like managing patient and doctor records, test scheduling, and appointment booking. It features role-based access control for different user types such as front desk operators, data entry operators, doctors, and administrators.
 
 ## Tech Stack
 - **C++** - Core programming language
