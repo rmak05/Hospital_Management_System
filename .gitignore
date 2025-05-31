@@ -366,3 +366,5 @@ FodyWeavers.xsd
 Hospital_Management_System/password.txt
 Hospital_Management_System/Demo/
 Hospital_Management_System_Application/
+Hospital_Database.session.sql
+.vscode/

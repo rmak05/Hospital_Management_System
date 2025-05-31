@@ -36,15 +36,22 @@ An application for handling hospital operations like managing patient and doctor
 
 ## Hospital Workflow
 
-<img src="README_Images/pic1.png" alt="Image not found">
+<p align="center">
+    <img src="README_Images/app_home.png" alt="Image not found" height="300px" width="48%">
+</p>
 
 - **Patient Visit and Registration**
     
     - The Front desk operator registers a new patient.
     - The Front desk operator also schedules an appointment for the patient as per available time slots.
       
-<img src="README_Images/pic3.png" alt="Image not found">
-<img src="README_Images/pic4.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/front_desk_home.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/register_patient.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/front_desk_home.png" alt="Image not found"> -->
+<!-- <img src="README_Images/register_patient.png" alt="Image not found"> -->
          
 - **Doctor's Appointment**
 
@@ -52,11 +59,23 @@ An application for handling hospital operations like managing patient and doctor
     - The Doctor will issue a prescription if necessary.
     - The Doctor can raise admit and test requests.
       
-<img src="README_Images/pic12.png" alt="Image not found">
-<img src="README_Images/pic13.png" alt="Image not found">
-<img src="README_Images/pic14.png" alt="Image not found">
-<img src="README_Images/pic15.png" alt="Image not found">
-<img src="README_Images/pic16.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/doctor_home.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/appointments.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+<p align="center">
+  <img src="README_Images/patient_appointment.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/prescription.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+<p align="center">
+  <img src="README_Images/test.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/doctor_home.png" alt="Image not found">
+<img src="README_Images/appointments.png" alt="Image not found">
+<img src="README_Images/patient_appointment.png" alt="Image not found">
+<img src="README_Images/prescription.png" alt="Image not found">
+<img src="README_Images/test.png" alt="Image not found"> -->
 
 - **Handling Requests**
 
@@ -64,24 +83,39 @@ An application for handling hospital operations like managing patient and doctor
     - The Front desk operator schedules the tests as raised by the doctor as per available time slots.
     - The Front desk operator can discharge the patients once they have recovered.
       
-<img src="README_Images/pic19.png" alt="Image not found">
-<img src="README_Images/pic23.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/choose_room.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/test_slots.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/choose_room.png" alt="Image not found">
+<img src="README_Images/test_slots.png" alt="Image not found"> -->
 
 - **Tests Management**
 
     - The Data entry operator can check pending tests of a patient.
     - The Data entry operator updates the system with test results once they have been completed.
  
-<img src="README_Images/pic28.png" alt="Image not found">
-<img src="README_Images/pic29.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/data_tests.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/test_results.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/data_tests.png" alt="Image not found">
+<img src="README_Images/test_results.png" alt="Image not found"> -->
 
 - **Follow-up by Doctor**
 
     - The Doctor can view the test results pushed by the data entry operator.
     - The Doctor can also review the patient's medical history and records.
 
-<img src="README_Images/pic30.png" alt="Image not found">
-<img src="README_Images/pic31.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/patient_records.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/patient_details.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/patient_records.png" alt="Image not found">
+<img src="README_Images/patient_details.png" alt="Image not found"> -->
 
 - **Admin Control**
 
@@ -89,10 +123,19 @@ An application for handling hospital operations like managing patient and doctor
     - Can update or delete the details of an existing doctor.
     - Can view the details of all doctors, using various filters like age, gender, salary and specialty
 
-<img src="README_Images/pic38.png" alt="Image not found">
-<img src="README_Images/pic39.png" alt="Image not found">
-<img src="README_Images/pic40.png" alt="Image not found">
-<img src="README_Images/pic43.png" alt="Image not found">
+<p align="center">
+  <img src="README_Images/admin_doctor.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/doctor_filter.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+<p align="center">
+  <img src="README_Images/doctor_list.png" alt="Image not found" height="300px" width="48%"/>
+  <img src="README_Images/register_doctor.png" alt="Image not found" height="300px" width="48%"/>
+</p>
+
+<!-- <img src="README_Images/admin_doctor.png" alt="Image not found">
+<img src="README_Images/doctor_filter.png" alt="Image not found">
+<img src="README_Images/doctor_list.png" alt="Image not found">
+<img src="README_Images/register_doctor.png" alt="Image not found"> -->
 
 ## Code Workflow
 
