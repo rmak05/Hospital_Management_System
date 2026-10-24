@@ -118,20 +118,20 @@ An application for handling hospital operations like managing patient and doctor
 
 The application follows an object-oriented design to ensure modularity, scalability, and readability. Below is an overview of the core classes, their responsibilities and how they interact with each other.
 
-- **Entity Class**
+- **Entity**
 
     - Base class for UI components.
     - Derived classes include Button, Text Box, Text Input Box and Image Box.
     - Each entity implements its own rendering and event-handling logic using virtual functions.
 
-- **Screen Class**
+- **Screen**
 
     - Abstract base class for all UI screens.
     - Each specific screen (Home, Login, Registration, etc.) is implemented as a derived class.
     - Every screen maintains a list of entities that it contains.
     - Each screen implements its own rendering and event-handling logic using virtual functions.
 
-- **App Class**
+- **App**
 
     - This is the central controller of the application which is instantiated in the main() function.
     - Maintains a list of all available screens in the application.
@@ -139,7 +139,7 @@ The application follows an object-oriented design to ensure modularity, scalabil
     - Renders all the entities of the current screen.
     - Acts as an interface between the Database and a Screen by transferring data to and fro.
 
-- **Database Class**
+- **Database**
 
     - Handles all interactions with the MySQL database.
     - Each database operation (insert patient, fetch appointments, etc.) is stored in a dedicated member function.
